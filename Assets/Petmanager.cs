@@ -16,10 +16,12 @@ public class Petmanager : MonoBehaviour
     public GameObject foodMenuPanel;
     public GameObject statMenuPanel;
     public GameObject musicMenuPanel;
+    public GameObject gachaMenuPanel;
 
     public AudioClip confirmSFX;
     public AudioClip denySFX;
     public AudioClip goodJobSFX;
+    public AudioClip eatSFX;
 
     public AudioClip[] songs;
 
@@ -54,7 +56,7 @@ public class Petmanager : MonoBehaviour
         { hunger = 100;}
         happy = true;
         SetPanel(0);
-        audio.clip = goodJobSFX;
+        audio.clip = eatSFX;
         audio.Play();
     }
 
@@ -62,6 +64,13 @@ public class Petmanager : MonoBehaviour
     {
         audioBGM.clip = songs[value];
         audioBGM.Play();
+        SetPanel(0);
+    }
+
+    public void Win(int value)
+    {
+        audio.clip = goodJobSFX;
+        audio.Play();
         SetPanel(0);
     }
 
@@ -99,6 +108,12 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 3)
         {
             musicMenuPanel.SetActive(true);
+            audio.clip = confirmSFX;
+            audio.Play();
+        }
+        else if (menuindex == 4)
+        {
+            gachaMenuPanel.SetActive(true);
             audio.clip = confirmSFX;
             audio.Play();
         }
