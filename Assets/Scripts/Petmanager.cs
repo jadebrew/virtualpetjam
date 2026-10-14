@@ -60,13 +60,14 @@ public class Petmanager : MonoBehaviour
         HungerText.text = "Hunger: " + Mathf.Floor(hunger) + "\n Happy: " + happy.ToString();
     }
 
-    public void Feed(int value)
+    public void Feed(GameObject consumable)
     {
-        hunger += value;
+        hunger += consumable.GetComponent<ConsumableHelper>().itemValue;
         if (hunger>100)
         { hunger = 100;}
         happy = true;
         SetPanel(0);
+        inventory.Remove(consumable);
         _audio.Play(Eat);
     }
 

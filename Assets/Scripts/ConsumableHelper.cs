@@ -30,8 +30,9 @@ public class ConsumableHelper : MonoBehaviour
 
     void Consume()
     {
-        pet.Feed(itemValue);
+        pet.Feed(button.gameObject);
         Debug.Log("Using a consumable");
+        Destroy(button.gameObject);
     }
 
     void StopMusic()
