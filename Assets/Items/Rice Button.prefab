@@ -133,5 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29473ace894f9f256b3bb0557b214c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableHelper
-  saturation: 50
+  assignedSongTitle: 0
+  itemValue: 50
   filtertype: feed
+  audio: {fileID: 0}
