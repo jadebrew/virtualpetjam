@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections;
@@ -26,10 +27,18 @@ public class Petmanager : MonoBehaviour
     public GameObject musicMenuPanel;
     public GameObject radioMenuPanel;
     public GameObject bagMenuPanel;
+    public GameObject winPanel;
     public GameObject gachaMenuPanel;
+
+    public GameObject lastWon;
+
+    private int lastWonIndex;
+    private bool winDone;
 
     public List<GameObject> inventory = new List<GameObject>();
     public GameObject[] banner;
+
+    public Sprite gachaball;
 
     private AudioManager _audio;
 
@@ -81,10 +90,30 @@ public class Petmanager : MonoBehaviour
     {
         int win_index = UnityEngine.Random.Range(0,banner.Length-1);
         inventory.Add(banner[win_index]);
+        //lastWon.GetComponent<Image>().sprite = banner[win_index].GetComponent<Image>().sprite;
+        lastWon.GetComponent<Image>().sprite = gachaball;
+        lastWonIndex = win_index;
+        winDone = false;
+
+        _audio.Play(NewItem);
+        gachaMenuPanel.SetActive(false);
+        winPanel.SetActive(true);
+    }
+
+    public void Reveal(int value)
+    {
+        if (!winDone)
+        {
+            lastWon.GetComponent<Image>().sprite = banner[lastWonIndex].GetComponent<Image>().sprite;
+            _audio.Play(MajorVictory);
+            winDone = true;
+        }
+        else
+        {
+            SetPanel(-1);
+        }
 
 
-        _audio.Play(MajorVictory);
-        SetPanel(-1);
     }
 
     public void SetPanel(int menuindex)
@@ -96,6 +125,7 @@ public class Petmanager : MonoBehaviour
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
+        winPanel.SetActive(false);
 
         if (menuindex == -1)
         {
