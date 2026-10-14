@@ -16,6 +16,11 @@ public class SongButtonHelper : MonoBehaviour
         button.onClick.AddListener(PlayAssignedSong);
     }
 
+    void StopMusic()
+    {
+        audio.StopMusic();
+    }
+
     void PlayAssignedSong()
     {
         Debug.LogWarning($"PlayAssignedSong: {assignedSongTitle}");

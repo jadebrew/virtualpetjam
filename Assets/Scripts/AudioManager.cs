@@ -6,6 +6,10 @@ using UnityEngine.Android;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
+
+    public float maxvolume = 0.7F;
+    public float fadespeed = 0.1F;
+    bool fading = false;
     
     [SerializeField] private AudioSource _audioSfx;
     [SerializeField] private AudioSource _audioBg;
@@ -59,6 +63,18 @@ public class AudioManager : MonoBehaviour
     
     private Dictionary<SongTitle, AudioClip> _songDict = new ();
     private Dictionary<SFXTitle, AudioClip> _sfxDict = new ();
+
+    public void AdjustVolume(float step)
+    {
+        maxvolume += step;
+        if(maxvolume < 0) {maxvolume = 0;}
+        if(maxvolume > 1) {maxvolume = 1;}
+
+        if (!fading)
+        {
+            _audioBg.volume = maxvolume;
+        }
+    }
     
     void Awake()
     {
@@ -94,9 +110,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        _audioBg.volume += Time.deltaTime * fadespeed;
+        if (_audioBg.volume > maxvolume)
+        {
+            _audioBg.volume = maxvolume;
+            fading = false;
+        }
+    }
+
     public void Play(SongTitle title)
     {
         Play(GetSong(title), _audioBg);
+        _audioBg.volume = 0;
+        fading = true;
     }
     
     public void Play(SFXTitle title)

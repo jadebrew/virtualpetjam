@@ -19,6 +19,7 @@ public class Petmanager : MonoBehaviour
     public GameObject foodMenuPanel;
     public GameObject statMenuPanel;
     public GameObject musicMenuPanel;
+    public GameObject radioMenuPanel;
     public GameObject gachaMenuPanel;
 
     private AudioManager _audio;
@@ -102,12 +103,18 @@ public class Petmanager : MonoBehaviour
         }
         else if (menuindex == 3)
         {
-            musicMenuPanel.SetActive(true);
+            radioMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
         else if (menuindex == 4)
         {
             gachaMenuPanel.SetActive(true);
+            _audio.Play(Select);
+        }
+        else if (menuindex == 9)
+        {
+            musicMenuPanel.SetActive(true);
+            radioMenuPanel.SetActive(false);
             _audio.Play(Select);
         }
     }
