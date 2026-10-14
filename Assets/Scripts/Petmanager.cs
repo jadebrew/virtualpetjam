@@ -2,6 +2,9 @@ using UnityEngine;
 using TMPro;
 using System;
 
+using static AudioManager.SFXTitle;
+using static AudioManager.SongTitle;
+
 public class Petmanager : MonoBehaviour
 {
     public GameObject petObject;
@@ -16,17 +19,16 @@ public class Petmanager : MonoBehaviour
     public GameObject foodMenuPanel;
     public GameObject statMenuPanel;
     public GameObject musicMenuPanel;
+    public GameObject radioMenuPanel;
     public GameObject gachaMenuPanel;
 
-    public AudioClip confirmSFX;
-    public AudioClip denySFX;
-    public AudioClip goodJobSFX;
-    public AudioClip eatSFX;
+    private AudioManager _audio;
 
-    public AudioClip[] songs;
+    void Awake()
+    {
+        _audio = AudioManager.Instance;
+    }
 
-    public AudioSource audio;
-    public AudioSource audioBGM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,21 +58,18 @@ public class Petmanager : MonoBehaviour
         { hunger = 100;}
         happy = true;
         SetPanel(0);
-        audio.clip = eatSFX;
-        audio.Play();
+        _audio.Play(Eat);
     }
 
-    public void PlaySong(int value)
+    public void PlaySong(AudioManager.SongTitle title)
     {
-        audioBGM.clip = songs[value];
-        audioBGM.Play();
+        _audio.Play(title);
         SetPanel(0);
     }
 
     public void Win(int value)
     {
-        audio.clip = goodJobSFX;
-        audio.Play();
+        _audio.Play(MajorVictory);
         SetPanel(0);
     }
 
@@ -83,9 +82,8 @@ public class Petmanager : MonoBehaviour
         if (menuindex == -1)
         {
             mainMenuPanel.SetActive(true);
-            audio.Stop();
-            audio.clip = denySFX;
-            audio.Play();
+            _audio.StopSound();
+            _audio.Play(Cancel);
 
         }
         if (menuindex == 0)
@@ -96,26 +94,28 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 1)
         {
             foodMenuPanel.SetActive(true);
-            audio.clip = confirmSFX;
-            audio.Play();
+            _audio.Play(Select);
         }
         else if (menuindex == 2)
         {
             statMenuPanel.SetActive(true);
-            audio.clip = confirmSFX;
-            audio.Play();
+            _audio.Play(Select);
         }
         else if (menuindex == 3)
         {
-            musicMenuPanel.SetActive(true);
-            audio.clip = confirmSFX;
-            audio.Play();
+            radioMenuPanel.SetActive(true);
+            _audio.Play(Select);
         }
         else if (menuindex == 4)
         {
             gachaMenuPanel.SetActive(true);
-            audio.clip = confirmSFX;
-            audio.Play();
+            _audio.Play(Select);
+        }
+        else if (menuindex == 9)
+        {
+            musicMenuPanel.SetActive(true);
+            radioMenuPanel.SetActive(false);
+            _audio.Play(Select);
         }
     }
 }
