@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 using static AudioManager.SFXTitle;
 using static AudioManager.SongTitle;
@@ -15,12 +17,18 @@ public class Petmanager : MonoBehaviour
     public string datetime;
     public bool happy = true;
 
+    public GameObject bagParent;
+
     public GameObject mainMenuPanel;
     public GameObject foodMenuPanel;
     public GameObject statMenuPanel;
     public GameObject musicMenuPanel;
     public GameObject radioMenuPanel;
+    public GameObject bagMenuPanel;
     public GameObject gachaMenuPanel;
+
+    public List<GameObject> inventory = new List<GameObject>();
+    public GameObject[] banner;
 
     private AudioManager _audio;
 
@@ -69,8 +77,12 @@ public class Petmanager : MonoBehaviour
 
     public void Win(int value)
     {
+        int win_index = UnityEngine.Random.Range(0,banner.Length-1);
+        inventory.Add(banner[win_index]);
+
+
         _audio.Play(MajorVictory);
-        SetPanel(0);
+        SetPanel(-1);
     }
 
     public void SetPanel(int menuindex)
@@ -79,6 +91,10 @@ public class Petmanager : MonoBehaviour
         foodMenuPanel.SetActive(false);
         statMenuPanel.SetActive(false);
         musicMenuPanel.SetActive(false);
+        radioMenuPanel.SetActive(false);
+        gachaMenuPanel.SetActive(false);
+        bagMenuPanel.SetActive(false);
+
         if (menuindex == -1)
         {
             mainMenuPanel.SetActive(true);
@@ -110,6 +126,23 @@ public class Petmanager : MonoBehaviour
         {
             gachaMenuPanel.SetActive(true);
             _audio.Play(Select);
+        }
+        else if (menuindex == 8)
+        {
+            //bag menu
+            bagMenuPanel.SetActive(true);
+            _audio.Play(Select);
+
+            foreach(Transform child in bagParent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach(GameObject obj in inventory)
+            {
+                var tempItem = Instantiate(obj, bagParent.transform, true);
+                tempItem.transform.localScale = new Vector3(1,1,1);
+            }
+
         }
         else if (menuindex == 9)
         {
