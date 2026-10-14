@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2781893511594764432}
   - component: {fileID: 3597710992112402404}
   - component: {fileID: 372696669383796984}
-  - component: {fileID: 3980719815267278088}
+  - component: {fileID: -7350114767574122367}
   m_Layer: 5
   m_Name: Energy Button
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3980719815267278088
+--- !u!114 &-7350114767574122367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3441278382316133455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6104cb86cdc4c08418774a06850a95d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 29473ace894f9f256b3bb0557b214c46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongButtonHelper
+  m_EditorClassIdentifier: Assembly-CSharp::ConsumableHelper
   assignedSongTitle: 0
+  itemValue: 0
+  filtertype: casette
   audio: {fileID: 0}

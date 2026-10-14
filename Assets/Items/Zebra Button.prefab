@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4037962640912897605}
   - component: {fileID: 3894978389488284483}
   - component: {fileID: 357121870444553687}
-  - component: {fileID: 3384755698733314152}
+  - component: {fileID: 6226852596472779364}
   m_Layer: 5
   m_Name: Zebra Button
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3384755698733314152
+--- !u!114 &6226852596472779364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 933625565166498671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6104cb86cdc4c08418774a06850a95d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 29473ace894f9f256b3bb0557b214c46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongButtonHelper
+  m_EditorClassIdentifier: Assembly-CSharp::ConsumableHelper
   assignedSongTitle: 7
+  itemValue: 0
+  filtertype: casette
   audio: {fileID: 0}

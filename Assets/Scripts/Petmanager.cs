@@ -18,6 +18,7 @@ public class Petmanager : MonoBehaviour
     public bool happy = true;
 
     public GameObject bagParent;
+    public TMP_Text bagTitle;
 
     public GameObject mainMenuPanel;
     public GameObject foodMenuPanel;
@@ -107,11 +108,6 @@ public class Petmanager : MonoBehaviour
             mainMenuPanel.SetActive(true);
 
         }
-        else if (menuindex == 1)
-        {
-            foodMenuPanel.SetActive(true);
-            _audio.Play(Select);
-        }
         else if (menuindex == 2)
         {
             statMenuPanel.SetActive(true);
@@ -127,28 +123,38 @@ public class Petmanager : MonoBehaviour
             gachaMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
-        else if (menuindex == 8)
-        {
-            //bag menu
-            bagMenuPanel.SetActive(true);
-            _audio.Play(Select);
-
-            foreach(Transform child in bagParent.transform)
-            {
-                Destroy(child.gameObject);
-            }
-            foreach(GameObject obj in inventory)
-            {
-                var tempItem = Instantiate(obj, bagParent.transform, true);
-                tempItem.transform.localScale = new Vector3(1,1,1);
-            }
-
-        }
         else if (menuindex == 9)
         {
             musicMenuPanel.SetActive(true);
             radioMenuPanel.SetActive(false);
             _audio.Play(Select);
+        }
+    }
+
+    public void ShowBag(string filter)
+    {
+        //bag menu
+        bagMenuPanel.SetActive(true);
+        _audio.Play(Select);
+        foreach(Transform child in bagParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach(GameObject obj in inventory)
+        {
+            if(filter == "all" || obj.GetComponent<ConsumableHelper>().filtertype == filter)
+            {
+                var tempItem = Instantiate(obj, bagParent.transform, true);
+                tempItem.transform.localScale = new Vector3(1,1,1);
+            }
+        }
+        if (filter == "all")
+        {
+            bagTitle.text = "collection";
+        }
+        else
+        {
+            bagTitle.text = filter;
         }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 34590382330142789}
   - component: {fileID: 1987235746653427985}
   - component: {fileID: 3138975480996118637}
-  - component: {fileID: 2045619382549825969}
+  - component: {fileID: -7131260990267891361}
   m_Layer: 5
   m_Name: Japan Button
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2045619382549825969
+--- !u!114 &-7131260990267891361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4438371944484371554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6104cb86cdc4c08418774a06850a95d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 29473ace894f9f256b3bb0557b214c46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongButtonHelper
+  m_EditorClassIdentifier: Assembly-CSharp::ConsumableHelper
   assignedSongTitle: 5
+  itemValue: 0
+  filtertype: casette
   audio: {fileID: 0}
