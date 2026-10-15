@@ -16,5 +16,7 @@ MonoBehaviour:
   title: Rice
   isConsumable: 1
   needModifier: Hunger
-  needModValue: 50
+  needModValue: 100
+  isCasette: 0
+  assignedSongTitle: 0
   itemType: feed

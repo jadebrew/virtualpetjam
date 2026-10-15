@@ -16,5 +16,7 @@ MonoBehaviour:
   title: Dango
   isConsumable: 1
   needModifier: Hunger
-  needModValue: 25
+  needModValue: 50
+  isCasette: 0
+  assignedSongTitle: 0
   itemType: feed
