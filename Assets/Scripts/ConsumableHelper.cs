@@ -12,22 +12,25 @@ public class ConsumableHelper : MonoBehaviour
 
     public AudioManager audio;
 
-    public void Init(Item itemRef)
+    public void Init(Item itemRef, string filter)
     {
         item = itemRef;
         pet = GameObject.Find("Petmanager").GetComponent<Petmanager>();;
         button = GetComponent<Button>();
-        if (item.isCasette)
+        if(filter != "all")
         {
-            if (pet.inventory[item]>0)
+            if (item.isCasette)
             {
-                assignedSongTitle = itemRef.assignedSongTitle;
-                button.onClick.AddListener(PlayAssignedSong);
+                if (pet.inventory[item]>0)
+                {
+                    assignedSongTitle = itemRef.assignedSongTitle;
+                    button.onClick.AddListener(PlayAssignedSong);
+                }
             }
-        }
-        else
-        {
-           button.onClick.AddListener(Consume);
+            else
+            {
+                button.onClick.AddListener(Consume);
+            }
         }
         audio = AudioManager.Instance;
     }

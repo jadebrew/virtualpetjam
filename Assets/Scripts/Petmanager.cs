@@ -207,10 +207,10 @@ public class Petmanager : MonoBehaviour
                 buttonRef.transform.localScale = new Vector3(1,1,1);
                 buttonRef.GetComponent<Image>().sprite = ownedItem.Key.sprite;
                 var consumable = buttonRef.GetComponent<ConsumableHelper>();
-                consumable.Init(ownedItem.Key);
+                consumable.Init(ownedItem.Key, filter);
                 var buttonLabel = buttonRef.transform.GetChild(0).GetComponent<TMP_Text>();
                 buttonLabel.text = ownedItem.Value.ToString();
-                if(ownedItem.Key.isCasette)
+                if(ownedItem.Key.isCasette || filter == "all")
                 {
                     buttonLabel.text = "";
                 }
