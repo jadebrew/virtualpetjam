@@ -30,13 +30,16 @@ public class Petmanager : MonoBehaviour
     public GameObject winPanel;
     public GameObject gachaMenuPanel;
 
+    public GameObject templateButton;
+
     public GameObject lastWon;
 
     private int lastWonIndex;
     private bool winDone;
 
-    public List<GameObject> inventory = new List<GameObject>();
-    public GameObject[] banner;
+    [SerializeField]
+    public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
+    public Item[] banner;
 
     public Sprite gachaball;
 
@@ -45,6 +48,22 @@ public class Petmanager : MonoBehaviour
     void Awake()
     {
         _audio = AudioManager.Instance;
+        mainMenuPanel.SetActive(true);
+        foodMenuPanel.SetActive(false);
+        statMenuPanel.SetActive(false);
+        musicMenuPanel.SetActive(false);
+        radioMenuPanel.SetActive(false);
+        gachaMenuPanel.SetActive(false);
+        bagMenuPanel.SetActive(false);
+        winPanel.SetActive(false);
+
+        foreach(Item item in banner)
+        {
+            if(!inventory.ContainsKey(item))
+            {
+                inventory.Add(item,0);
+            }
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,13 +90,22 @@ public class Petmanager : MonoBehaviour
 
     public void Feed(GameObject consumable)
     {
-        hunger += consumable.GetComponent<ConsumableHelper>().itemValue;
-        if (hunger>100)
-        { hunger = 100;}
-        happy = true;
-        SetPanel(0);
-        inventory.Remove(consumable);
-        _audio.Play(Eat);
+        var item = consumable.GetComponent<ConsumableHelper>().item;
+        if (inventory[item] > 0)
+        {
+            hunger += item.needModValue;
+            if (hunger>100)
+            { hunger = 100;}
+            happy = true;
+            SetPanel(0);
+            inventory[item] -= 1;
+            _audio.Play(Eat);
+        }
+        else
+        {
+            _audio.Play(Cancel);
+        }
+
     }
 
     public void PlaySong(AudioManager.SongTitle title)
@@ -89,7 +117,7 @@ public class Petmanager : MonoBehaviour
     public void Win(int value)
     {
         int win_index = UnityEngine.Random.Range(0,banner.Length-1);
-        inventory.Add(banner[win_index]);
+        inventory[banner[win_index]]++;
         //lastWon.GetComponent<Image>().sprite = banner[win_index].GetComponent<Image>().sprite;
         lastWon.GetComponent<Image>().sprite = gachaball;
         lastWonIndex = win_index;
@@ -104,13 +132,13 @@ public class Petmanager : MonoBehaviour
     {
         if (!winDone)
         {
-            lastWon.GetComponent<Image>().sprite = banner[lastWonIndex].GetComponent<Image>().sprite;
+            lastWon.GetComponent<Image>().sprite = banner[lastWonIndex].sprite;
             _audio.Play(MajorVictory);
             winDone = true;
         }
         else
         {
-            SetPanel(-1);
+            SetPanel(4);
         }
 
 
@@ -171,12 +199,23 @@ public class Petmanager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach(GameObject obj in inventory)
+        foreach(KeyValuePair<Item, int> ownedItem in inventory)
         {
-            if(filter == "all" || obj.GetComponent<ConsumableHelper>().filtertype == filter)
+            if(filter == "all" || ownedItem.Key.itemType == filter)
             {
-                var tempItem = Instantiate(obj, bagParent.transform, true);
-                tempItem.transform.localScale = new Vector3(1,1,1);
+                var buttonRef = Instantiate(templateButton, bagParent.transform, true);
+                buttonRef.transform.localScale = new Vector3(1,1,1);
+                buttonRef.GetComponent<Image>().sprite = ownedItem.Key.sprite;
+                var consumable = buttonRef.GetComponent<ConsumableHelper>();
+                consumable.Init(ownedItem.Key);
+                var buttonLabel = buttonRef.transform.GetChild(0).GetComponent<TMP_Text>();
+                buttonLabel.text = ownedItem.Value.ToString();
+                if(ownedItem.Key.isCasette)
+                {
+                    buttonLabel.text = "";
+                }
+                buttonRef.GetComponent<Button>().interactable = ownedItem.Value > 0;
+
             }
         }
         if (filter == "all")

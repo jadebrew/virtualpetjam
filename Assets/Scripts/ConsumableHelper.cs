@@ -5,21 +5,25 @@ using UnityEngine.UI;
 public class ConsumableHelper : MonoBehaviour
 {
     [SerializeField] private AudioManager.SongTitle assignedSongTitle;
-    public int itemValue;
+    public Item item;
 
     private Button button;
     private Petmanager pet;
 
-    public string filtertype;
     public AudioManager audio;
 
-    void Awake()
+    public void Init(Item itemRef)
     {
+        item = itemRef;
         pet = GameObject.Find("Petmanager").GetComponent<Petmanager>();;
         button = GetComponent<Button>();
-        if (filtertype == "casette")
+        if (item.isCasette)
         {
-            button.onClick.AddListener(PlayAssignedSong);
+            if (pet.inventory[item]>0)
+            {
+                assignedSongTitle = itemRef.assignedSongTitle;
+                button.onClick.AddListener(PlayAssignedSong);
+            }
         }
         else
         {
@@ -31,8 +35,6 @@ public class ConsumableHelper : MonoBehaviour
     void Consume()
     {
         pet.Feed(button.gameObject);
-        Debug.Log("Using a consumable");
-        Destroy(button.gameObject);
     }
 
     void StopMusic()
