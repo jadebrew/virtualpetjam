@@ -30,20 +30,30 @@ public class Petmanager : MonoBehaviour
     public GameObject winPanel;
     public GameObject gachaMenuPanel;
 
+    private float needMin = 0;
+    private float needMax = 100;
+
     public GameObject templateButton;
 
     public GameObject lastWon;
-
+    Vector3 gachaWinDefaultPos;
     private int lastWonIndex;
     private bool winDone;
+
 
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
     public Item[] banner;
+    public List<Item> lootTable;
+
+    [SerializeField]
+    public Dictionary<String,float> needs = new Dictionary<String,float>();
 
     public Sprite gachaball;
 
     private AudioManager _audio;
+
+    public int currentPull;
 
     void Awake()
     {
@@ -63,7 +73,18 @@ public class Petmanager : MonoBehaviour
             {
                 inventory.Add(item,0);
             }
+            if(item.isConsumable && !needs.ContainsKey(item.needModifier))
+            {
+                needs.Add(item.needModifier,UnityEngine.Random.Range(needMax/2,needMax));
+            }
+            for(int i=0;i<item.rarity.amountInBanner;i++)
+            {
+                lootTable.Add(item);
+            }
         }
+        lootTable.Shuffle();
+        currentPull = 0;
+        gachaWinDefaultPos = lastWon.transform.position;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,17 +96,38 @@ public class Petmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hunger -= Time.deltaTime;
-
-
         datetime = DateTime.Now.ToString();
 
-        if (hunger<=0) {
-            hunger = 0;
-            happy = false;
+        string statOuput = "";
+        List<string> needsList = new List<string>(needs.Keys);
+        foreach(string _need in needsList)
+        {
+            needs[_need] -= Time.deltaTime;
+            if(needs[_need] < needMin)
+            {
+                needs[_need] = needMin;
+
+            }
+            statOuput += Mathf.Floor(needs[_need]) + " " + _need + "\n";
         }
 
-        HungerText.text = "Hunger: " + Mathf.Floor(hunger) + "\n Happy: " + happy.ToString();
+        if(winDone)
+        {
+            Vector3 newPos = lastWon.transform.position;
+            newPos = Vector3.Lerp(newPos, new Vector3(gachaWinDefaultPos.x,gachaWinDefaultPos.y+256,gachaWinDefaultPos.z), Time.deltaTime*2);
+            newPos.y = Mathf.Ceil(newPos.y);
+            lastWon.transform.position = newPos;
+        } else {
+             lastWon.transform.position = gachaWinDefaultPos;
+        }
+
+        if(currentPull>=lootTable.Count)
+        {
+            currentPull = 0;
+            lootTable.Shuffle();
+        }
+
+        HungerText.text = statOuput;
     }
 
     public void Feed(GameObject consumable)
@@ -93,13 +135,13 @@ public class Petmanager : MonoBehaviour
         var item = consumable.GetComponent<ConsumableHelper>().item;
         if (inventory[item] > 0)
         {
-            hunger += item.needModValue;
-            if (hunger>100)
-            { hunger = 100;}
+            needs[item.needModifier] += item.needModValue;
+            if (needs[item.needModifier]>needMax)
+            { needs[item.needModifier] = needMax;}
             happy = true;
             SetPanel(0);
             inventory[item] -= 1;
-            _audio.Play(Eat);
+            _audio.Play(item.onUseSFX);
         }
         else
         {
@@ -116,10 +158,12 @@ public class Petmanager : MonoBehaviour
 
     public void Win(int value)
     {
-        int win_index = UnityEngine.Random.Range(0,banner.Length-1);
-        inventory[banner[win_index]]++;
-        //lastWon.GetComponent<Image>().sprite = banner[win_index].GetComponent<Image>().sprite;
-        lastWon.GetComponent<Image>().sprite = gachaball;
+        int win_index = currentPull;
+        currentPull++;
+
+        Item wonItem = lootTable[win_index];
+        inventory[lootTable[win_index]]++;
+        lastWon.GetComponent<Image>().sprite = wonItem.rarity.sprite;
         lastWonIndex = win_index;
         winDone = false;
 
@@ -132,15 +176,14 @@ public class Petmanager : MonoBehaviour
     {
         if (!winDone)
         {
-            lastWon.GetComponent<Image>().sprite = banner[lastWonIndex].sprite;
-            _audio.Play(MajorVictory);
+            lastWon.GetComponent<Image>().sprite = lootTable[lastWonIndex].sprite;
+            _audio.Play(lootTable[lastWonIndex].rarity.winSFX);
             winDone = true;
         }
         else
         {
             SetPanel(4);
         }
-
 
     }
 
@@ -175,6 +218,7 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 3)
         {
             radioMenuPanel.SetActive(true);
+            ShowBag("casette");
             _audio.Play(Select);
         }
         else if (menuindex == 4)
@@ -185,7 +229,7 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 9)
         {
             musicMenuPanel.SetActive(true);
-            radioMenuPanel.SetActive(false);
+            radioMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
     }
@@ -210,6 +254,10 @@ public class Petmanager : MonoBehaviour
                 consumable.Init(ownedItem.Key, filter);
                 var buttonLabel = buttonRef.transform.GetChild(0).GetComponent<TMP_Text>();
                 buttonLabel.text = ownedItem.Value.ToString();
+                if (ownedItem.Value <= 0)
+                {
+                    buttonLabel.text = "";
+                }
                 if(ownedItem.Key.isCasette || filter == "all")
                 {
                     buttonLabel.text = "";
@@ -225,6 +273,24 @@ public class Petmanager : MonoBehaviour
         else
         {
             bagTitle.text = filter;
+        }
+    }
+
+
+}
+
+public static class IListExtensions {
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts) {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i) {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
         }
     }
 }

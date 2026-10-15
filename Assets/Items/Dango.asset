@@ -17,6 +17,8 @@ MonoBehaviour:
   isConsumable: 1
   needModifier: Hunger
   needModValue: 50
+  rarity: {fileID: 11400000, guid: 214dc227705a56c1f9907d78e97a69a3, type: 2}
+  onUseSFX: 3
   isCasette: 0
   assignedSongTitle: 0
   itemType: feed

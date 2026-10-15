@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
+  m_Name: Casette Night
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  sprite: {fileID: 594866681965172579, guid: d37e8f166ab708473972be8fac40f84c, type: 3}
+  title: Night Casette
+  isConsumable: 0
+  needModifier: 
+  needModValue: 0
+  rarity: {fileID: 11400000, guid: 81d72eaf15dce8c809b0c56393b6922e, type: 2}
+  onUseSFX: 0
+  isCasette: 1
+  assignedSongTitle: 6
+  itemType: casette

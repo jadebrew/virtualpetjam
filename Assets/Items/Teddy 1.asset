@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
-  m_Name: Japan Casette
+  m_Name: Teddy 1
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  sprite: {fileID: -2702244721469620807, guid: 737747dfe9241021087b5caadd403d3b, type: 3}
-  title: Japan
-  isConsumable: 0
-  needModifier: 
-  needModValue: 0
-  isCasette: 1
-  assignedSongTitle: 5
-  itemType: casette
+  sprite: {fileID: -1089031186708902448, guid: 147f4f2d4d3f112cfaeba20c2e8de9b2, type: 3}
+  title: Cheap Teddy
+  isConsumable: 1
+  needModifier: sleep
+  needModValue: 50
+  rarity: {fileID: 11400000, guid: 214dc227705a56c1f9907d78e97a69a3, type: 2}
+  onUseSFX: 9
+  isCasette: 0
+  assignedSongTitle: 0
+  itemType: sleep

@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
-  m_Name: Zebra Casette
+  m_Name: Shampoo 2
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  sprite: {fileID: -9096092453819583228, guid: e0535e936de7f37dab6ee21def58538d, type: 3}
-  title: Zebra Casette
-  isConsumable: 0
-  needModifier: 
-  needModValue: 0
-  isCasette: 1
-  assignedSongTitle: 7
-  itemType: casette
+  sprite: {fileID: -3253088300945967410, guid: 28914d1a38e1e56bc8c1fa78636c784d, type: 3}
+  title: Expensive Shampoo
+  isConsumable: 1
+  needModifier: hygiene
+  needModValue: 100
+  rarity: {fileID: 11400000, guid: 6ed65f0dbc1eb12f2ba7a8347e99f73d, type: 2}
+  onUseSFX: 12
+  isCasette: 0
+  assignedSongTitle: 0
+  itemType: wash
