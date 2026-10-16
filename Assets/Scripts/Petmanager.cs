@@ -35,6 +35,7 @@ public class Petmanager : MonoBehaviour
     public GameObject gachaMenuPanel;
     public GameObject startPanel;
     public GameObject consumePanel;
+    public GameObject creditPanel;
 
     private float needMin = 0;
     private float needMax = 100;
@@ -52,6 +53,8 @@ public class Petmanager : MonoBehaviour
 
     public GameObject lastConsumed;
 
+    public CatchGame catchGame;
+
 
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
@@ -61,9 +64,12 @@ public class Petmanager : MonoBehaviour
     [SerializeField]
     public Dictionary<String,float> needs = new Dictionary<String,float>();
 
+
+
     public Sprite gachaball;
 
     private AudioManager _audio;
+    private AudioManager.SFXTitle assignedUseSFX;
 
     public int currentPull;
 
@@ -76,6 +82,8 @@ public class Petmanager : MonoBehaviour
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
         winPanel.SetActive(false);
+        consumePanel.SetActive(false);
+        SetPanel(0);
 
         foreach(Item item in banner)
         {
@@ -170,16 +178,22 @@ public class Petmanager : MonoBehaviour
             needs[item.needModifier] += item.needModValue;
             if (needs[item.needModifier]>needMax)
             { needs[item.needModifier] = needMax;}
-            SetPanel(0);
+            SetPanel(-1);
             inventory[item] -= 1;
             _audio.Play(item.onUseSFX);
+            assignedUseSFX = item.onUseSFX;
             lastConsumed.GetComponent<Image>().sprite = item.sprite;
-            consumePanel.SetActive(true);
+            catchGame.Init(assignedUseSFX);
         }
         else
         {
             _audio.Play(Cancel);
         }
+    }
+
+    public void currentUseSFX()
+    {
+        _audio.Play(assignedUseSFX);
     }
 
     public void Pet()
@@ -243,6 +257,7 @@ public class Petmanager : MonoBehaviour
         startPanel.SetActive(false);
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
+        creditPanel.SetActive(false);
 
         if (menuindex == -1)
         {
@@ -252,7 +267,7 @@ public class Petmanager : MonoBehaviour
         }
         if (menuindex == 0)
         {
-            mainMenuPanel.SetActive(true);
+            startPanel.SetActive(true);
 
         }
         else if (menuindex == 2)
@@ -269,6 +284,11 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 4)
         {
             gachaMenuPanel.SetActive(true);
+            _audio.Play(Select);
+        }
+        else if (menuindex == 8)
+        {
+            creditPanel.SetActive(true);
             _audio.Play(Select);
         }
         else if (menuindex == 9)
