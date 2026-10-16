@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0258ac38fd3fd62b08723c91e0999fb5, type: 3}
+  m_Name: Map
+  m_EditorClassIdentifier: Assembly-CSharp::GameState
+  title: Map
+  body: Choose your location!
+  buttons:
+  - {fileID: 11400000, guid: 1803fd4f5747e53e8b9426a7a05fa4e2, type: 2}
+  - {fileID: 11400000, guid: 1f4ca902cfb63637b9f4caf5aa98f9f2, type: 2}
+  - {fileID: 11400000, guid: f5c8f81b5296a091c8dd953b6ea36982, type: 2}
+  panels:
+  - menu

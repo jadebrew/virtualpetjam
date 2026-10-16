@@ -10,6 +10,7 @@ using static AudioManager.SongTitle;
 
 public class Petmanager : MonoBehaviour
 {
+
     public GameObject petObject;
     public GameObject[] ChillLocations;
     private float patienceMax = 5;
@@ -28,12 +29,11 @@ public class Petmanager : MonoBehaviour
     public TMP_Text bagTitle;
 
     public GameObject mainMenuPanel;
-    public GameObject statMenuPanel;
     public GameObject radioMenuPanel;
     public GameObject bagMenuPanel;
     public GameObject winPanel;
     public GameObject gachaMenuPanel;
-    public GameObject startPanel;
+    public GameObject menuPanel;
     public GameObject consumePanel;
     public GameObject creditPanel;
 
@@ -77,7 +77,6 @@ public class Petmanager : MonoBehaviour
     {
         _audio = AudioManager.Instance;
         mainMenuPanel.SetActive(true);
-        statMenuPanel.SetActive(false);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
@@ -102,7 +101,7 @@ public class Petmanager : MonoBehaviour
         }
         lootTable.Shuffle();
         currentPull = 0;
-        gachaWinDefaultPos = lastWon.transform.position;
+        gachaWinDefaultPos = lastWon.transform.localPosition;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -125,12 +124,12 @@ public class Petmanager : MonoBehaviour
 
         if(winDone)
         {
-            Vector3 newPos = lastWon.transform.position;
-            newPos = Vector3.Lerp(newPos, new Vector3(gachaWinDefaultPos.x,gachaWinDefaultPos.y+256,gachaWinDefaultPos.z), Time.deltaTime*2);
+            Vector3 newPos = lastWon.transform.localPosition;
+            newPos = Vector3.Lerp(newPos, new Vector3(gachaWinDefaultPos.x,gachaWinDefaultPos.y+34,gachaWinDefaultPos.z), Time.deltaTime*2);
             newPos.y = Mathf.Ceil(newPos.y);
-            lastWon.transform.position = newPos;
+            lastWon.transform.localPosition = newPos;
         } else {
-             lastWon.transform.position = gachaWinDefaultPos;
+             lastWon.transform.localPosition = gachaWinDefaultPos;
         }
 
         if(currentPull>=lootTable.Count)
@@ -199,6 +198,7 @@ public class Petmanager : MonoBehaviour
     public void Pet()
     {
         patience += 1;
+        _audio.Play(Annoyed);
     }
 
     public void PlaySong(AudioManager.SongTitle title)
@@ -206,6 +206,7 @@ public class Petmanager : MonoBehaviour
         _audio.Play(title);
         SetPanel(0);
     }
+
 
     public void Win(int value)
     {
@@ -250,11 +251,10 @@ public class Petmanager : MonoBehaviour
     public void SetPanel(int menuindex)
     {
         mainMenuPanel.SetActive(false);
-        statMenuPanel.SetActive(false);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
-        startPanel.SetActive(false);
+        menuPanel.SetActive(false);
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
         creditPanel.SetActive(false);
@@ -267,13 +267,8 @@ public class Petmanager : MonoBehaviour
         }
         if (menuindex == 0)
         {
-            startPanel.SetActive(true);
 
-        }
-        else if (menuindex == 2)
-        {
-            statMenuPanel.SetActive(true);
-            _audio.Play(Select);
+
         }
         else if (menuindex == 3)
         {
@@ -340,6 +335,14 @@ public class Petmanager : MonoBehaviour
         }
     }
 
+    public void InitMenu(GameState state)
+    {
+        var menu = menuPanel.GetComponent<MenuHelper>();
+        menu.SetTitle(state.title);
+        menu.SetBody(state.body);
+        menu.SetButtons(state);
+        menuPanel.SetActive(true);
+    }
 
 }
 
