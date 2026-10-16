@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   title: Map
+  shortname: Travel
   body: Choose your location!
   buttons:
   - {fileID: 11400000, guid: 1803fd4f5747e53e8b9426a7a05fa4e2, type: 2}
   - {fileID: 11400000, guid: 1f4ca902cfb63637b9f4caf5aa98f9f2, type: 2}
+  - {fileID: 11400000, guid: 1d2f517d628850ae2b9556b3f1b098cc, type: 2}
   - {fileID: 11400000, guid: f5c8f81b5296a091c8dd953b6ea36982, type: 2}
   panels:
   - menu

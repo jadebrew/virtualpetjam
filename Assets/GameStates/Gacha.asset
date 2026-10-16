@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0258ac38fd3fd62b08723c91e0999fb5, type: 3}
   m_Name: Gacha
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  title: Gacha
+  title: Gachapon
+  shortname: Gachapon
   body: 
   buttons: []
   panels:

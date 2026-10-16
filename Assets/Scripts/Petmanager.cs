@@ -82,7 +82,7 @@ public class Petmanager : MonoBehaviour
         bagMenuPanel.SetActive(false);
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
-        SetPanel(0);
+        menuPanel.SetActive(true);
 
         foreach(Item item in banner)
         {
@@ -102,6 +102,8 @@ public class Petmanager : MonoBehaviour
         lootTable.Shuffle();
         currentPull = 0;
         gachaWinDefaultPos = lastWon.transform.localPosition;
+
+        _audio.Play(JapanInverted);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -265,11 +267,6 @@ public class Petmanager : MonoBehaviour
             _audio.Play(Cancel);
 
         }
-        if (menuindex == 0)
-        {
-
-
-        }
         else if (menuindex == 3)
         {
             radioMenuPanel.SetActive(true);
@@ -281,16 +278,16 @@ public class Petmanager : MonoBehaviour
             gachaMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
-        else if (menuindex == 8)
-        {
-            creditPanel.SetActive(true);
-            _audio.Play(Select);
-        }
-        else if (menuindex == 9)
-        {
-            radioMenuPanel.SetActive(true);
-            _audio.Play(Select);
-        }
+        //else if (menuindex == 8)
+        //{
+            //creditPanel.SetActive(true);
+            //_audio.Play(Select);
+        //}
+        //else if (menuindex == 9)
+        //{
+            //radioMenuPanel.SetActive(true);
+           //_audio.Play(Select);
+        //}
     }
 
     public void ShowBag(string filter)
@@ -338,10 +335,13 @@ public class Petmanager : MonoBehaviour
     public void InitMenu(GameState state)
     {
         var menu = menuPanel.GetComponent<MenuHelper>();
-        menu.SetTitle(state.title);
-        menu.SetBody(state.body);
-        menu.SetButtons(state);
-        menuPanel.SetActive(true);
+        menu.SetGameState(state);
+    }
+
+    public void GoBack()
+    {
+        var menu = menuPanel.GetComponent<MenuHelper>();
+        menu.GoPreviousState();
     }
 
 }
