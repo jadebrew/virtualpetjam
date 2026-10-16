@@ -15,7 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 4478723907382677506, guid: 00b0f0abf5c6f423c86f575fa7b28153, type: 3}
   title: Dango
   isConsumable: 1
-  needModifier: Hunger
+  needModifier: hunger
   needModValue: 50
   rarity: {fileID: 11400000, guid: 214dc227705a56c1f9907d78e97a69a3, type: 2}
   onUseSFX: 3

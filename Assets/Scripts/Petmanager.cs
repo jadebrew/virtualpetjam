@@ -11,8 +11,14 @@ using static AudioManager.SongTitle;
 public class Petmanager : MonoBehaviour
 {
     public GameObject petObject;
-    public float hunger;
+    public GameObject[] ChillLocations;
+    private float patienceMax = 5;
+    private float patience = 0;
+
     public TMP_Text HungerText;
+    public TMP_Text HygieneText;
+    public TMP_Text SleepText;
+
     public float gametimer = 0;
     public float gametick = 60;
     public string datetime;
@@ -22,23 +28,29 @@ public class Petmanager : MonoBehaviour
     public TMP_Text bagTitle;
 
     public GameObject mainMenuPanel;
-    public GameObject foodMenuPanel;
     public GameObject statMenuPanel;
-    public GameObject musicMenuPanel;
     public GameObject radioMenuPanel;
     public GameObject bagMenuPanel;
     public GameObject winPanel;
     public GameObject gachaMenuPanel;
+    public GameObject startPanel;
+    public GameObject consumePanel;
 
     private float needMin = 0;
     private float needMax = 100;
 
+    private float needDecay = 1;
+
     public GameObject templateButton;
+
+    public Item coin;
 
     public GameObject lastWon;
     Vector3 gachaWinDefaultPos;
     private int lastWonIndex;
     private bool winDone;
+
+    public GameObject lastConsumed;
 
 
     [SerializeField]
@@ -59,9 +71,7 @@ public class Petmanager : MonoBehaviour
     {
         _audio = AudioManager.Instance;
         mainMenuPanel.SetActive(true);
-        foodMenuPanel.SetActive(false);
         statMenuPanel.SetActive(false);
-        musicMenuPanel.SetActive(false);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
@@ -90,7 +100,7 @@ public class Petmanager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        hunger = 80;
+        GameTick();
     }
 
     // Update is called once per frame
@@ -98,17 +108,11 @@ public class Petmanager : MonoBehaviour
     {
         datetime = DateTime.Now.ToString();
 
-        string statOuput = "";
-        List<string> needsList = new List<string>(needs.Keys);
-        foreach(string _need in needsList)
+        patience += Time.deltaTime;
+        if (patience > patienceMax)
         {
-            needs[_need] -= Time.deltaTime;
-            if(needs[_need] < needMin)
-            {
-                needs[_need] = needMin;
-
-            }
-            statOuput += Mathf.Floor(needs[_need]) + " " + _need + "\n";
+          patience = 0;
+          GameTick();
         }
 
         if(winDone)
@@ -126,8 +130,36 @@ public class Petmanager : MonoBehaviour
             currentPull = 0;
             lootTable.Shuffle();
         }
+        HungerText.text = Mathf.Round(needs["hunger"]).ToString();
+        HygieneText.text = Mathf.Round(needs["hygiene"]).ToString();
+        SleepText.text = Mathf.Round(needs["sleep"]).ToString();
+    }
 
-        HungerText.text = statOuput;
+    public void GameTick()
+    {
+        string statOuput = "";
+        List<string> needsList = new List<string>(needs.Keys);
+        happy = true;
+        foreach(string _need in needsList)
+        {
+            needs[_need] -= needDecay;
+            if(needs[_need] < needMin)
+            {
+                needs[_need] = needMin;
+                happy = false;
+            }
+            statOuput += Mathf.Floor(needs[_need]) + "\n";
+        }
+
+        petObject.transform.position = ChillLocations[(int)Mathf.Round(UnityEngine.Random.Range(0,ChillLocations.Length))].transform.position;
+        if (happy)
+        {
+            inventory[coin]++;
+        }
+        else
+        {
+            _audio.Play(Annoyed);
+        }
     }
 
     public void Feed(GameObject consumable)
@@ -138,16 +170,21 @@ public class Petmanager : MonoBehaviour
             needs[item.needModifier] += item.needModValue;
             if (needs[item.needModifier]>needMax)
             { needs[item.needModifier] = needMax;}
-            happy = true;
             SetPanel(0);
             inventory[item] -= 1;
             _audio.Play(item.onUseSFX);
+            lastConsumed.GetComponent<Image>().sprite = item.sprite;
+            consumePanel.SetActive(true);
         }
         else
         {
             _audio.Play(Cancel);
         }
+    }
 
+    public void Pet()
+    {
+        patience += 1;
     }
 
     public void PlaySong(AudioManager.SongTitle title)
@@ -158,18 +195,27 @@ public class Petmanager : MonoBehaviour
 
     public void Win(int value)
     {
-        int win_index = currentPull;
-        currentPull++;
+        if (inventory[coin]>0)
+        {
+            int win_index = currentPull;
+            currentPull++;
 
-        Item wonItem = lootTable[win_index];
-        inventory[lootTable[win_index]]++;
-        lastWon.GetComponent<Image>().sprite = wonItem.rarity.sprite;
-        lastWonIndex = win_index;
-        winDone = false;
+            Item wonItem = lootTable[win_index];
+            inventory[lootTable[win_index]]++;
+            lastWon.GetComponent<Image>().sprite = wonItem.rarity.sprite;
+            lastWonIndex = win_index;
+            winDone = false;
 
-        _audio.Play(NewItem);
-        gachaMenuPanel.SetActive(false);
-        winPanel.SetActive(true);
+            _audio.Play(NewItem);
+            gachaMenuPanel.SetActive(false);
+            winPanel.SetActive(true);
+            inventory[coin]--;
+        }
+        else
+        {
+            _audio.Play(Cancel);
+        }
+
     }
 
     public void Reveal(int value)
@@ -190,18 +236,17 @@ public class Petmanager : MonoBehaviour
     public void SetPanel(int menuindex)
     {
         mainMenuPanel.SetActive(false);
-        foodMenuPanel.SetActive(false);
         statMenuPanel.SetActive(false);
-        musicMenuPanel.SetActive(false);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
         bagMenuPanel.SetActive(false);
+        startPanel.SetActive(false);
         winPanel.SetActive(false);
+        consumePanel.SetActive(false);
 
         if (menuindex == -1)
         {
             mainMenuPanel.SetActive(true);
-            _audio.StopSound();
             _audio.Play(Cancel);
 
         }
@@ -228,7 +273,6 @@ public class Petmanager : MonoBehaviour
         }
         else if (menuindex == 9)
         {
-            musicMenuPanel.SetActive(true);
             radioMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
@@ -258,7 +302,7 @@ public class Petmanager : MonoBehaviour
                 {
                     buttonLabel.text = "";
                 }
-                if(ownedItem.Key.isCasette || filter == "all")
+                if((ownedItem.Key.isCasette || filter == "all" ) && ownedItem.Key.itemType != "coin")
                 {
                     buttonLabel.text = "";
                 }
