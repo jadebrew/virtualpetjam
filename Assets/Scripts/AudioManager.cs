@@ -23,7 +23,8 @@ public class AudioManager : MonoBehaviour
         Bamboo,
         Japan,
         Night,
-        Zebra
+        Zebra,
+        Clouds
     };
 
     [Serializable]
