@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
   m_Name: Casette Clouds
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  sprite: {fileID: 0}
-  title: 
+  sprite: {fileID: -5298903355850418922, guid: ade4417fbb840c0ac9a7c07d67279884, type: 3}
+  title: Clouds
   isConsumable: 0
   needModifier: 
   needModValue: 0
-  rarity: {fileID: 0}
+  rarity: {fileID: 11400000, guid: 81d72eaf15dce8c809b0c56393b6922e, type: 2}
   onUseSFX: 0
-  isCasette: 0
-  assignedSongTitle: 0
-  itemType: 
+  isCasette: 1
+  assignedSongTitle: 8
+  itemType: casette
