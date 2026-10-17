@@ -14,56 +14,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSfx;
     [SerializeField] private AudioSource _audioBg;
     
-    [Serializable]
-    public enum SongTitle {
-        EnergyDash,
-        JapanInverted,
-        Snow,
-        Sunset,
-        Bamboo,
-        Japan,
-        Night,
-        Zebra,
-        Clouds
-    };
-
-    [Serializable]
-    public enum SFXTitle
-    {
-        Annoyed,
-        Boop,
-        Cancel,
-        Eat,
-        Hungry,
-        MajorVictory,
-        MinorVictory,
-        NewItem,
-        Select,
-        SleepingLoop,
-        StinkyLoop,
-        WakeUp,
-        Wash,
-    };
-    
-    [Serializable]
-    public struct SongMapping
-    {
-        public SongTitle title;
-        public AudioClip audioClip;
-    }
-    
-    [Serializable]
-    public struct SfxMapping
-    {
-        public SFXTitle title;
-        public AudioClip audioClip;
-    }
-    
-    [SerializeField] private List<SongMapping> songsDb = new ();
-    [SerializeField] private List<SfxMapping> sFXDb = new ();
-    
-    private Dictionary<SongTitle, AudioClip> _songDict = new ();
-    private Dictionary<SFXTitle, AudioClip> _sfxDict = new ();
+    private Dictionary<SongTag, AudioClip> _songDict = new ();
+    private Dictionary<SFXTag, AudioClip> _sfxDict = new ();
 
     public void AdjustVolume(float step)
     {
@@ -86,27 +38,27 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
         
-        foreach (var entry in songsDb)
+        foreach (var song in Resources.LoadAll<Song>("Songs"))
         {
-            if (!_songDict.ContainsKey(entry.title))
+            if (!_songDict.ContainsKey(song.tag))
             {
-                _songDict.Add(entry.title, entry.audioClip);
+                _songDict.Add(song.tag, song.audioClip);
             }
             else
             {
-                Debug.LogWarning($"Duplicate song entry for: {entry.title}");
+                Debug.LogWarning($"Duplicate song entry for: {song.title}");
             }
         }
         
-        foreach (var entry in sFXDb)
+        foreach (var sound in Resources.LoadAll<SFX>("SFX"))
         {
-            if (!_sfxDict.ContainsKey(entry.title))
+            if (!_sfxDict.ContainsKey(sound.tag))
             {
-                _sfxDict.Add(entry.title, entry.audioClip);
+                _sfxDict.Add(sound.tag, sound.audioClip);
             }
             else
             {
-                Debug.LogWarning($"Duplicate song entry for: {entry.title}");
+                Debug.LogWarning($"Duplicate sound entry for: {sound.title}");
             }
         }
     }
@@ -121,16 +73,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void Play(SongTitle title)
+    public void Play(SongTag tag)
     {
-        Play(GetSong(title), _audioBg);
+        Play(GetSong(tag), _audioBg);
         _audioBg.volume = 0;
         fading = true;
     }
     
-    public void Play(SFXTitle title)
+    public void Play(SFXTag tag)
     {
-        Play(GetSong(title), _audioSfx);
+        Play(GetSong(tag), _audioSfx);
     }
 
     public void StopSound()
@@ -143,7 +95,7 @@ public class AudioManager : MonoBehaviour
         _audioBg.Stop();
     }
 
-    private AudioClip GetSong(SongTitle title)
+    private AudioClip GetSong(SongTag title)
     {
         if (_songDict.TryGetValue(title, out AudioClip clip))
         {
@@ -153,13 +105,13 @@ public class AudioManager : MonoBehaviour
         return null;
     }
     
-    private AudioClip GetSong(SFXTitle title)
+    private AudioClip GetSong(SFXTag tag)
     {
-        if (_sfxDict.TryGetValue(title, out AudioClip clip))
+        if (_sfxDict.TryGetValue(tag, out AudioClip clip))
         {
             return clip;
         }
-        Debug.LogWarning($"SFX not found: {title}");
+        Debug.LogWarning($"SFX not found: {tag}");
         return null;
     }
 

@@ -1,10 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using System.Collections;
-using TMPro;
 
-using static AudioManager.SFXTitle;
+using static SFXTag;
 
 public class ButtonHelper : MonoBehaviour
 {

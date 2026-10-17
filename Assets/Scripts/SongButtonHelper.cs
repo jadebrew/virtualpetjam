@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class SongButtonHelper : MonoBehaviour
 {
-    [SerializeField] private AudioManager.SongTitle assignedSongTitle;
+    [SerializeField] private SongTag assignedSongTitle;
     private Button button;
 
     public AudioManager audio;

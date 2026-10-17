@@ -6,7 +6,7 @@ using TMPro;
 [RequireComponent(typeof(Button))]
 public class ConsumableHelper : MonoBehaviour
 {
-    [SerializeField] private AudioManager.SongTitle assignedSongTitle;
+    [SerializeField] private SongTag assignedSongTitle;
     public Item item;
 
     private Button button;
@@ -21,7 +21,7 @@ public class ConsumableHelper : MonoBehaviour
         button = GetComponent<Button>();
         if(filter != "all")
         {
-            if (item.isCasette)
+            if (item.IsCassette())
             {
                 if (pet.inventory[item]>0)
                 {

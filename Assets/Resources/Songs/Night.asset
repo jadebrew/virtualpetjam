@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560a2b6f7209454a9e5b81c502e8ca1e, type: 3}
+  m_Name: Night
+  m_EditorClassIdentifier: Assembly-CSharp::Song
+  sprite: {fileID: 594866681965172579, guid: d37e8f166ab708473972be8fac40f84c, type: 3}
+  title: Night
+  tag: 6
+  audioClip: {fileID: 8300000, guid: 87f9aa1c218a0804082655f50efad2bf, type: 3}

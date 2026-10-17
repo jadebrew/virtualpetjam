@@ -7,5 +7,5 @@ public class Rarity : ScriptableObject
     public Sprite sprite;
     public string title;
     public int amountInBanner;
-    [SerializeField] public AudioManager.SFXTitle winSFX;
+    [SerializeField] public SFXTag winSFX;
 }

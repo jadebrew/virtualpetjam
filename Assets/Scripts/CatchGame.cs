@@ -1,7 +1,5 @@
 using UnityEngine;
-
-using static AudioManager.SFXTitle;
-using static AudioManager.SongTitle;
+using static SFXTag;
 
 public class CatchGame : MonoBehaviour
 {
@@ -13,9 +11,9 @@ public class CatchGame : MonoBehaviour
     private int caught = 0;
     public GameObject catchScene;
     private AudioManager _audio;
-    AudioManager.SFXTitle soundEffect;
+    SFXTag soundEffect;
 
-    public void Init(AudioManager.SFXTitle useSFX)
+    public void Init(SFXTag useSFX)
     {
         gameOver = false;
         caught = 0;

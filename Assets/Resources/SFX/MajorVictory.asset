@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7cef12489a40ef9033eb0b89d1ce4e, type: 3}
+  m_Name: MajorVictory
+  m_EditorClassIdentifier: Assembly-CSharp::SFX
+  title: Major Victory
+  tag: 5
+  audioClip: {fileID: 8300000, guid: 7bf66c16151699dd58d046d8e0f9444a, type: 3}

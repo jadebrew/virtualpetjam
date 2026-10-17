@@ -1,5 +1,12 @@
+using System;
 using UnityEngine;
-using static AudioManager.SFXTitle;
+using UnityEngine.Serialization;
+
+public enum ItemType {
+    Consumable,
+    Cassette,
+    Coin
+};
 
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Objects/Item")]
 public class Item : ScriptableObject
@@ -7,17 +14,27 @@ public class Item : ScriptableObject
 
     public Sprite sprite;
     public string title;
-
-    public bool isConsumable;
-    public string needModifier;
-    public int needModValue;
+    [SerializeField] public ItemType type;
+    
+    
+    [SerializeField] public NeedType needModifier = NeedType.None;
+    [SerializeField] public float needModValue = 0.0f;
 
     public Rarity rarity;
 
-    [SerializeField] public AudioManager.SFXTitle onUseSFX;
-
-    public bool isCasette;
-    [SerializeField] public AudioManager.SongTitle assignedSongTitle;
+    [SerializeField] public SFXTag onUseSFX;
+    
+    [SerializeField] public SongTag assignedSongTitle;
 
     public string itemType;
+
+    public bool IsConsumable()
+    {
+        return type == ItemType.Consumable;
+    }
+    
+    public bool IsCassette()
+    {
+        return type == ItemType.Cassette;
+    }
 }

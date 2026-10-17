@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-
-using static AudioManager.SFXTitle;
-using static AudioManager.SongTitle;
+using static NeedType;
+using static SFXTag;
+using static SongTag;
+using Random = UnityEngine.Random;
 
 public class Petmanager : MonoBehaviour
 {
@@ -61,15 +61,15 @@ public class Petmanager : MonoBehaviour
     public Item[] banner;
     public List<Item> lootTable;
 
-    [SerializeField]
-    public Dictionary<String,float> needs = new Dictionary<String,float>();
+
+    [SerializeField] private Dictionary<NeedType, Need> needs;
 
 
 
     public Sprite gachaball;
 
     private AudioManager _audio;
-    private AudioManager.SFXTitle assignedUseSFX;
+    private SFXTag assignedUseSFX;
 
     public int currentPull;
 
@@ -83,16 +83,17 @@ public class Petmanager : MonoBehaviour
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
         menuPanel.SetActive(true);
+        
+        foreach (var need in Resources.LoadAll<Need>("Needs"))
+        {
+            needs[need.type] = need;
+        }
 
-        foreach(Item item in banner)
+        foreach(var item in banner)
         {
             if(!inventory.ContainsKey(item))
             {
                 inventory.Add(item,0);
-            }
-            if(item.isConsumable && !needs.ContainsKey(item.needModifier))
-            {
-                needs.Add(item.needModifier,UnityEngine.Random.Range(needMax/2,needMax));
             }
             for(int i=0;i<item.rarity.amountInBanner;i++)
             {
@@ -139,28 +140,30 @@ public class Petmanager : MonoBehaviour
             currentPull = 0;
             lootTable.Shuffle();
         }
-        HungerText.text = Mathf.Round(needs["hunger"]).ToString();
-        HygieneText.text = Mathf.Round(needs["hygiene"]).ToString();
-        SleepText.text = Mathf.Round(needs["sleep"]).ToString();
+
+        HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
+        HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
+        SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
     }
 
     public void GameTick()
     {
         string statOuput = "";
-        List<string> needsList = new List<string>(needs.Keys);
         happy = true;
-        foreach(string _need in needsList)
+        foreach(var pair in needs)
         {
-            needs[_need] -= needDecay;
-            if(needs[_need] < needMin)
+            var need = pair.Value;
+            
+            need.value -= needDecay;
+            if(need.value < needMin)
             {
-                needs[_need] = needMin;
+                need.value = needMin;
                 happy = false;
             }
-            statOuput += Mathf.Floor(needs[_need]) + "\n";
+            statOuput += Mathf.Floor(need.value) + "\n";
         }
 
-        petObject.transform.position = ChillLocations[(int)Mathf.Round(UnityEngine.Random.Range(0,ChillLocations.Length))].transform.position;
+        petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
         if (happy)
         {
             inventory[coin]++;
@@ -174,11 +177,16 @@ public class Petmanager : MonoBehaviour
     public void Feed(GameObject consumable)
     {
         var item = consumable.GetComponent<ConsumableHelper>().item;
+        
         if (inventory[item] > 0)
         {
-            needs[item.needModifier] += item.needModValue;
-            if (needs[item.needModifier]>needMax)
-            { needs[item.needModifier] = needMax;}
+            var need = needs[item.needModifier];
+            
+            need.value += item.needModValue;
+            if (need.value > needMax)
+            {
+                need.value = needMax;
+            }
             SetPanel(-1);
             inventory[item] -= 1;
             _audio.Play(item.onUseSFX);
@@ -203,7 +211,7 @@ public class Petmanager : MonoBehaviour
         _audio.Play(Annoyed);
     }
 
-    public void PlaySong(AudioManager.SongTitle title)
+    public void PlaySong(SongTag title)
     {
         _audio.Play(title);
         SetPanel(0);
@@ -314,7 +322,7 @@ public class Petmanager : MonoBehaviour
                 {
                     buttonLabel.text = "";
                 }
-                if((ownedItem.Key.isCasette || filter == "all" ) && ownedItem.Key.itemType != "coin")
+                if((ownedItem.Key.IsCassette() || filter == "all" ) && ownedItem.Key.itemType != "coin")
                 {
                     buttonLabel.text = "";
                 }

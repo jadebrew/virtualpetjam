@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
+  m_Name: Teddy 1
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  sprite: {fileID: -1089031186708902448, guid: 147f4f2d4d3f112cfaeba20c2e8de9b2, type: 3}
+  title: Cheap Teddy
+  type: 0
+  needModifier: 2
+  needModValue: 50
+  rarity: {fileID: 11400000, guid: 214dc227705a56c1f9907d78e97a69a3, type: 2}
+  onUseSFX: 9
+  assignedSongTitle: 0
+  itemType: sleep

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
+  m_Name: Shampoo 2
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  sprite: {fileID: -3253088300945967410, guid: 28914d1a38e1e56bc8c1fa78636c784d, type: 3}
+  title: Expensive Shampoo
+  type: 0
+  needModifier: 1
+  needModValue: 100
+  rarity: {fileID: 11400000, guid: 6ed65f0dbc1eb12f2ba7a8347e99f73d, type: 2}
+  onUseSFX: 12
+  assignedSongTitle: 0
+  itemType: wash
