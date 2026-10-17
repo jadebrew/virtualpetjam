@@ -5860,6 +5860,8 @@ MonoBehaviour:
     value: 1
   - key: {fileID: 11400000, guid: c49279d0bae85507d9517455d8f65893, type: 2}
     value: 3
+  - key: {fileID: 11400000, guid: 3d78574186c6e6744a65513e029a4ace, type: 2}
+    value: 0
   banner:
   - {fileID: 11400000, guid: 6fae398e05589d77a81a766b746eedfd, type: 2}
   - {fileID: 11400000, guid: 932e9eb283bbc6cd2a04ecabb30a217c, type: 2}
@@ -5873,6 +5875,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3322b2f564ce9a6cd845cb2fafb93c4a, type: 2}
   - {fileID: 11400000, guid: 504cf05a9e5724d86905e85dadf45eae, type: 2}
   - {fileID: 11400000, guid: 1e4f3efa45feb3c41941dc30d5028708, type: 2}
+  - {fileID: 11400000, guid: 3d78574186c6e6744a65513e029a4ace, type: 2}
   lootTable: []
   needs: []
   gachaball: {fileID: -843772483422961928, guid: 1b1b98e42f5f2378a9d83169037f6e69, type: 3}
