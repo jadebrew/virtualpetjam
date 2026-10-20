@@ -2499,7 +2499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &580694791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7388,6 +7388,7 @@ MonoBehaviour:
   lastWon: {fileID: 1843295867}
   lastConsumed: {fileID: 864140633}
   catchGame: {fileID: 937720051}
+  petname: Mimi
   inventory:
   - key: {fileID: 11400000, guid: 6d66fe77b9a34e768962733eeece4d8d, type: 2}
     value: 3
