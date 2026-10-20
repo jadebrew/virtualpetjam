@@ -7,6 +7,7 @@ using static NeedType;
 using static SFXTag;
 using static SongTag;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class Petmanager : MonoBehaviour
 {
@@ -73,9 +74,15 @@ public class Petmanager : MonoBehaviour
 
     public int currentPull;
 
+    private NotificationManager _notif;
+    
+    private UIManager _ui;
+    
     void Awake()
     {
         _audio = AudioManager.Instance;
+        _notif = NotificationManager.Instance;
+        _ui = UIManager.Instance;
         mainMenuPanel.SetActive(true);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
@@ -152,6 +159,8 @@ public class Petmanager : MonoBehaviour
         HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
         HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
         SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
+        
+        _notif.Tick();
     }
 
     public void GameTick()
@@ -217,12 +226,6 @@ public class Petmanager : MonoBehaviour
     {
         patience += 1;
         _audio.Play(Annoyed);
-    }
-
-    public void PlaySong(SongTag title)
-    {
-        _audio.Play(title);
-        SetPanel(0);
     }
 
 

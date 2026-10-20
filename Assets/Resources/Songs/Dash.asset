@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -1181842451308836900, guid: 3278ebd1fb1999fba84c5fb008d1ce80, type: 3}
   title: Energy Dash
+  artist: DARIKER
   tag: 0
   audioClip: {fileID: 8300000, guid: 96e8797a228623deba53e995f085f1e8, type: 3}

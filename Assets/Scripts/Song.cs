@@ -21,6 +21,7 @@ public class Song : ScriptableObject
 
     public Sprite sprite;
     public string title;
+    public string artist = "DaSpacePanda";
     [SerializeField] public SongTag tag;
     [SerializeField] public AudioClip audioClip;
 }

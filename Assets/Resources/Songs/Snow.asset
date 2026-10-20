@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: 2666407938439108033, guid: 962d8e269d8c2c51d82a4b4b54941a80, type: 3}
   title: Snow
+  artist: DARIKER
   tag: 2
   audioClip: {fileID: 8300000, guid: 4da02f1a53d3b0129a51603cacfc13a0, type: 3}

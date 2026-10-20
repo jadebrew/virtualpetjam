@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -2118873338115871752, guid: 2a9aefc24e8297f2c814ece317cc72c3, type: 3}
   title: Sunset
+  artist: DARIKER
   tag: 3
   audioClip: {fileID: 8300000, guid: 2f0c4ab3620be3345be4660bce88da43, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
-  m_Name: Item
+  m_Name: Casette Sunset
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: 3847254570557203880, guid: ee1cd45ebabe59304b80b1f42a10d5d4, type: 3}
   title: Sunset cassette

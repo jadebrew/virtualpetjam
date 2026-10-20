@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -1673988457827691999, guid: 8fb8daea7b80fd7159324699c69c44f3, type: 3}
   title: Japan Inverted
+  artist: DARIKER
   tag: 1
   audioClip: {fileID: 8300000, guid: 04f8a2ab95d38deb4802c6b67d6c01d9, type: 3}

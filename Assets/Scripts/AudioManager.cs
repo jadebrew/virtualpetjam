@@ -14,8 +14,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSfx;
     [SerializeField] private AudioSource _audioBg;
     
-    private Dictionary<SongTag, AudioClip> _songDict = new ();
-    private Dictionary<SFXTag, AudioClip> _sfxDict = new ();
+    private Dictionary<SongTag, Song> _songDict = new ();
+    private Dictionary<SFXTag, SFX> _sfxDict = new ();
+
+    private Song _currentSong;
 
     public void AdjustVolume(float step)
     {
@@ -42,7 +44,7 @@ public class AudioManager : MonoBehaviour
         {
             if (!_songDict.ContainsKey(song.tag))
             {
-                _songDict.Add(song.tag, song.audioClip);
+                _songDict.Add(song.tag, song);
             }
             else
             {
@@ -54,7 +56,7 @@ public class AudioManager : MonoBehaviour
         {
             if (!_sfxDict.ContainsKey(sound.tag))
             {
-                _sfxDict.Add(sound.tag, sound.audioClip);
+                _sfxDict.Add(sound.tag, sound);
             }
             else
             {
@@ -75,14 +77,19 @@ public class AudioManager : MonoBehaviour
 
     public void Play(SongTag tag)
     {
-        Play(GetSong(tag), _audioBg);
+        StopMusic();
+        _currentSong = GetSong(tag);
+        
+        Play(_currentSong.audioClip, _audioBg);
         _audioBg.volume = 0;
         fading = true;
+        
+        NotificationManager.Instance.NotifySong(_currentSong);
     }
     
     public void Play(SFXTag tag)
     {
-        Play(GetSong(tag), _audioSfx);
+        Play(GetSound(tag).audioClip, _audioSfx);
     }
 
     public void StopSound()
@@ -93,23 +100,24 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         _audioBg.Stop();
+        NotificationManager.Instance.ClearSongNotification();
     }
 
-    private AudioClip GetSong(SongTag title)
+    private Song GetSong(SongTag title)
     {
-        if (_songDict.TryGetValue(title, out AudioClip clip))
+        if (_songDict.TryGetValue(title, out Song song))
         {
-            return clip;
+            return song;
         }
         Debug.LogWarning($"Song not found: {title}");
         return null;
     }
     
-    private AudioClip GetSong(SFXTag tag)
+    private SFX GetSound(SFXTag tag)
     {
-        if (_sfxDict.TryGetValue(tag, out AudioClip clip))
+        if (_sfxDict.TryGetValue(tag, out SFX sound))
         {
-            return clip;
+            return sound;
         }
         Debug.LogWarning($"SFX not found: {tag}");
         return null;
