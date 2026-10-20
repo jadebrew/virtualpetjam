@@ -10569,7 +10569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10577,7 +10577,7 @@ PrefabInstance:
       objectReference: {fileID: 1529103038}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoBack
+      value: SetPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument

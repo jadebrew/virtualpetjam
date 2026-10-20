@@ -118,13 +118,15 @@ public class Petmanager : MonoBehaviour
         gachaWinDefaultPos = lastWon.transform.localPosition;
 
         _audio.Play(JapanInverted);
+
+        Load();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameTick();
-        Load();
+
     }
 
     // Update is called once per frame
@@ -186,7 +188,6 @@ public class Petmanager : MonoBehaviour
         {
             _audio.Play(Annoyed);
         }
-        Save();
     }
 
     public void Feed(GameObject consumable)
@@ -213,6 +214,7 @@ public class Petmanager : MonoBehaviour
         {
             _audio.Play(Cancel);
         }
+        Save();
     }
 
     public void currentUseSFX()
@@ -255,7 +257,7 @@ public class Petmanager : MonoBehaviour
         {
             _audio.Play(Cancel);
         }
-
+        Save();
     }
 
     public void Reveal(int value)
@@ -374,26 +376,35 @@ public class Petmanager : MonoBehaviour
 
         petJson.Add("inventory",invJson);
 
-        string path = Application.persistentDataPath + "/" + petname + ".json";
+        string path = Application.persistentDataPath + "/mimi_save.json";
         File.WriteAllText(path,petJson.ToString());
     }
 
     void Load()
     {
-        string path = Application.persistentDataPath + "/" + petname + ".json";
-        string jsonString = File.ReadAllText(path);
-
-        JSONObject petJson = (JSONObject)JSON.Parse(jsonString);
-
-        petname = petJson["name"];
-
-        JSONObject invJson = (JSONObject)petJson["inventory"];
-
-        foreach(KeyValuePair<Item, int> ownedItem in inventory)
+        string path = Application.persistentDataPath + "/mimi_save.json";
+        if(File.Exists(path))
         {
-            if (invJson[ownedItem.Key.title])
+            string jsonString = File.ReadAllText(path);
+
+            JSONObject petJson = (JSONObject)JSON.Parse(jsonString);
+
+            petname = petJson["name"];
+
+            JSONObject invJson = (JSONObject)petJson["inventory"];
+
+            Dictionary<Item,int> loadedInventory = new Dictionary<Item,int>();
+
+            foreach(KeyValuePair<Item, int> ownedItem in inventory)
             {
-                //inventory[ownedItem.Key] = invJson[ownedItem.Key.title];
+                if (invJson[ownedItem.Key.title])
+                {
+                    loadedInventory.Add(ownedItem.Key,invJson[ownedItem.Key.title]);
+                }
+            }
+            foreach(KeyValuePair<Item, int> ownedItem in loadedInventory)
+            {
+                inventory[ownedItem.Key] = ownedItem.Value;
             }
         }
     }
