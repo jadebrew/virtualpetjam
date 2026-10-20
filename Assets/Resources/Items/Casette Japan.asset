@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Japan
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -2702244721469620807, guid: 737747dfe9241021087b5caadd403d3b, type: 3}
-  title: Japan
+  title: Japan cassette
   type: 1
   needModifier: 0
   needModValue: 0

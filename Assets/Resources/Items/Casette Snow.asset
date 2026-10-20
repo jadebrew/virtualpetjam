@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Snow
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: 2666407938439108033, guid: 962d8e269d8c2c51d82a4b4b54941a80, type: 3}
-  title: Snow Casette
+  title: Snow cassette
   type: 1
   needModifier: 0
   needModValue: 0

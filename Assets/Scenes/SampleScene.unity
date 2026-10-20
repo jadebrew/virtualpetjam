@@ -6535,21 +6535,7 @@ MonoBehaviour:
     value: 3
   - key: {fileID: 11400000, guid: 3d78574186c6e6744a65513e029a4ace, type: 2}
     value: 0
-  banner:
-  - {fileID: 11400000, guid: 6fae398e05589d77a81a766b746eedfd, type: 2}
-  - {fileID: 11400000, guid: 932e9eb283bbc6cd2a04ecabb30a217c, type: 2}
-  - {fileID: 11400000, guid: f2165d9f0c0b2ed33aa51e982adff2bb, type: 2}
-  - {fileID: 11400000, guid: 9c2f6e63a8313db568336e598c138d6a, type: 2}
-  - {fileID: 11400000, guid: 0e590181686adaef9bf04b822f146a5a, type: 2}
-  - {fileID: 11400000, guid: 6d66fe77b9a34e768962733eeece4d8d, type: 2}
-  - {fileID: 11400000, guid: 178ac8f22a1f4e74fb5dbcb090d307ca, type: 2}
-  - {fileID: 11400000, guid: c49279d0bae85507d9517455d8f65893, type: 2}
-  - {fileID: 11400000, guid: 298c2bc3f4a345540921f39e978ab21d, type: 2}
-  - {fileID: 11400000, guid: 3322b2f564ce9a6cd845cb2fafb93c4a, type: 2}
-  - {fileID: 11400000, guid: 504cf05a9e5724d86905e85dadf45eae, type: 2}
-  - {fileID: 11400000, guid: 1e4f3efa45feb3c41941dc30d5028708, type: 2}
-  - {fileID: 11400000, guid: 3d78574186c6e6744a65513e029a4ace, type: 2}
-  - {fileID: 11400000, guid: 3d78574186c6e6744a65513e029a4ace, type: 2}
+  banner: []
   lootTable: []
   needs: []
   gachaball: {fileID: -843772483422961928, guid: 1b1b98e42f5f2378a9d83169037f6e69, type: 3}

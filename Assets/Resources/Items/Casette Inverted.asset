@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Inverted
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -1673988457827691999, guid: 8fb8daea7b80fd7159324699c69c44f3, type: 3}
-  title: Japan Inverted
+  title: Japan Inverted cassette
   type: 1
   needModifier: 0
   needModValue: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Clouds
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -5298903355850418922, guid: ade4417fbb840c0ac9a7c07d67279884, type: 3}
-  title: Clouds
+  title: Clouds cassette
   type: 1
   needModifier: 0
   needModValue: 0

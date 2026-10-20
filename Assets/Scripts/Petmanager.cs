@@ -58,7 +58,7 @@ public class Petmanager : MonoBehaviour
 
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
-    public Item[] banner;
+    public List<Item> banner = new ();
     public List<Item> lootTable;
 
 
@@ -87,6 +87,14 @@ public class Petmanager : MonoBehaviour
         foreach (var need in Resources.LoadAll<Need>("Needs"))
         {
             needs[need.type] = need;
+        }
+        
+        foreach (var item in Resources.LoadAll<Item>("Items"))
+        {
+            if (item.type != ItemType.Coin)
+            {
+                banner.Add(item);
+            }
         }
 
         foreach(var item in banner)

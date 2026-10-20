@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Energy
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -1181842451308836900, guid: 3278ebd1fb1999fba84c5fb008d1ce80, type: 3}
-  title: Energy Casette
+  title: Energy Dash cassette
   type: 1
   needModifier: 0
   needModValue: 0

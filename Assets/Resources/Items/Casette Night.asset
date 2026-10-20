@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Casette Night
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: 594866681965172579, guid: d37e8f166ab708473972be8fac40f84c, type: 3}
-  title: Night Casette
+  title: Night cassette
   type: 1
   needModifier: 0
   needModValue: 0
