@@ -6611,6 +6611,7 @@ MonoBehaviour:
   lastWon: {fileID: 1843295867}
   lastConsumed: {fileID: 864140633}
   catchGame: {fileID: 937720051}
+  petname: Mimi
   inventory:
   - key: {fileID: 11400000, guid: 6d66fe77b9a34e768962733eeece4d8d, type: 2}
     value: 3
@@ -9358,7 +9359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9366,7 +9367,7 @@ PrefabInstance:
       objectReference: {fileID: 1529103038}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoBack
+      value: SetPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8283346100784303069, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
