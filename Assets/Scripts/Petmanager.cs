@@ -7,6 +7,8 @@ using static NeedType;
 using static SFXTag;
 using static SongTag;
 using Random = UnityEngine.Random;
+using System.IO;
+using SimpleJSON;
 using TMPro;
 
 public class Petmanager : MonoBehaviour
@@ -16,7 +18,7 @@ public class Petmanager : MonoBehaviour
     public GameObject[] ChillLocations;
     private float patienceMax = 5;
     private float patience = 0;
-
+    
     public TMP_Text HungerText;
     public TMP_Text HygieneText;
     public TMP_Text SleepText;
@@ -56,6 +58,8 @@ public class Petmanager : MonoBehaviour
 
     public CatchGame catchGame;
 
+
+    public string petname = "Mimi";
 
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
@@ -120,12 +124,15 @@ public class Petmanager : MonoBehaviour
         gachaWinDefaultPos = lastWon.transform.localPosition;
 
         _audio.Play(JapanInverted);
+
+        Load();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameTick();
+
     }
 
     // Update is called once per frame
@@ -215,6 +222,7 @@ public class Petmanager : MonoBehaviour
         {
             _audio.Play(Cancel);
         }
+        Save();
     }
 
     public void currentUseSFX()
@@ -251,7 +259,7 @@ public class Petmanager : MonoBehaviour
         {
             _audio.Play(Cancel);
         }
-
+        Save();
     }
 
     public void Reveal(int value)
@@ -357,13 +365,55 @@ public class Petmanager : MonoBehaviour
         menu.SetGameState(state);
     }
 
-    public void GoBack()
+    void Save() {
+        JSONObject petJson = new JSONObject();
+        petJson.Add("Name",petname);
+
+        JSONObject invJson = new JSONObject();
+
+        foreach(var pair in inventory)
+        {
+            invJson.Add(pair.Key.title,pair.Value);
+        }
+
+        petJson.Add("inventory",invJson);
+
+        string path = Application.persistentDataPath + "/mimi_save.json";
+        File.WriteAllText(path,petJson.ToString());
+    }
+
+    void Load()
     {
-        var menu = menuPanel.GetComponent<MenuHelper>();
-        menu.GoPreviousState();
+        string path = Application.persistentDataPath + "/mimi_save.json";
+        if(File.Exists(path))
+        {
+            string jsonString = File.ReadAllText(path);
+
+            JSONObject petJson = (JSONObject)JSON.Parse(jsonString);
+
+            petname = petJson["name"];
+
+            JSONObject invJson = (JSONObject)petJson["inventory"];
+
+            Dictionary<Item,int> loadedInventory = new Dictionary<Item,int>();
+
+            foreach(KeyValuePair<Item, int> ownedItem in inventory)
+            {
+                if (invJson[ownedItem.Key.title])
+                {
+                    loadedInventory.Add(ownedItem.Key,invJson[ownedItem.Key.title]);
+                }
+            }
+            foreach(KeyValuePair<Item, int> ownedItem in loadedInventory)
+            {
+                inventory[ownedItem.Key] = ownedItem.Value;
+            }
+        }
     }
 
 }
+
+
 
 public static class IListExtensions {
     /// <summary>
