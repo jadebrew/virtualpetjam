@@ -18,6 +18,7 @@ public class Petmanager : MonoBehaviour
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
+    public float screenSaverWait = 60;
     
     public TMP_Text HungerText;
     public TMP_Text HygieneText;
@@ -26,6 +27,8 @@ public class Petmanager : MonoBehaviour
     public float gametimer = 0;
     //gametick in seconds
     public float gametick = 60;
+
+    private float lastInput = 0;
 
     public string datetime;
     public bool happy = true;
@@ -41,6 +44,7 @@ public class Petmanager : MonoBehaviour
     public GameObject menuPanel;
     public GameObject consumePanel;
     public GameObject creditPanel;
+    public GameObject screenSaver;
 
     private float needMin = 0;
     private float needMax = 100;
@@ -146,9 +150,8 @@ public class Petmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        datetime = DateTime.Now.ToString();
-
         patience += Time.deltaTime;
+        lastInput +=  Time.deltaTime;
         if (patience > gameTickTime)
         {
           patience = 0;
@@ -174,6 +177,11 @@ public class Petmanager : MonoBehaviour
         //HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
         //HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
         //SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
+
+        if (lastInput > screenSaverWait)
+        {
+            SetPanel(9);
+        }
         
         _notif.Tick();
     }
@@ -234,6 +242,7 @@ public class Petmanager : MonoBehaviour
             _audio.Play(Cancel);
         }
         Save();
+        lastInput = 0;
     }
 
     public void currentUseSFX()
@@ -245,6 +254,8 @@ public class Petmanager : MonoBehaviour
     {
         patience += 1;
         _audio.Play(Annoyed);
+        lastInput = 0;
+        Save();
     }
 
 
@@ -271,6 +282,7 @@ public class Petmanager : MonoBehaviour
             _audio.Play(Cancel);
         }
         Save();
+        lastInput = 0;
     }
 
     public void Reveal(int value)
@@ -285,11 +297,12 @@ public class Petmanager : MonoBehaviour
         {
             SetPanel(4);
         }
-
+        lastInput = 0;
     }
 
     public void SetPanel(int menuindex)
     {
+        lastInput = 0;
         mainMenuPanel.SetActive(false);
         radioMenuPanel.SetActive(false);
         gachaMenuPanel.SetActive(false);
@@ -298,6 +311,7 @@ public class Petmanager : MonoBehaviour
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
         creditPanel.SetActive(false);
+        screenSaver.SetActive(false);
 
         if (menuindex == -1)
         {
@@ -315,6 +329,10 @@ public class Petmanager : MonoBehaviour
         {
             gachaMenuPanel.SetActive(true);
             _audio.Play(Select);
+        }
+        else if (menuindex == 9)
+        {
+            screenSaver.SetActive(true);
         }
         Save();
     }
@@ -359,6 +377,7 @@ public class Petmanager : MonoBehaviour
         {
             bagTitle.text = filter;
         }
+        lastInput = 0;
     }
 
     public void InitMenu(GameState state)
