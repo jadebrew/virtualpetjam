@@ -30,15 +30,25 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Show()
+    public void Show(string text, Sprite icon)
     {
-        if (notificationText.text != lastMsg)
+
+        if (idle && text != lastMsg)
         {
+            notificationMessage.SetActive(true);
+            notificationText.text = text;
+            NotificationImage.sprite = icon;
             visible = true;
             idle = false;
-            lastMsg = notificationText.text;
+            lastMsg = text;
             timer = 0;
         }
+    }
+
+    public void Hurry()
+    {
+        timer = showDelay;
+        visible = false;
     }
 
     public bool isIdle()
@@ -66,6 +76,7 @@ public class UIManager : MonoBehaviour
             {
                 newY = rootY;
                 idle = true;
+                notificationMessage.SetActive(false);
             }
         }
     notificationMessage.transform.localPosition = new Vector3(notificationMessage.transform.localPosition.x,newY,notificationMessage.transform.localPosition.z);

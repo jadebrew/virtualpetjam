@@ -112,6 +112,38 @@ public class AudioManager : MonoBehaviour
         return _currentSong;
     }
 
+    public string Status()
+    {
+        var status = "(Error)";
+        var time = GetTime();
+        var length = GetLength();
+
+        int ts = ((int)time % 60);
+        int tm = ((int)time / 60);
+
+        int ls = ((int)length % 60);
+        int lm = ((int)length / 60);
+
+        var timeleft = length - time;
+
+        int seconds = ((int)timeleft % 60);
+        int minutes = ((int)timeleft / 60);
+
+        if(!IsPaused())
+        {
+            status = "(" + string.Format("{0:00}:{1:00}", minutes,seconds) + ")";
+        }
+        else if (timeleft<length)
+        {
+            status = "(Paused)";
+        }
+        else {
+                status = "(Stopped)";
+            }
+        return status;
+
+    }
+
     public bool IsPaused()
     {
         return !_audioBg.isPlaying;

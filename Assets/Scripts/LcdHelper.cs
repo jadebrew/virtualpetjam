@@ -7,41 +7,12 @@ public class LcdHelper : MonoBehaviour
     public TMP_Text LcdPanel;
     private AudioManager _audio;
 
-    void Awake()
+    void FixedUpdate()
     {
-        _audio = AudioManager.Instance;
-    }
-
-    void Update()
-    {
-        var status = "Loading...";
-        if (_audio == null)
+        if(!_audio)
         {
-            _audio = AudioManager.Instance;
+             _audio = AudioManager.Instance;
         }
-        var currentSong = _audio.NowPlaying();
-        if(!_audio.IsPaused())
-        {
-            var time = _audio.GetTime();
-            var length = _audio.GetLength();
-
-            int ts = ((int)time % 60);
-            int tm = ((int)time / 60);
-
-            int ls = ((int)length % 60);
-            int lm = ((int)length / 60);
-
-            var timeleft = length - time;
-
-            int seconds = ((int)timeleft % 60);
-            int minutes = ((int)timeleft / 60);
-
-            status = currentSong.artist + " - " + currentSong.title + " (" + string.Format("{0:00}:{1:00}", minutes,seconds) + ")";
-        } else {
-            status = "Paused";
-        }
-
-
-        LcdPanel.text = status;
+        LcdPanel.text = _audio.NowPlaying().artist + " - " + _audio.NowPlaying().title + " " + _audio.Status();
     }
 }

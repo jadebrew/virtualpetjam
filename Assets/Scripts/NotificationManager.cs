@@ -42,13 +42,7 @@ public class NotificationManager : MonoBehaviour
             return;
         }
 
-        if (ui.isIdle())
-        {
-            ui.notificationText.text = _currentView.text;
-            ui.NotificationImage.sprite = _currentView.sprite;
-            ui.notificationMessage.SetActive(true);
-            ui.Show();
-        }
+        ui.Show(_currentView.text,_currentView.sprite);
     }
 
     public void NotifySong(Song song)
