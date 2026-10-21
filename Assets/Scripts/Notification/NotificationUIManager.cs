@@ -12,6 +12,10 @@ namespace Notification
         [SerializeField] public GameObject notificationMessage;
         [SerializeField] public TextMeshProUGUI notificationText;
         [SerializeField] public Image notificationImage;
+        
+        [SerializeField] public Sprite sleepIcon;
+        [SerializeField] public Sprite hygieneIcon;
+        [SerializeField] public Sprite hungerIcon;
     
         private const float ShowNotificationTimeLength = 10;
         private const float SlideSpeed = 20;

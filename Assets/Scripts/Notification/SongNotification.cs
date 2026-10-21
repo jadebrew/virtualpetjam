@@ -4,13 +4,13 @@ namespace Notification
 {
     public class SongNotification : INotification
     {
-        public Song song;
+        public Song Song;
         
         public NotificationView GetView()
         {
             var view = ScriptableObject.CreateInstance<NotificationView>();
-            view.sprite = song.icon;
-            view.text = $"Now playing\n{song.artist} - {song.title}";
+            view.sprite = Song.icon;
+            view.text = $"Now playing\n{Song.artist} - {Song.title}";
         
             return view;
         }

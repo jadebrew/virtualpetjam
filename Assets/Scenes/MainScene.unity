@@ -1945,6 +1945,9 @@ MonoBehaviour:
   notificationMessage: {fileID: 645958300}
   notificationText: {fileID: 770900669}
   notificationImage: {fileID: 318343222}
+  sleepIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
+  hygieneIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
+  hungerIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
 --- !u!4 &433799685
 Transform:
   m_ObjectHideFlags: 0
@@ -7134,7 +7137,6 @@ MonoBehaviour:
   lastWon: {fileID: 1843295867}
   lastConsumed: {fileID: 864140633}
   catchGame: {fileID: 937720051}
-  petname: Mimi
   inventory:
   - key: {fileID: 11400000, guid: 6d66fe77b9a34e768962733eeece4d8d, type: 2}
     value: 3

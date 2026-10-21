@@ -83,8 +83,6 @@ public class Petmanager : MonoBehaviour
     public CatchGame catchGame;
 
 
-    public string petname = "Mimi";
-
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
     public List<Item> banner = new ();
@@ -418,7 +416,7 @@ public class Petmanager : MonoBehaviour
     void Save() {
         JSONObject petJson = new JSONObject();
         Debug.Log("Attempting to save.");
-        petJson.Add("Name",petname);
+        petJson.Add("Name",Settings.PetName);
         JSONObject invJson = new JSONObject();
         foreach(var pair in inventory)
         {
@@ -447,7 +445,7 @@ public class Petmanager : MonoBehaviour
 
             JSONObject petJson = (JSONObject)JSON.Parse(jsonString);
 
-            petname = petJson["name"];
+            Settings.PetName = petJson["name"];
 
             JSONObject invJson = (JSONObject)petJson["inventory"];
 

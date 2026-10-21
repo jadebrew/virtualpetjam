@@ -49,7 +49,7 @@ namespace Notification
         {
             _notificationQueue.Enqueue(new SongNotification()
             {
-                song = song
+                Song = song
             },1);
         }
     
