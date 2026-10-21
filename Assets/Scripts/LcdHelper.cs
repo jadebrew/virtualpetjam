@@ -13,6 +13,6 @@ public class LcdHelper : MonoBehaviour
         {
              _audio = AudioManager.Instance;
         }
-        LcdPanel.text = _audio.NowPlaying().artist + " - " + _audio.NowPlaying().title + " " + _audio.Status();
+        LcdPanel.text = _audio.Status() + " || " + _audio.NowPlaying().artist + " - " + _audio.NowPlaying().title;
     }
 }

@@ -18,15 +18,14 @@ public class Petmanager : MonoBehaviour
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
-    public float screenSaverWait = 300;
+    public float screenSaverWait = 3600;
     
     public TMP_Text HungerText;
     public TMP_Text HygieneText;
     public TMP_Text SleepText;
 
     public float gametimer = 0;
-    //gametick in seconds
-    public float gametick = 60;
+
 
     private float lastInput = 0;
 
@@ -46,12 +45,29 @@ public class Petmanager : MonoBehaviour
     public GameObject creditPanel;
     public GameObject screenSaver;
 
+    private bool doscreensaver = false;
+
     private float needMin = 0;
     private float needMax = 100;
 
+    //gametick in seconds
+
+    // timer, timer measures time, when timer > gametick, it subtracts needDecay from needs, and puts timer to 0.
+    public float gameTickRate = 45; //seconds that it takes to call a Tick
+
+    //(ticksInaDay*needDecay) = 100 ???
+
     //should take a day to deplete 100% needs (60M*24H).
-    private float needDecay = 100/(60*24);
-    //TODO figure out formula later!!!
+    private float secondsInDay = 24*60*60;
+    //if i want needs to deplete over 24 hours (so needMax = 100)
+    //trisha: how many ticks would there be in a day if a tick would last 45 seconds
+
+    private float ticksInAday;
+    private float needDecay;
+
+    private float temporaryNeed = 100;
+
+    //TODO figure out formula later!!! (thanks honey <333)
 
     public GameObject templateButton;
 
@@ -128,16 +144,37 @@ public class Petmanager : MonoBehaviour
         lootTable.Shuffle();
         currentPull = 0;
         gachaWinDefaultPos = lastWon.transform.localPosition;
-
         _audio.Play(JapanInverted);
 
+        Debug.Log("Game Initialized.");
+        StressTest();
         Load();
-    }
+        }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameTick(true);
+       // GameTick(true);
+
+
+    }
+
+    void StressTest()
+    {
+        secondsInDay = 24*60*60;
+        ticksInAday = secondsInDay/gameTickRate;
+        needDecay = needMax/ticksInAday;
+        for (int i = 0; i < Mathf.Floor(ticksInAday); i++)
+        {
+
+            temporaryNeed -= needDecay;
+        }
+        Debug.Log("Full Needs: " + needMax);
+        Debug.Log("Tick Rate: " + gameTickRate);
+        Debug.Log("Seconds in a day: " + secondsInDay);
+        Debug.Log("Ticks in a day: " + ticksInAday);
+        Debug.Log("Needs in a Tick: " + needDecay);
+        Debug.Log("Full Needs after 24h neglect: " + Mathf.Round(temporaryNeed));
     }
 
     double TimeStamp()
@@ -152,6 +189,11 @@ public class Petmanager : MonoBehaviour
     {
         patience += Time.deltaTime;
         lastInput +=  Time.deltaTime;
+
+
+        ticksInAday = gameTickRate/secondsInDay;
+        needDecay = (float)ticksInAday/needMax;
+
         if (patience > gameTickTime)
         {
           patience = 0;
@@ -177,11 +219,6 @@ public class Petmanager : MonoBehaviour
         //HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
         //HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
         //SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
-
-        if (lastInput > screenSaverWait)
-        {
-            SetPanel(9);
-        }
         
         _notif.Tick();
     }
@@ -214,6 +251,11 @@ public class Petmanager : MonoBehaviour
             {
                _audio.Play(Annoyed);
             }
+        }
+
+        if (!UIManager.Instance.notificationMessage.activeSelf && doscreensaver && lastInput > screenSaverWait)
+        {
+            SetPanel(9);
         }
     }
 
@@ -313,11 +355,13 @@ public class Petmanager : MonoBehaviour
         consumePanel.SetActive(false);
         creditPanel.SetActive(false);
         screenSaver.SetActive(false);
+        doscreensaver = false;
 
         if (menuindex == -1)
         {
             mainMenuPanel.SetActive(true);
             _audio.Play(Cancel);
+            doscreensaver = true;
 
         }
         else if (menuindex == 3)
@@ -389,10 +433,9 @@ public class Petmanager : MonoBehaviour
 
     void Save() {
         JSONObject petJson = new JSONObject();
+        Debug.Log("Attempting to save.");
         petJson.Add("Name",petname);
-
         JSONObject invJson = new JSONObject();
-
         foreach(var pair in inventory)
         {
             invJson.Add(pair.Key.title,pair.Value);
@@ -401,10 +444,14 @@ public class Petmanager : MonoBehaviour
         petJson.Add("inventory",invJson);
 
         petJson.Add("timestamp",TimeStamp());
-
         string path = Application.persistentDataPath + "/mimi_save.json";
+        if(!File.Exists(path))
+        {
+            Debug.Log("Creating new savefile at: " + path);
+        }
         File.WriteAllText(path,petJson.ToString());
-        Debug.Log("Game Saved to " + path);
+        Debug.Log("Save complete.");
+
     }
 
     void Load()
@@ -436,21 +483,30 @@ public class Petmanager : MonoBehaviour
             //catch up system
             if(petJson["timestamp"])
             {
-                var lastPlay = petJson["timestamp"];
-
-                for (double t = lastPlay; t < TimeStamp(); t+=gameTickTime)
-                {
-                    GameTick(true);
-                }
-                var TimeAway = (TimeStamp() - lastPlay);
-                Debug.Log("Welcome back! You've been away for " + Mathf.Floor((float)TimeAway) + " Seconds.");
-                //TODO  while you were away Notification ()
-                Save();
+                CatchUp(petJson["timestamp"]);
             }
-        }
 
+        } else {
+            Debug.Log("File not found: " + path);
+            Save();
+        }
     }
 
+    void CatchUp(double seconds)
+    {
+
+            int rounds = 0;
+
+            for (double t = seconds; t < TimeStamp(); t+=gameTickRate)
+            {
+                GameTick(true);
+                rounds++;
+            }
+            double timeAway = (TimeStamp() - seconds);
+            Debug.Log("Welcome back! You've been away for " + Mathf.Floor((float)timeAway) + " Seconds.");
+            Debug.Log("Game caught up for " + rounds.ToString() + " Ticks.");
+            //TODO  while you were away Notification ()
+        }
 }
 
 

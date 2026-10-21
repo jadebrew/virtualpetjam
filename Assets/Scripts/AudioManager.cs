@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
 
     private Song _currentSong;
 
+    private float statusTimer = 0;
+    private float statusDelay = 5;
+    private string customStatus = "Stop";
+
     public void AdjustVolume(float step)
     {
         maxvolume += step;
@@ -29,10 +33,13 @@ public class AudioManager : MonoBehaviour
         {
             _audioBg.volume = maxvolume;
         }
+        customStatus = "VOL: " + Mathf.Round(_audioBg.volume*100).ToString();
+        statusTimer = 0;
     }
     
     void Awake()
     {
+        statusTimer = statusDelay;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -72,6 +79,12 @@ public class AudioManager : MonoBehaviour
         {
             _audioBg.volume = maxvolume;
             fading = false;
+        }
+
+
+        if (statusTimer < statusDelay)
+        {
+            statusTimer += Time.deltaTime;
         }
     }
 
@@ -131,7 +144,7 @@ public class AudioManager : MonoBehaviour
 
         if(!IsPaused())
         {
-            status = string.Format("{0:00}:{1:00}", minutes,seconds);
+            status = "-" + string.Format("{0:00}:{1:00}", minutes,seconds);
         }
         else if (timeleft<length)
         {
@@ -140,6 +153,10 @@ public class AudioManager : MonoBehaviour
         else {
                 status = "Stopped";
             }
+        if (statusTimer < statusDelay)
+        {
+            status = customStatus;
+        }
         return status;
 
     }

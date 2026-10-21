@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+        notificationMessage.transform.localPosition = new Vector3(notificationMessage.transform.localPosition.x,rootY,notificationMessage.transform.localPosition.z);
     }
 
     public void Show(string text, Sprite icon)

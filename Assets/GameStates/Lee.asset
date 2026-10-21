@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0258ac38fd3fd62b08723c91e0999fb5, type: 3}
   m_Name: Lee
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  title: Artist Lee
-  shortname: Artist Lee
-  body: All pixelart made by Lee.
+  title: Artist LeeEstes
+  shortname: Artist LeeEstes
+  body: All pixelart made by LeeEstes.
   buttons:
   - {fileID: 11400000, guid: 8fbba026de44f41d991f7c99dea911ec, type: 2}
   panels:
   - menu
+  isBag: 0
+  bagFilter: 
