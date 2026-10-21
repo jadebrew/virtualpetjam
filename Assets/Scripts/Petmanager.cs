@@ -24,7 +24,9 @@ public class Petmanager : MonoBehaviour
     public TMP_Text SleepText;
 
     public float gametimer = 0;
+    //gametick in seconds
     public float gametick = 60;
+
     public string datetime;
     public bool happy = true;
 
@@ -43,7 +45,9 @@ public class Petmanager : MonoBehaviour
     private float needMin = 0;
     private float needMax = 100;
 
-    private float needDecay = 1;
+    //should take a day to deplete 100% needs (60M*24H).
+    private float needDecay = 100/(60*24);
+    //TODO figure out formula later!!!
 
     public GameObject templateButton;
 
@@ -304,7 +308,7 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 3)
         {
             radioMenuPanel.SetActive(true);
-            ShowBag("casette");
+            ShowBag("cassette");
             _audio.Play(Select);
         }
         else if (menuindex == 4)
@@ -420,7 +424,7 @@ public class Petmanager : MonoBehaviour
                 }
                 var TimeAway = (TimeStamp() - lastPlay);
                 Debug.Log("Welcome back! You've been away for " + Mathf.Floor((float)TimeAway) + " Seconds.");
-                // while you were away Notification ()
+                //TODO  while you were away Notification ()
                 Save();
             }
         }

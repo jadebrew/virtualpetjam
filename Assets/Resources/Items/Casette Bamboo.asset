@@ -21,4 +21,4 @@ MonoBehaviour:
   rarity: {fileID: 11400000, guid: 81d72eaf15dce8c809b0c56393b6922e, type: 2}
   onUseSFX: 0
   assignedSongTitle: 4
-  itemType: casette
+  itemType: cassette

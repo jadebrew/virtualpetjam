@@ -8,7 +8,7 @@ public class SongNotification : Notification
     {
         var view = ScriptableObject.CreateInstance<NotificationView>();
         view.sprite = song.icon;
-        view.text = $"Now playing\n{song.title} - {song.artist}";
+        view.text = $"Now playing\n{song.artist} - {song.title}";
         
         return view;
     }
