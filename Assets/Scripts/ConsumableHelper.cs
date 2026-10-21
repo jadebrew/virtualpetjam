@@ -49,7 +49,6 @@ public class ConsumableHelper : MonoBehaviour
 
     void PlayAssignedSong()
     {
-        Debug.LogWarning($"PlayAssignedSong: {assignedSongTitle}");
         audio.Play(assignedSongTitle);
     }
 }

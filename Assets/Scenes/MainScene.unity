@@ -1690,9 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1c3c4066f56a84a9c53a1d50086b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  notificationMessage: {fileID: 645958300}
-  notificationText: {fileID: 770900669}
-  NotificationImage: {fileID: 318343222}
+  notif: {fileID: 0}
 --- !u!4 &348818782
 Transform:
   m_ObjectHideFlags: 0
@@ -1915,6 +1913,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357479624}
   m_CullTransparentMesh: 1
+--- !u!1 &433799683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433799685}
+  - component: {fileID: 433799684}
+  m_Layer: 0
+  m_Name: NotificationUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &433799684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433799683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00407884f6974f9b8c30d2c4dcd8f01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notification.NotificationUIManager
+  notificationMessage: {fileID: 645958300}
+  notificationText: {fileID: 770900669}
+  notificationImage: {fileID: 318343222}
+--- !u!4 &433799685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433799683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 397.29892, y: 305.75882, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492135778
 GameObject:
   m_ObjectHideFlags: 0
@@ -9020,9 +9065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1c3c4066f56a84a9c53a1d50086b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  notificationMessage: {fileID: 0}
-  notificationText: {fileID: 0}
-  NotificationImage: {fileID: 0}
+  notif: {fileID: 0}
 --- !u!1 &1836521163
 GameObject:
   m_ObjectHideFlags: 0
@@ -10314,3 +10357,4 @@ SceneRoots:
   - {fileID: 1086975026}
   - {fileID: 914885686}
   - {fileID: 348818782}
+  - {fileID: 433799685}

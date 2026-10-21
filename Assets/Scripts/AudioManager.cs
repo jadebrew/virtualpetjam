@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Notification;
 using UnityEngine;
 using UnityEngine.Android;
 
@@ -171,7 +172,6 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         _audioBg.Stop();
-        NotificationManager.Instance.ClearSongNotification();
     }
 
     private Song GetSong(SongTag title)

@@ -1,3 +1,4 @@
+using Notification;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -6,18 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
     
-    [SerializeField] public GameObject notificationMessage;
-    [SerializeField] public TextMeshProUGUI notificationText;
-    [SerializeField] public Image NotificationImage;
-    
-    private bool visible = false; //notification is visible
-    private bool idle = true; //notification allows new messages
-    private float rootY = 68; //rootY is the Y value notification window will rest when hidden
-    private float showY = -16; //showY is the Y value from rootY to slide to
-    private float timer = 0; // time since shown
-    private float showDelay = 10; // total time to show notificationpublic Sprite sprite;
-    private float slideSpeed = 20;
-    private string lastMsg; // lastMsg is just to check if the notification is new in Show()
+    public NotificationUIManager notif;
 
     void Awake()
     {
@@ -28,58 +18,5 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
-        notificationMessage.transform.localPosition = new Vector3(notificationMessage.transform.localPosition.x,rootY,notificationMessage.transform.localPosition.z);
-    }
-
-    public void Show(string text, Sprite icon)
-    {
-
-        if (idle && text != lastMsg)
-        {
-            notificationMessage.SetActive(true);
-            notificationText.text = text;
-            NotificationImage.sprite = icon;
-            visible = true;
-            idle = false;
-            lastMsg = text;
-            timer = 0;
-        }
-    }
-
-    public void Hurry()
-    {
-        timer = showDelay;
-        visible = false;
-    }
-
-    public bool isIdle()
-    {
-        return idle;
-    }
-
-    void Update()
-    {
-        float posY = notificationMessage.transform.localPosition.y;
-        float newY = posY;
-        timer += Time.deltaTime;
-        if (visible)
-        {
-            idle = false;
-            if(posY > rootY + showY)
-            {
-                newY -= slideSpeed * Time.deltaTime;
-            } else {
-                visible = false;
-            }
-        } else if (timer > showDelay) {
-            newY += slideSpeed * Time.deltaTime;
-            if (newY > rootY)
-            {
-                newY = rootY;
-                idle = true;
-                notificationMessage.SetActive(false);
-            }
-        }
-    notificationMessage.transform.localPosition = new Vector3(notificationMessage.transform.localPosition.x,newY,notificationMessage.transform.localPosition.z);
     }
 }

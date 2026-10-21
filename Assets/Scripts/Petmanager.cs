@@ -9,6 +9,7 @@ using static SongTag;
 using Random = UnityEngine.Random;
 using System.IO;
 using System.Linq;
+using Notification;
 using SimpleJSON;
 using TMPro;
 
@@ -216,12 +217,6 @@ public class Petmanager : MonoBehaviour
             currentPull = 0;
             lootTable.Shuffle();
         }
-
-        //HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
-        //HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
-        //SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
-        
-        _notif.Tick();
     }
 
     public void GameTick(bool catchup)
@@ -253,8 +248,8 @@ public class Petmanager : MonoBehaviour
                _audio.Play(Annoyed);
             }
         }
-
-        if (!UIManager.Instance.notificationMessage.activeSelf && doscreensaver && lastInput > screenSaverWait)
+        
+        if (NotificationUIManager.Instance && !NotificationUIManager.Instance.notificationMessage.activeSelf && doscreensaver && lastInput > screenSaverWait)
         {
             SetPanel(9);
         }
