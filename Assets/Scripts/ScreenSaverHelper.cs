@@ -18,7 +18,7 @@ public class TimeHelper : MonoBehaviour
         {
             _audio = AudioManager.Instance;
         }
-        songText.text =  _audio.Status() + "\nArtist:" + _audio.NowPlaying().artist + "\nTrack:" + _audio.NowPlaying().title;
+        songText.text = _audio.NowPlaying().artist + " - " + _audio.NowPlaying().title + "\n" + _audio.Status();
         albumCover.sprite = _audio.NowPlaying().sprite;
         clockText.text = System.DateTime.UtcNow.ToString("MMMM dd\nHH:mm");
     }
