@@ -16,7 +16,7 @@ public class Petmanager : MonoBehaviour
 
     public GameObject petObject;
     public GameObject[] ChillLocations;
-    private float patienceMax = 5;
+    private float gameTickTime = 5;
     private float patience = 0;
     
     public TMP_Text HungerText;
@@ -68,8 +68,6 @@ public class Petmanager : MonoBehaviour
 
 
     [SerializeField] private Dictionary<NeedType, Need> needs;
-
-
 
     public Sprite gachaball;
 
@@ -131,8 +129,14 @@ public class Petmanager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameTick();
+        GameTick(true);
+    }
 
+    double TimeStamp()
+    {
+        var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+        var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
+        return timestamp;
     }
 
     // Update is called once per frame
@@ -141,10 +145,10 @@ public class Petmanager : MonoBehaviour
         datetime = DateTime.Now.ToString();
 
         patience += Time.deltaTime;
-        if (patience > patienceMax)
+        if (patience > gameTickTime)
         {
           patience = 0;
-          GameTick();
+          GameTick(false);
         }
 
         if(winDone)
@@ -170,31 +174,34 @@ public class Petmanager : MonoBehaviour
         _notif.Tick();
     }
 
-    public void GameTick()
+    public void GameTick(bool catchup)
     {
-        string statOuput = "";
         happy = true;
         foreach(var pair in needs)
         {
             var need = pair.Value;
-            
             need.value -= needDecay;
             if(need.value < needMin)
             {
                 need.value = needMin;
                 happy = false;
             }
-            statOuput += Mathf.Floor(need.value) + "\n";
+        }
+        if(!catchup)
+        {
+            petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
         }
 
-        petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
         if (happy)
         {
             inventory[coin]++;
         }
         else
         {
-            _audio.Play(Annoyed);
+            if(!catchup)
+            {
+               _audio.Play(Annoyed);
+            }
         }
     }
 
@@ -305,16 +312,7 @@ public class Petmanager : MonoBehaviour
             gachaMenuPanel.SetActive(true);
             _audio.Play(Select);
         }
-        //else if (menuindex == 8)
-        //{
-            //creditPanel.SetActive(true);
-            //_audio.Play(Select);
-        //}
-        //else if (menuindex == 9)
-        //{
-            //radioMenuPanel.SetActive(true);
-           //_audio.Play(Select);
-        //}
+        Save();
     }
 
     public void ShowBag(string filter)
@@ -378,8 +376,11 @@ public class Petmanager : MonoBehaviour
 
         petJson.Add("inventory",invJson);
 
+        petJson.Add("timestamp",TimeStamp());
+
         string path = Application.persistentDataPath + "/mimi_save.json";
         File.WriteAllText(path,petJson.ToString());
+        Debug.Log("Game Saved to " + path);
     }
 
     void Load()
@@ -408,7 +409,22 @@ public class Petmanager : MonoBehaviour
             {
                 inventory[ownedItem.Key] = ownedItem.Value;
             }
+            //catch up system
+            if(petJson["timestamp"])
+            {
+                var lastPlay = petJson["timestamp"];
+
+                for (double t = lastPlay; t < TimeStamp(); t+=gameTickTime)
+                {
+                    GameTick(true);
+                }
+                var TimeAway = (TimeStamp() - lastPlay);
+                Debug.Log("Welcome back! You've been away for " + Mathf.Floor((float)TimeAway) + " Seconds.");
+                // while you were away Notification ()
+                Save();
+            }
         }
+
     }
 
 }

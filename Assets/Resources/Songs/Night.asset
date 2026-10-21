@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Night
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: 594866681965172579, guid: d37e8f166ab708473972be8fac40f84c, type: 3}
+  icon: {fileID: 591911321, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Night
+  artist: DaSpacePanda
   tag: 6
   audioClip: {fileID: 8300000, guid: 87f9aa1c218a0804082655f50efad2bf, type: 3}

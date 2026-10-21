@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Casette Beach
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: 7580143176946665922, guid: 949fae7e67aa021d59ca3a35e95bc69e, type: 3}
+  icon: {fileID: 2043228126, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Casette Beach
   type: 1
   needModifier: 0

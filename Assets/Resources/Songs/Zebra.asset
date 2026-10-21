@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Zebra
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -9096092453819583228, guid: e0535e936de7f37dab6ee21def58538d, type: 3}
+  icon: {fileID: 910446037, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Zebra
+  artist: DaSpacePanda
   tag: 7
   audioClip: {fileID: 8300000, guid: 82c0d55f837dd0ebf9129c206de5053c, type: 3}

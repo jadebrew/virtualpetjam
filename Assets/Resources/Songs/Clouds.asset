@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Clouds
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -5298903355850418922, guid: ade4417fbb840c0ac9a7c07d67279884, type: 3}
+  icon: {fileID: 280648516, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Clouds
+  artist: DaSpacePanda
   tag: 8
   audioClip: {fileID: 8300000, guid: d55e3355b760a949980af4cffb6d2f04, type: 3}

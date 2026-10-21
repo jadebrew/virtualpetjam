@@ -20,6 +20,7 @@ public class Song : ScriptableObject
 {
 
     public Sprite sprite;
+    public Sprite icon;
     public string title;
     public string artist = "DaSpacePanda";
     [SerializeField] public SongTag tag;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Japan Inverted
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -1673988457827691999, guid: 8fb8daea7b80fd7159324699c69c44f3, type: 3}
+  icon: {fileID: -635373790, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Japan Inverted
   artist: DARIKER
   tag: 1

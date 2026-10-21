@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Bamboo
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -5485218297029449780, guid: acaaded317b372f0a9dcb6cd99ea107b, type: 3}
+  icon: {fileID: -95458675, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Bamboo
+  artist: DaSpacePanda
   tag: 4
   audioClip: {fileID: 8300000, guid: aba0ea37363c3ec0bbca78602c4fabd1, type: 3}

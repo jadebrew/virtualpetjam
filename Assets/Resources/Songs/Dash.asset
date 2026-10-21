@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -1181842451308836900, guid: 3278ebd1fb1999fba84c5fb008d1ce80, type: 3}
+  icon: {fileID: 299538191, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Energy Dash
   artist: DARIKER
   tag: 0

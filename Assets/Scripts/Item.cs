@@ -13,6 +13,7 @@ public class Item : ScriptableObject
 {
 
     public Sprite sprite;
+    public Sprite icon;
     public string title;
     [SerializeField] public ItemType type;
     

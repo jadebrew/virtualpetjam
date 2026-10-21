@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private float rootY = 68; //rootY is the Y value notification window will rest when hidden
     private float showY = -16; //showY is the Y value from rootY to slide to
     private float timer = 0; // time since shown
-    private float showDelay = 5; // total time to show notification
+    private float showDelay = 10; // total time to show notificationpublic Sprite sprite;
     private float slideSpeed = 5;
     private string lastMsg; // lastMsg is just to check if the notification is new in Show()
 

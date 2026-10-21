@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sunset
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -2118873338115871752, guid: 2a9aefc24e8297f2c814ece317cc72c3, type: 3}
+  icon: {fileID: 800606245, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Sunset
   artist: DARIKER
   tag: 3

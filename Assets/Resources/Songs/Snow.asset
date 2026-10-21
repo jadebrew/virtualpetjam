@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Snow
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: 2666407938439108033, guid: 962d8e269d8c2c51d82a4b4b54941a80, type: 3}
+  icon: {fileID: 2047351847, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Snow
   artist: DARIKER
   tag: 2

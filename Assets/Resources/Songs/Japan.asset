@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Japan
   m_EditorClassIdentifier: Assembly-CSharp::Song
   sprite: {fileID: -2702244721469620807, guid: 737747dfe9241021087b5caadd403d3b, type: 3}
+  icon: {fileID: -1028851279297226092, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
   title: Japan
+  artist: DaSpacePanda
   tag: 5
   audioClip: {fileID: 8300000, guid: 516d24e1566f8ac0fb1617737ff97adf, type: 3}

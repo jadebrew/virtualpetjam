@@ -1,0 +1,1705 @@
+fileFormatVersion: 2
+guid: d0c53761898b3c027806b6c8637fb54a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2270347748167051407
+    second: Unicode Japanese_0
+  - first:
+      213: 934581939705012593
+    second: Unicode Japanese_1
+  - first:
+      213: -8248564272451357528
+    second: Unicode Japanese_2
+  - first:
+      213: 7305280530088710513
+    second: Unicode Japanese_3
+  - first:
+      213: -3186515465568906991
+    second: Unicode Japanese_4
+  - first:
+      213: 5006413520020545060
+    second: Unicode Japanese_5
+  - first:
+      213: 314444232585956241
+    second: Unicode Japanese_6
+  - first:
+      213: -1425184813138517952
+    second: Unicode Japanese_7
+  - first:
+      213: 3750457380761501104
+    second: Unicode Japanese_8
+  - first:
+      213: 1901133732947221551
+    second: Unicode Japanese_9
+  - first:
+      213: 8046720495860205996
+    second: Unicode Japanese_10
+  - first:
+      213: 5510203156460639857
+    second: Unicode Japanese_11
+  - first:
+      213: -8937068941983192648
+    second: Unicode Japanese_12
+  - first:
+      213: 6181581380960826408
+    second: Unicode Japanese_13
+  - first:
+      213: -696777814731491542
+    second: Unicode Japanese_14
+  - first:
+      213: 686886309306446576
+    second: Unicode Japanese_15
+  - first:
+      213: -4672969729030642211
+    second: Unicode Japanese_16
+  - first:
+      213: 8206024595035611189
+    second: Unicode Japanese_17
+  - first:
+      213: 2797170170214383806
+    second: Unicode Japanese_18
+  - first:
+      213: -8897704844707361335
+    second: Unicode Japanese_19
+  - first:
+      213: 5480483977998953006
+    second: Unicode Japanese_20
+  - first:
+      213: 4874615329999189581
+    second: Unicode Japanese_21
+  - first:
+      213: 2295137469964454205
+    second: Unicode Japanese_22
+  - first:
+      213: -9016626867092211380
+    second: Unicode Japanese_23
+  - first:
+      213: 1763567002342113392
+    second: Unicode Japanese_24
+  - first:
+      213: -2441251282627255069
+    second: Unicode Japanese_25
+  - first:
+      213: -2049598968490331749
+    second: Unicode Japanese_26
+  - first:
+      213: 2403607932972874710
+    second: Unicode Japanese_27
+  - first:
+      213: -9161622881265099260
+    second: Unicode Japanese_28
+  - first:
+      213: -2611203896614669364
+    second: Unicode Japanese_29
+  - first:
+      213: -3745724779569134974
+    second: Unicode Japanese_30
+  - first:
+      213: 3088448913521316534
+    second: Unicode Japanese_31
+  - first:
+      213: -7798046708800322197
+    second: Unicode Japanese_32
+  - first:
+      213: 5505252298236926792
+    second: Unicode Japanese_33
+  - first:
+      213: 9197935448092917897
+    second: Unicode Japanese_34
+  - first:
+      213: -3770095921026219440
+    second: Unicode Japanese_35
+  - first:
+      213: -2830698119957989787
+    second: Unicode Japanese_36
+  - first:
+      213: -4570306881082242209
+    second: Unicode Japanese_37
+  - first:
+      213: 2498035077409481561
+    second: Unicode Japanese_38
+  - first:
+      213: -3199478636914582369
+    second: Unicode Japanese_39
+  - first:
+      213: -3872514118865338541
+    second: Unicode Japanese_40
+  - first:
+      213: 7754037047540083620
+    second: Unicode Japanese_41
+  - first:
+      213: 8572533448832566245
+    second: Unicode Japanese_42
+  - first:
+      213: -7248520818957607454
+    second: Unicode Japanese_43
+  - first:
+      213: 6161214670791443638
+    second: Unicode Japanese_44
+  - first:
+      213: 6520584015066431879
+    second: Unicode Japanese_45
+  - first:
+      213: 2613708368489672165
+    second: Unicode Japanese_46
+  - first:
+      213: 4074216722619046306
+    second: Unicode Japanese_47
+  - first:
+      213: -106188354197036670
+    second: Unicode Japanese_48
+  - first:
+      213: 4036937416996784252
+    second: Unicode Japanese_49
+  - first:
+      213: 8129932961958241501
+    second: Unicode Japanese_50
+  - first:
+      213: 4357792600271435459
+    second: Unicode Japanese_51
+  - first:
+      213: -4372717495000768652
+    second: Unicode Japanese_52
+  - first:
+      213: -7400254269805945516
+    second: Unicode Japanese_53
+  - first:
+      213: 4306835498615832987
+    second: Unicode Japanese_54
+  - first:
+      213: -546653380361217573
+    second: Unicode Japanese_55
+  - first:
+      213: -6631641649799345695
+    second: Unicode Japanese_56
+  - first:
+      213: 5282976211136257648
+    second: Unicode Japanese_57
+  - first:
+      213: 2268226648342109814
+    second: Unicode Japanese_58
+  - first:
+      213: 8357561482842991091
+    second: Unicode Japanese_59
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Unicode Japanese_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 108
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88ea168f35e18f10800000000000000
+      internalID: 2270347748167051407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 108
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 171ec91925d48fc00800000000000000
+      internalID: 934581939705012593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_2
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 108
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4fe893f76378d80800000000000000
+      internalID: -8248564272451357528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 108
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 171d384efe1916560800000000000000
+      internalID: 7305280530088710513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 108
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1111a73211937c3d0800000000000000
+      internalID: -3186515465568906991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 108
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e9983429a5a7540800000000000000
+      internalID: 5006413520020545060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_6
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 108
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19bc4f01d512d5400800000000000000
+      internalID: 314444232585956241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 108
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 040e891a6f9b83ce0800000000000000
+      internalID: -1425184813138517952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_8
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 108
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bdf785fd1d4c0430800000000000000
+      internalID: 3750457380761501104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_9
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 108
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2cd4d6be0f226a10800000000000000
+      internalID: 1901133732947221551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_10
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 108
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca94a9a58a1bbaf60800000000000000
+      internalID: 8046720495860205996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_11
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 108
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1769215939c287c40800000000000000
+      internalID: 5510203156460639857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_12
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 106
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b96aebd52729f380800000000000000
+      internalID: -8937068941983192648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_13
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 108
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824b65ab38369c550800000000000000
+      internalID: 6181581380960826408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_14
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 108
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a277e89e44c8456f0800000000000000
+      internalID: -696777814731491542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_15
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 92
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f23a43857f488900800000000000000
+      internalID: 686886309306446576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_16
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 94
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd5a9f63ac6462fb0800000000000000
+      internalID: -4672969729030642211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 94
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530673d44e7a1e170800000000000000
+      internalID: 8206024595035611189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_18
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 94
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb082f3237b81d620800000000000000
+      internalID: 2797170170214383806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_19
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 94
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cd02f6f590058480800000000000000
+      internalID: -8897704844707361335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_20
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 94
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ae8d124279e0c40800000000000000
+      internalID: 5480483977998953006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_21
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 94
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d467649d0dc16a340800000000000000
+      internalID: 4874615329999189581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_22
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 94
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d398be76e57f9df10800000000000000
+      internalID: 2295137469964454205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_23
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 94
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49b9b2f2a18ed280800000000000000
+      internalID: -9016626867092211380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_24
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 94
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 070c33848d2797810800000000000000
+      internalID: 1763567002342113392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_25
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 92
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e4298b84eeee1ed0800000000000000
+      internalID: -2441251282627255069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_26
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 93
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b91702fe89c5e83e0800000000000000
+      internalID: -2049598968490331749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_27
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 92
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbb8202ea45b5120800000000000000
+      internalID: 2403607932972874710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_28
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 77
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e5a14a7806bd080800000000000000
+      internalID: -9161622881265099260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_29
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 77
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc3ba2a04e323cbd0800000000000000
+      internalID: -2611203896614669364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_30
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 77
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 282476f9823840cc0800000000000000
+      internalID: -3745724779569134974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_31
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 77
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2116d6cef5cda20800000000000000
+      internalID: 3088448913521316534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_32
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 77
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b658d0c85d5c7c390800000000000000
+      internalID: -7798046708800322197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_33
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 77
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84b90531cc5966c40800000000000000
+      internalID: 5505252298236926792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_34
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 77
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9804d8aae81a5af70800000000000000
+      internalID: 9197935448092917897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 77
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05245121cbdedabc0800000000000000
+      internalID: -3770095921026219440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_36
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 77
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 566b98dbe0757b8d0800000000000000
+      internalID: -2830698119957989787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_37
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 77
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5bc19e2b120390c0800000000000000
+      internalID: -4570306881082242209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_38
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 77
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9532571faadcaa220800000000000000
+      internalID: 2498035077409481561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_39
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 77
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9c514c912b2993d0800000000000000
+      internalID: -3199478636914582369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_40
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 77
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fb8552de0124ac0800000000000000
+      internalID: -3872514118865338541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 77
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab68d1bc9fdb9b60800000000000000
+      internalID: 7754037047540083620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_42
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 75
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e3c1d2a0c1c7f670800000000000000
+      internalID: 8572533448832566245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_43
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 62
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed120f28b4186b90800000000000000
+      internalID: -7248520818957607454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_44
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 62
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b4037d7918018550800000000000000
+      internalID: 6161214670791443638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_45
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 59
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781002a3d94cd7a50800000000000000
+      internalID: 6520584015066431879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_46
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 42
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5edea42c9e1c54420800000000000000
+      internalID: 2613708368489672165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_47
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 58
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a91aa9e5868a8830800000000000000
+      internalID: 4074216722619046306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_48
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 60
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2816dc4214eb68ef0800000000000000
+      internalID: -106188354197036670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_49
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 55
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7883903135160830800000000000000
+      internalID: 4036937416996784252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_50
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 42
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4a24564f253d070800000000000000
+      internalID: 8129932961958241501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_51
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 42
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c63108084df97c30800000000000000
+      internalID: 4357792600271435459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_52
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 42
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47fd75f1b9cf053c0800000000000000
+      internalID: -4372717495000768652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_53
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 42
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d16a823f30d4990800000000000000
+      internalID: -7400254269805945516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_54
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 42
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b910a014114f4cb30800000000000000
+      internalID: 4306835498615832987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_55
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 42
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd99d4895a5e968f0800000000000000
+      internalID: -546653380361217573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_56
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 42
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e946023e0da7f3a0800000000000000
+      internalID: -6631641649799345695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_57
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 42
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e9d95afd6e05940800000000000000
+      internalID: 5282976211136257648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_58
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 42
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67e918c7e1c5a7f10800000000000000
+      internalID: 2268226648342109814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unicode Japanese_59
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 41
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9e75d63e50cf370800000000000000
+      internalID: 8357561482842991091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Unicode Japanese_0: 2270347748167051407
+      Unicode Japanese_1: 934581939705012593
+      Unicode Japanese_10: 8046720495860205996
+      Unicode Japanese_11: 5510203156460639857
+      Unicode Japanese_12: -8937068941983192648
+      Unicode Japanese_13: 6181581380960826408
+      Unicode Japanese_14: -696777814731491542
+      Unicode Japanese_15: 686886309306446576
+      Unicode Japanese_16: -4672969729030642211
+      Unicode Japanese_17: 8206024595035611189
+      Unicode Japanese_18: 2797170170214383806
+      Unicode Japanese_19: -8897704844707361335
+      Unicode Japanese_2: -8248564272451357528
+      Unicode Japanese_20: 5480483977998953006
+      Unicode Japanese_21: 4874615329999189581
+      Unicode Japanese_22: 2295137469964454205
+      Unicode Japanese_23: -9016626867092211380
+      Unicode Japanese_24: 1763567002342113392
+      Unicode Japanese_25: -2441251282627255069
+      Unicode Japanese_26: -2049598968490331749
+      Unicode Japanese_27: 2403607932972874710
+      Unicode Japanese_28: -9161622881265099260
+      Unicode Japanese_29: -2611203896614669364
+      Unicode Japanese_3: 7305280530088710513
+      Unicode Japanese_30: -3745724779569134974
+      Unicode Japanese_31: 3088448913521316534
+      Unicode Japanese_32: -7798046708800322197
+      Unicode Japanese_33: 5505252298236926792
+      Unicode Japanese_34: 9197935448092917897
+      Unicode Japanese_35: -3770095921026219440
+      Unicode Japanese_36: -2830698119957989787
+      Unicode Japanese_37: -4570306881082242209
+      Unicode Japanese_38: 2498035077409481561
+      Unicode Japanese_39: -3199478636914582369
+      Unicode Japanese_4: -3186515465568906991
+      Unicode Japanese_40: -3872514118865338541
+      Unicode Japanese_41: 7754037047540083620
+      Unicode Japanese_42: 8572533448832566245
+      Unicode Japanese_43: -7248520818957607454
+      Unicode Japanese_44: 6161214670791443638
+      Unicode Japanese_45: 6520584015066431879
+      Unicode Japanese_46: 2613708368489672165
+      Unicode Japanese_47: 4074216722619046306
+      Unicode Japanese_48: -106188354197036670
+      Unicode Japanese_49: 4036937416996784252
+      Unicode Japanese_5: 5006413520020545060
+      Unicode Japanese_50: 8129932961958241501
+      Unicode Japanese_51: 4357792600271435459
+      Unicode Japanese_52: -4372717495000768652
+      Unicode Japanese_53: -7400254269805945516
+      Unicode Japanese_54: 4306835498615832987
+      Unicode Japanese_55: -546653380361217573
+      Unicode Japanese_56: -6631641649799345695
+      Unicode Japanese_57: 5282976211136257648
+      Unicode Japanese_58: 2268226648342109814
+      Unicode Japanese_59: 8357561482842991091
+      Unicode Japanese_6: 314444232585956241
+      Unicode Japanese_7: -1425184813138517952
+      Unicode Japanese_8: 3750457380761501104
+      Unicode Japanese_9: 1901133732947221551
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
