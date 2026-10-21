@@ -107,6 +107,11 @@ public class AudioManager : MonoBehaviour
         return _audioBg.clip.length;
     }
 
+    public Song NowPlaying()
+    {
+        return _currentSong;
+    }
+
     public bool IsPaused()
     {
         return !_audioBg.isPlaying;

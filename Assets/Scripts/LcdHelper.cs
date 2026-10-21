@@ -19,6 +19,7 @@ public class LcdHelper : MonoBehaviour
         {
             _audio = AudioManager.Instance;
         }
+        var currentSong = _audio.NowPlaying();
         if(!_audio.IsPaused())
         {
             var time = _audio.GetTime();
@@ -30,10 +31,12 @@ public class LcdHelper : MonoBehaviour
             int ls = ((int)length % 60);
             int lm = ((int)length / 60);
 
-            int seconds = ls-ts;
-            int minutes = lm-tm;
+            var timeleft = length - time;
 
-            status = string.Format("{0:00}:{1:00}/{2:00}:{3:00}", tm,ts,lm,ls);
+            int seconds = ((int)timeleft % 60);
+            int minutes = ((int)timeleft / 60);
+
+            status = currentSong.artist + " - " + currentSong.title + " (" + string.Format("{0:00}:{1:00}", minutes,seconds) + ")";
         } else {
             status = "Paused";
         }
