@@ -163,9 +163,9 @@ public class Petmanager : MonoBehaviour
             lootTable.Shuffle();
         }
 
-        HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
-        HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
-        SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
+        //HungerText.text = Mathf.Round(needs[Hunger].value).ToString();
+        //HygieneText.text = Mathf.Round(needs[Hygiene].value).ToString();
+        //SleepText.text = Mathf.Round(needs[Sleep].value).ToString();
         
         _notif.Tick();
     }
