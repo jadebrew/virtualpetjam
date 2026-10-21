@@ -8,6 +8,7 @@ using static SFXTag;
 using static SongTag;
 using Random = UnityEngine.Random;
 using System.IO;
+using System.Linq;
 using SimpleJSON;
 using TMPro;
 
@@ -391,7 +392,18 @@ public class Petmanager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach(KeyValuePair<Item, int> ownedItem in inventory)
+        
+        
+        //sort by how many you own
+        //this makes it so f.e. when you open the stereo the songs you own are on top
+        var sortedInventory =
+            from entry
+            in inventory
+            orderby entry.Value
+            descending
+            select entry;
+        
+        foreach(KeyValuePair<Item, int> ownedItem in sortedInventory)
         {
             if(filter == "all" || ownedItem.Key.itemType == filter)
             {
