@@ -56,6 +56,10 @@ namespace Notification
         public void NotifyCatStatus()
         {
             //TODO
+            /*_notificationQueue.Enqueue(new SongNotification()
+            {
+                song = song
+            },1);*/
         }
     }
 }

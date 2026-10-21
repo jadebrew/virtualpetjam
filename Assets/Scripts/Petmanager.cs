@@ -9,6 +9,7 @@ using static SongTag;
 using Random = UnityEngine.Random;
 using System.IO;
 using System.Linq;
+using Needs;
 using Notification;
 using SimpleJSON;
 using TMPro;
@@ -32,7 +33,6 @@ public class Petmanager : MonoBehaviour
     private float lastInput = 0;
 
     public string datetime;
-    public bool happy = true;
 
     public GameObject bagParent;
     public TMP_Text bagTitle;
@@ -48,9 +48,8 @@ public class Petmanager : MonoBehaviour
     public GameObject screenSaver;
 
     private bool doscreensaver = false;
-
-    private float needMin = 0;
-    private float needMax = 100;
+    
+    public const bool DEBUG = false;
 
     //gametick in seconds
 
@@ -60,12 +59,11 @@ public class Petmanager : MonoBehaviour
     //(ticksInaDay*needDecay) = 100 ???
 
     //should take a day to deplete 100% needs (60M*24H).
-    private float secondsInDay = 24*60*60;
+    private const float SecondsInDay = 24*60*60;
     //if i want needs to deplete over 24 hours (so needMax = 100)
     //trisha: how many ticks would there be in a day if a tick would last 45 seconds
 
     private float ticksInAday;
-    private float needDecay;
 
     private float temporaryNeed = 100;
 
@@ -91,10 +89,7 @@ public class Petmanager : MonoBehaviour
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
     public List<Item> banner = new ();
     public List<Item> lootTable;
-
-
-    [SerializeField] private Dictionary<NeedType, Need> needs;
-
+    
     public Sprite gachaball;
 
     private AudioManager _audio;
@@ -110,6 +105,7 @@ public class Petmanager : MonoBehaviour
     {
         _audio = AudioManager.Instance;
         _notif = NotificationManager.Instance;
+        
         _ui = UIManager.Instance;
         mainMenuPanel.SetActive(true);
         radioMenuPanel.SetActive(false);
@@ -119,10 +115,7 @@ public class Petmanager : MonoBehaviour
         consumePanel.SetActive(false);
         menuPanel.SetActive(true);
         
-        foreach (var need in Resources.LoadAll<Need>("Needs"))
-        {
-            needs[need.type] = need;
-        }
+        
         
         foreach (var item in Resources.LoadAll<Item>("Items"))
         {
@@ -149,7 +142,11 @@ public class Petmanager : MonoBehaviour
         _audio.Play(JapanInverted);
 
         Debug.Log("Game Initialized.");
-        StressTest();
+        if (DEBUG)
+        {
+            StressTest();
+        }
+        
         Load();
         }
 
@@ -161,22 +158,17 @@ public class Petmanager : MonoBehaviour
 
     }
 
-    void StressTest()
+    private void StressTest()
     {
-        secondsInDay = 24*60*60;
-        ticksInAday = secondsInDay/gameTickRate;
-        needDecay = needMax/ticksInAday;
+        ticksInAday = SecondsInDay/gameTickRate;
+        NeedsManager.Instance.UpdateNeedDecay(ticksInAday);
         for (int i = 0; i < Mathf.Floor(ticksInAday); i++)
         {
 
-            temporaryNeed -= needDecay;
+            temporaryNeed -= NeedsManager.Instance.NeedDecay;
         }
-        Debug.Log("Full Needs: " + needMax);
-        Debug.Log("Tick Rate: " + gameTickRate);
-        Debug.Log("Seconds in a day: " + secondsInDay);
-        Debug.Log("Ticks in a day: " + ticksInAday);
-        Debug.Log("Needs in a Tick: " + needDecay);
-        Debug.Log("Full Needs after 24h neglect: " + Mathf.Round(temporaryNeed));
+
+        NeedsManager.Instance.PrintStressTestResults(gameTickRate, SecondsInDay, ticksInAday, temporaryNeed);
     }
 
     double TimeStamp()
@@ -192,9 +184,8 @@ public class Petmanager : MonoBehaviour
         patience += Time.deltaTime;
         lastInput +=  Time.deltaTime;
 
-
-        ticksInAday = gameTickRate/secondsInDay;
-        needDecay = (float)ticksInAday/needMax;
+        ticksInAday = SecondsInDay/gameTickRate;
+        NeedsManager.Instance.UpdateNeedDecay(ticksInAday);
 
         if (patience > gameTickTime)
         {
@@ -221,23 +212,14 @@ public class Petmanager : MonoBehaviour
 
     public void GameTick(bool catchup)
     {
-        happy = true;
-        foreach(var pair in needs)
-        {
-            var need = pair.Value;
-            need.value -= needDecay;
-            if(need.value < needMin)
-            {
-                need.value = needMin;
-                happy = false;
-            }
-        }
+        NeedsManager.Instance?.DecayNeeds();
+        
         if(!catchup)
         {
             petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
         }
 
-        if (happy)
+        if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
         {
             inventory[coin]++;
         }
@@ -261,13 +243,8 @@ public class Petmanager : MonoBehaviour
         
         if (inventory[item] > 0)
         {
-            var need = needs[item.needModifier];
+            NeedsManager.Instance.UpdateNeedAfterItem(item);
             
-            need.value += item.needModValue;
-            if (need.value > needMax)
-            {
-                need.value = needMax;
-            }
             SetPanel(-1);
             inventory[item] -= 1;
             _audio.Play(item.onUseSFX);
