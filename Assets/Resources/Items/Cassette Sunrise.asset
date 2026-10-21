@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
+  m_Name: Cassette Sunrise
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  sprite: {fileID: -2118873338115871752, guid: 2a9aefc24e8297f2c814ece317cc72c3, type: 3}
+  icon: {fileID: 1818538127, guid: ed03d4864cf04900586dbafb3fedc6e1, type: 3}
+  title: Sunrise
+  type: 1
+  needModifier: 0
+  needModValue: 0
+  rarity: {fileID: 11400000, guid: 81d72eaf15dce8c809b0c56393b6922e, type: 2}
+  onUseSFX: 0
+  assignedSongTitle: 14
+  itemType: cassette

@@ -14,6 +14,11 @@ public enum SongTag {
     Clouds,
 	DeepSea,
     Beach,
+    Camouflage,
+    Lemonade,
+    Milkshake,
+    Sunrise,
+    YinYang,
 };
 
 [CreateAssetMenu(fileName = "Song", menuName = "Scriptable Objects/Song")]
