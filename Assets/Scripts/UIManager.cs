@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     private float showY = -16; //showY is the Y value from rootY to slide to
     private float timer = 0; // time since shown
     private float showDelay = 10; // total time to show notificationpublic Sprite sprite;
-    private float slideSpeed = 5;
+    private float slideSpeed = 20;
     private string lastMsg; // lastMsg is just to check if the notification is new in Show()
 
     void Awake()

@@ -97,6 +97,21 @@ public class AudioManager : MonoBehaviour
         _audioSfx.Stop();
     }
 
+    public float GetTime()
+    {
+       return _audioBg.time;
+    }
+
+    public float GetLength()
+    {
+        return _audioBg.clip.length;
+    }
+
+    public bool IsPaused()
+    {
+        return !_audioBg.isPlaying;
+    }
+
     public void StopMusic()
     {
         _audioBg.Stop();
@@ -111,6 +126,19 @@ public class AudioManager : MonoBehaviour
         }
         Debug.LogWarning($"Song not found: {title}");
         return null;
+    }
+
+    public void TogglePaused()
+    {
+        var playing = _audioBg.isPlaying;
+        if(playing)
+        {
+            _audioBg.Pause();
+        }
+        else
+        {
+            _audioBg.Play();
+        }
     }
     
     private SFX GetSound(SFXTag tag)
