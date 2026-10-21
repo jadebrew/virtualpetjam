@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     private float statusDelay = 5;
     private string customStatus = "Stop";
 
+    private float bannerTimer = 0;
+
     public void AdjustVolume(float step)
     {
         maxvolume += step;
@@ -182,6 +184,23 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
+
+    public string GetSongBanner(int width,float scrollSpeed)
+    {
+        bannerTimer+=Time.deltaTime*scrollSpeed;
+        string full_string = " " + _currentSong.artist + " - " + _currentSong.title + " " + Status();
+        int start = 0;
+        int end = width;
+        int caret = (int)(bannerTimer%(full_string.Length-width));
+        string left = full_string.Substring(caret,Mathf.Min(caret+width,full_string.Length-width));
+        string right = "";
+        if (caret>width)
+        {
+             right = full_string.Substring(start,Mathf.Min(caret - width,full_string.Length-caret));
+        }
+        return left + right;
+    }
+
     public void TogglePaused()
     {
         var playing = _audioBg.isPlaying;
@@ -194,6 +213,8 @@ public class AudioManager : MonoBehaviour
             _audioBg.Play();
         }
     }
+
+
     
     private SFX GetSound(SFXTag tag)
     {
