@@ -7534,8 +7534,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8384,7 +8384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1754895683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8722,8 +8722,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10147,6 +10147,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181768936}
     m_Modifications:
+    - target: {fileID: 1765084594688876622, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
+      propertyPath: m_fontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765084594688876622, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2049663426719116384, guid: 0f7aea5dd1527a3dfbf78770629b8c7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

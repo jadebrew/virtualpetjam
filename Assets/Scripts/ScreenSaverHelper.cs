@@ -20,6 +20,6 @@ public class TimeHelper : MonoBehaviour
         }
         songText.text =  _audio.Status() + "\n" + _audio.NowPlaying().artist + "\n" + _audio.NowPlaying().title + "\n";
         albumCover.sprite = _audio.NowPlaying().sprite;
-        clockText.text = System.DateTime.UtcNow.ToString("HH:mm\ndd MMMM\nyyyy");
+        clockText.text = System.DateTime.Now.ToString("HH:mm\ndd MMMM\nyyyy");
     }
 }
