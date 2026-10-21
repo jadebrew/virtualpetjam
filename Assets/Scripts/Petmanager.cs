@@ -18,7 +18,7 @@ public class Petmanager : MonoBehaviour
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
-    public float screenSaverWait = 60;
+    public float screenSaverWait = 300;
     
     public TMP_Text HungerText;
     public TMP_Text HygieneText;
