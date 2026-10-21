@@ -131,14 +131,14 @@ public class AudioManager : MonoBehaviour
 
         if(!IsPaused())
         {
-            status = "(" + string.Format("{0:00}:{1:00}", minutes,seconds) + ")";
+            status = string.Format("{0:00}:{1:00}", minutes,seconds);
         }
         else if (timeleft<length)
         {
-            status = "(Paused)";
+            status = "Paused";
         }
         else {
-                status = "(Stopped)";
+                status = "Stopped";
             }
         return status;
 

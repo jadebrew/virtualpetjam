@@ -248,6 +248,7 @@ public class Petmanager : MonoBehaviour
     public void currentUseSFX()
     {
         _audio.Play(assignedUseSFX);
+        lastInput = 0;
     }
 
     public void Pet()
