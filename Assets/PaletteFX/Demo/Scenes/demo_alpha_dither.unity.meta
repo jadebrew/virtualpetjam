@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0851264e518f52f439f502c20b6e5a9b
+timeCreated: 1495762506
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Scenes/demo_alpha_dither.unity
+  uploadId: 311921

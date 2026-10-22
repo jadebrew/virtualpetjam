@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 31003ff15f5d92e44bd2675a32bdded4
+timeCreated: 1495724227
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Shaders/paletteFX_32bit.shader
+  uploadId: 311921

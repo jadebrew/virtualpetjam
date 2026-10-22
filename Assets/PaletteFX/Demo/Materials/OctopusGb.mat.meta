@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4ae70c7ed1d6ca14895ca1ce129f582e
+timeCreated: 1495750716
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Materials/OctopusGb.mat
+  uploadId: 311921

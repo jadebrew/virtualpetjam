@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
-public class SceneManager : MonoBehaviour
+public class MimiSceneManager : MonoBehaviour
 {
     public GameState[] gameStateDB;
 
