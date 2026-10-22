@@ -37,7 +37,8 @@ namespace Needs
                         sleepScoreText.text = $"{visualValue}";
                         break;
                     case NeedType.Hygiene:
-                        hygieneScoreText.text = $"{visualValue}";
+						if(hygieneScoreText != null)
+                            hygieneScoreText.text = $"{visualValue}";
                         break;
                     case NeedType.Hunger:
                         hungerScoreText.text = $"{visualValue}";

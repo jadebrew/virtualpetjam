@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Notification;
 using UnityEngine;
 
 namespace Needs
@@ -38,11 +39,6 @@ namespace Needs
             
         }
 
-        public void UpdateNeedDecay(float ticksInAday)
-        {
-            NeedDecay = NeedMax/ticksInAday;
-        }
-
         public void UpdateNeedAfterItem(Item item)
         {
             var need = _needs[item.needModifier];
@@ -67,6 +63,7 @@ namespace Needs
                 if (!(need.value < NeedMin)) continue;
                 
                 need.value = NeedMin;
+                NotificationManager.Instance.NotifyPetStatus(need.type);
                 IsPetHappy = false;
             }
             
@@ -83,6 +80,11 @@ namespace Needs
             Debug.Log("Ticks in a day: " + ticksInAday);
             Debug.Log("Needs in a Tick: " + NeedDecay);
             Debug.Log("Full Needs after 24h neglect: " + Mathf.Round(temporaryNeed));
+        }
+
+        public void SetNeedDecay(float ticksInAday)
+        {
+            NeedDecay = NeedMax/ticksInAday;
         }
     }
 }

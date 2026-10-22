@@ -6,6 +6,8 @@ namespace Notification
     {
         public Song Song;
         
+        public NotificationType Type { get; } = NotificationType.Song;
+        
         public NotificationView GetView()
         {
             var view = ScriptableObject.CreateInstance<NotificationView>();

@@ -27,7 +27,18 @@ namespace Notification
         public bool ShouldBeReplaced()
         {
             var ( nextUp, nextUpPrioLevel ) = _notificationQueue.PeekWithPriority();
-            return (nextUp != null && nextUpPrioLevel <= _currentNotificationPrioLevel);
+
+            if (nextUp == null)
+                return false;
+            
+            if (nextUpPrioLevel < _currentNotificationPrioLevel)
+                return true;
+            if (nextUpPrioLevel == _currentNotificationPrioLevel)
+            {
+                return (_currentNotification.Type == nextUp.Type && _currentNotification.Type == NotificationType.Song);
+            }
+
+            return false;
         }
 
         public void Next()
@@ -50,16 +61,15 @@ namespace Notification
             _notificationQueue.Enqueue(new SongNotification()
             {
                 Song = song
-            },1);
+            },2);
         }
     
-        public void NotifyCatStatus()
+        public void NotifyPetStatus(NeedType needType)
         {
-            //TODO
-            /*_notificationQueue.Enqueue(new SongNotification()
+            _notificationQueue.Enqueue(new PetNeedNotification()
             {
-                song = song
-            },1);*/
+                NeedType = needType
+            },1);
         }
     }
 }

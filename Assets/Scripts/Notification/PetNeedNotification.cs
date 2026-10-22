@@ -6,6 +6,8 @@ namespace Notification
     {
         public NeedType NeedType;
 
+        public NotificationType Type { get; } = NotificationType.PetNeedStatus;
+
         public NotificationView GetView()
         {
             var view = ScriptableObject.CreateInstance<NotificationView>();

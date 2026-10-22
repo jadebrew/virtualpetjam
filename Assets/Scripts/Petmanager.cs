@@ -29,6 +29,7 @@ public class Petmanager : MonoBehaviour
 
     public float gametimer = 0;
 
+    public float gameTickRate = 45; //seconds that it takes to call a Tick
 
     private float lastInput = 0;
 
@@ -50,22 +51,6 @@ public class Petmanager : MonoBehaviour
     private bool doscreensaver = false;
     
     public const bool DEBUG = false;
-
-    //gametick in seconds
-
-    // timer, timer measures time, when timer > gametick, it subtracts needDecay from needs, and puts timer to 0.
-    public float gameTickRate = 45; //seconds that it takes to call a Tick
-
-    //(ticksInaDay*needDecay) = 100 ???
-
-    //should take a day to deplete 100% needs (60M*24H).
-    private const float SecondsInDay = 24*60*60;
-    //if i want needs to deplete over 24 hours (so needMax = 100)
-    //trisha: how many ticks would there be in a day if a tick would last 45 seconds
-
-    private float ticksInAday;
-
-    private float temporaryNeed = 100;
 
     //TODO figure out formula later!!! (thanks honey <333)
 
@@ -112,8 +97,8 @@ public class Petmanager : MonoBehaviour
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
         menuPanel.SetActive(true);
-        
-        
+
+        CalculateAndSetNeedDelay();
         
         foreach (var item in Resources.LoadAll<Item>("Items"))
         {
@@ -140,13 +125,20 @@ public class Petmanager : MonoBehaviour
         _audio.Play(JapanInverted);
 
         Debug.Log("Game Initialized.");
-        if (DEBUG)
+        /*if (DEBUG)
         {
             StressTest();
-        }
+        }*/
         
         Load();
-        }
+    }
+    
+    private void CalculateAndSetNeedDelay()
+    {
+        float secondsInDay = 24*60*60;
+        float ticksInAday = secondsInDay/gameTickRate;
+        NeedsManager.Instance.SetNeedDecay(ticksInAday);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -156,18 +148,16 @@ public class Petmanager : MonoBehaviour
 
     }
 
-    private void StressTest()
+    /*private void StressTest()
     {
-        ticksInAday = SecondsInDay/gameTickRate;
-        NeedsManager.Instance.UpdateNeedDecay(ticksInAday);
         for (int i = 0; i < Mathf.Floor(ticksInAday); i++)
         {
 
             temporaryNeed -= NeedsManager.Instance.NeedDecay;
         }
 
-        NeedsManager.Instance.PrintStressTestResults(gameTickRate, SecondsInDay, ticksInAday, temporaryNeed);
-    }
+        //NeedsManager.Instance.PrintStressTestResults(gameTickRate, SecondsInDay, ticksInAday, temporaryNeed);
+    }*/
 
     double TimeStamp()
     {
@@ -181,9 +171,6 @@ public class Petmanager : MonoBehaviour
     {
         patience += Time.deltaTime;
         lastInput +=  Time.deltaTime;
-
-        ticksInAday = SecondsInDay/gameTickRate;
-        NeedsManager.Instance.UpdateNeedDecay(ticksInAday);
 
         if (patience > gameTickTime)
         {
