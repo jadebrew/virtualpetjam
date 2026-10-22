@@ -31,7 +31,7 @@ public class CatchGame : MonoBehaviour
         catchScene.SetActive(true);
         soundEffect = useSFX;
         _audio = AudioManager.Instance;
-        verdictText.text = "Catch!";
+        verdictText.text = "Wait!";
         score = 0;
         Run();
 
@@ -40,10 +40,11 @@ public class CatchGame : MonoBehaviour
     {
         var newPos = player.transform.localPosition;
         Vector3 pos = fallingItem.transform.localPosition;
-        newPos.x = positions[(int)Mathf.Round(UnityEngine.Random.Range(0,positions.Length))];
+        //newPos.x = positions[(int)Mathf.Round(UnityEngine.Random.Range(0,positions.Length))];
         while (newPos.x == pos.x)
         {
             newPos.x = positions[(int)Mathf.Round(UnityEngine.Random.Range(0,positions.Length))];
+            verdictText.text = "Not yet!";
         }
          player.transform.localPosition = newPos;
          patience = 0;
@@ -52,8 +53,12 @@ public class CatchGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var bottom_y = -12;
+        var top_y = 60;
+
         if(!gameOver)
         {
+            string verdict = "Oof";
             patience += Time.deltaTime;
             cooldown = Mathf.Max(0,cooldown-Time.deltaTime);
             if (patience>maxPatience)
@@ -63,31 +68,39 @@ public class CatchGame : MonoBehaviour
 
             Vector3 pos = fallingItem.transform.localPosition;
             pos.y -= Time.deltaTime * speed;
-            if(pos.y<-12)
+
+            var current_y = (pos.y - bottom_y);
+            if (current_y<30)
+            {
+                verdictText.text = "Now!";
+
+            } else if (current_y<40) {
+                Run();
+            }
+            if(pos.y<bottom_y)
             {
                 caught++;
                 if (pos.x == player.transform.localPosition.x)
                 {
-                    string verdict = "Oof";
                     if (cooldown < 0.5)
                     {
-                        verdict = "Too late!";
-                    } else if (cooldown < 0.75)
+                        verdict = "Too Soon!";
+                    } else if (cooldown < 0.6)
                     {
                         verdict = "Okay!";
                         score += 25;
-                    } else if (cooldown < 0.80)
-                    {
-                        verdict = "Good!";
-                        score += 50;
-                    }else if (cooldown < 0.9)
-                    {
-                        verdict = "Amazing!";
-                        score += 75;
-                    }else
+                    } else if (cooldown < 0.75)
                     {
                         verdict = "Perfect!";
                         score += 100;
+                    }else if (cooldown < 0.8)
+                    {
+                        verdict = "Amazing!";
+                        score += 50;
+                    }else
+                    {
+                        verdict = "Okay!";
+                        score += 25;
                     }
                     verdictText.text = verdict;
 
@@ -104,7 +117,7 @@ public class CatchGame : MonoBehaviour
                 }
                 scoreText.text = "Score " + score;
 
-                pos.y = 60;
+                pos.y = top_y;
                 pos.x = positions[(int)Mathf.Round(UnityEngine.Random.Range(0,positions.Length))];
             }
             fallingItem.transform.localPosition = pos;
