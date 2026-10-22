@@ -321,6 +321,7 @@ public class Petmanager : MonoBehaviour
             mainMenuPanel.SetActive(true);
             _audio.Play(Cancel);
             doscreensaver = true;
+            lastInput = 0;
 
         }
         else if (menuindex == 3)
