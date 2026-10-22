@@ -71,5 +71,13 @@ namespace Notification
                 NeedType = needType
             },1);
         }
+        
+        public void NotifyWelcomeBack(int amountOfCoinsGained)
+        {
+            _notificationQueue.Enqueue(new WelcomeBackNotification()
+            {
+                AmountOfCoinsGained = amountOfCoinsGained
+            },0);
+        }
     }
 }

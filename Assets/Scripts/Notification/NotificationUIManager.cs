@@ -16,6 +16,8 @@ namespace Notification
         [SerializeField] public Sprite sleepIcon;
         [SerializeField] public Sprite hygieneIcon;
         [SerializeField] public Sprite hungerIcon;
+        
+        [SerializeField] public Sprite welcomeBackIcon;
     
         private const float ShowNotificationTimeLength = 10;
         private const float SlideSpeed = 20;
