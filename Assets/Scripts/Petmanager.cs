@@ -243,6 +243,7 @@ public class Petmanager : MonoBehaviour
         }
         Save();
         lastInput = 0;
+        doscreensaver = false;
     }
 
     public void currentUseSFX()
