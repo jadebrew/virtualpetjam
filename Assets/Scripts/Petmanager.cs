@@ -65,6 +65,10 @@ public class Petmanager : MonoBehaviour
 
     public CatchGame catchGame;
 
+    public int coin_xp = 0;
+    public int expectedCoinsPerDay = 25;
+    public int xpUntilNextCoin;
+
 
     [SerializeField]
     public Dictionary<Item,int> inventory = new Dictionary<Item,int>();
@@ -135,6 +139,11 @@ public class Petmanager : MonoBehaviour
     {
         float secondsInDay = 24*60*60;
         float ticksInAday = secondsInDay/gameTickRate;
+
+        // coin_xp
+        // expectedCoinsPerDay
+        xpUntilNextCoin = 100;
+
         NeedsManager.Instance.SetNeedDecay(ticksInAday);
     }
 
@@ -204,7 +213,13 @@ public class Petmanager : MonoBehaviour
 
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
         {
-            inventory[coin]++;
+            coin_xp++;
+            if(coin_xp>xpUntilNextCoin)
+            {
+                coin_xp = 0;
+                inventory[coin]++;
+                // Mimi is very happy! You got a coin!
+            }
         }
         else
         {
