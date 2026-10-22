@@ -35,6 +35,9 @@ public class Petmanager : MonoBehaviour
 
     public string datetime;
 
+
+    public string savename = "Mimi";
+
     public GameObject bagParent;
     public TMP_Text bagTitle;
 
@@ -352,6 +355,12 @@ public class Petmanager : MonoBehaviour
         {
             screenSaver.SetActive(true);
         }
+
+        Selectable first = FindFirstObjectByType<Selectable>();
+        if (first != null)
+        {
+            EventSystem.current.SetSelectedGameObject(first.gameObject);
+        }
         Save();
     }
 
@@ -430,7 +439,7 @@ public class Petmanager : MonoBehaviour
         petJson.Add("inventory",invJson);
 
         petJson.Add("timestamp",TimeStamp());
-        string path = Application.persistentDataPath + "/mimi_save.json";
+        string path = Application.persistentDataPath + "/"+ savename + "_save.json";
         if(!File.Exists(path))
         {
             Debug.Log("Creating new savefile at: " + path);
@@ -442,7 +451,7 @@ public class Petmanager : MonoBehaviour
 
     void Load()
     {
-        string path = Application.persistentDataPath + "/mimi_save.json";
+        string path = Application.persistentDataPath + "/"+ savename + "_save.json";
         if(File.Exists(path))
         {
             string jsonString = File.ReadAllText(path);

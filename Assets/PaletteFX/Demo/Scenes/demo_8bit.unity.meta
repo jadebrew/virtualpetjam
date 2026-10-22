@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6f4e4052f428f9b4cb080c96faca3e8f
+timeCreated: 1495727575
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Scenes/demo_8bit.unity
+  uploadId: 311921

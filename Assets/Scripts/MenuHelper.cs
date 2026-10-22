@@ -23,7 +23,7 @@ public class MenuHelper : MonoBehaviour
 
     public Petmanager pet;
 
-    public SceneManager _sceneManager;
+    public MimiSceneManager _sceneManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void SetTitle(string title)
     {

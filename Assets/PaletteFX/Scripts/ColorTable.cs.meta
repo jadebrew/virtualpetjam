@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 03e09b3c9b1b70045b8e02bdce28965a
+timeCreated: 1495728296
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Scripts/ColorTable.cs
+  uploadId: 311921

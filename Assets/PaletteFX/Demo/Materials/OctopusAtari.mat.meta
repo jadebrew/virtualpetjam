@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f4e70d4d28608bb4cbd2315144ad039f
+timeCreated: 1495750522
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Materials/OctopusAtari.mat
+  uploadId: 311921
