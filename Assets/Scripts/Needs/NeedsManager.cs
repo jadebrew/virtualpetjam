@@ -40,7 +40,7 @@ namespace Needs
 
         public void UpdateNeedDecay(float ticksInAday)
         {
-            NeedDecay = ticksInAday/NeedMax;
+            NeedDecay = NeedMax/ticksInAday;
         }
 
         public void UpdateNeedAfterItem(Item item)
@@ -63,6 +63,7 @@ namespace Needs
             foreach (var need in _needs.Select(pair => pair.Value))
             {
                 need.value -= NeedDecay;
+                Debug.Log("Lost " + NeedDecay + " " + need.title);
                 if (!(need.value < NeedMin)) continue;
                 
                 need.value = NeedMin;
