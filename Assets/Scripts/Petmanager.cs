@@ -145,8 +145,9 @@ public class Petmanager : MonoBehaviour
 
     private void FindSelectable()
     {
+        var controllerMode = false;
         Selectable first = FindFirstObjectByType<Selectable>();
-        if (first != null)
+        if (controllerMode && first != null)
         {
             EventSystem.current.SetSelectedGameObject(first.gameObject);
             Debug.Log("Selected " + first.gameObject);
@@ -225,7 +226,7 @@ public class Petmanager : MonoBehaviour
             FindSelectable();
             lastInput = 0;
         }
-        _cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
+        //_cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
     }
 
     public void GameTick(bool catchup)
