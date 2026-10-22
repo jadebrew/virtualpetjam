@@ -29,7 +29,7 @@ public class Petmanager : MonoBehaviour
 
     public float gametimer = 0;
 
-    public float gameTickRate = 45; //seconds that it takes to call a Tick
+    public float gameTickRate = 60; //seconds that it takes to call a Tick
 
     private float lastInput = 0;
 
@@ -51,8 +51,6 @@ public class Petmanager : MonoBehaviour
     private bool doscreensaver = false;
     
     public const bool DEBUG = false;
-
-    //TODO figure out formula later!!! (thanks honey <333)
 
     public GameObject templateButton;
 
@@ -398,6 +396,8 @@ public class Petmanager : MonoBehaviour
 
     public void InitMenu(GameState state)
     {
+        doscreensaver = false;
+        lastInput = 0;
         var menu = menuPanel.GetComponent<MenuHelper>();
         menu.SetGameState(state);
     }
