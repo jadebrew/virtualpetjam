@@ -260,7 +260,7 @@ public class Petmanager : MonoBehaviour
         {
             SetPanel(9);
         } else {
-            screenSaver.SetActive(false);
+            //screenSaver.SetActive(false);
         }
     }
 
