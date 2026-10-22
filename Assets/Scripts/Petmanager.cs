@@ -466,16 +466,17 @@ public class Petmanager : MonoBehaviour
     {
 
             int rounds = 0;
+            
+            int coinsBefore = inventory[coin];
 
             for (double t = seconds; t < TimeStamp(); t+=gameTickRate)
             {
                 GameTick(true);
                 rounds++;
             }
-            double timeAway = (TimeStamp() - seconds);
-            Debug.Log("Welcome back! You've been away for " + Mathf.Floor((float)timeAway) + " Seconds.");
-            Debug.Log("Game caught up for " + rounds.ToString() + " Ticks.");
-            //TODO  while you were away Notification ()
+            //double timeAway = (TimeStamp() - seconds);
+            
+            NotificationManager.Instance.NotifyWelcomeBack(inventory[coin] - coinsBefore);
         }
 }
 

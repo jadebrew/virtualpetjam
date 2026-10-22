@@ -86,5 +86,18 @@ namespace Needs
         {
             NeedDecay = NeedMax/ticksInAday;
         }
+
+        public List<NeedType> GetProblems()
+        {
+            var needTypes = new List<NeedType>();
+            foreach (var (type, need) in _needs)
+            {
+                if (need.value < NeedMin)
+                {
+                    needTypes.Add(type);
+                }
+            }
+            return needTypes;
+        }
     }
 }

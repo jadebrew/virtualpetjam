@@ -3,7 +3,8 @@ namespace Notification
     public enum NotificationType
     {
         Song,
-        PetNeedStatus
+        PetNeedStatus,
+        WelcomeBack
     }
 
     public interface INotification
