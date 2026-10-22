@@ -4,7 +4,8 @@ namespace Notification
     {
         Song,
         PetNeedStatus,
-        WelcomeBack
+        WelcomeBack,
+        CoinReward,
     }
 
     public interface INotification

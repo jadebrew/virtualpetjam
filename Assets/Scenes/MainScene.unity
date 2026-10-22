@@ -1746,7 +1746,8 @@ MonoBehaviour:
   sleepIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
   hygieneIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
   hungerIcon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
-  welcomeBackIcon: {fileID: 3679080733298622648, guid: c493790de2a118104aac0873a1ff5780, type: 3}
+  welcomeBackIcon: {fileID: 8806033626602127081, guid: a3665c15c0cda97aa9420df76b455321, type: 3}
+  coinRewardIcon: {fileID: 8806033626602127081, guid: a3665c15c0cda97aa9420df76b455321, type: 3}
 --- !u!4 &433799685
 Transform:
   m_ObjectHideFlags: 0
@@ -6895,6 +6896,9 @@ MonoBehaviour:
   lastWon: {fileID: 1843295867}
   lastConsumed: {fileID: 1432260843}
   catchGame: {fileID: 149589139}
+  coin_xp: 0
+  expectedCoinsPerDay: 25
+  xpUntilNextCoin: 0
   inventory:
   - key: {fileID: 11400000, guid: 6d66fe77b9a34e768962733eeece4d8d, type: 2}
     value: 3

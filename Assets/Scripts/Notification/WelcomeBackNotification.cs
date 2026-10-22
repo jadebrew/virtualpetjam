@@ -18,7 +18,7 @@ namespace Notification
 
             var coinMessage = AmountOfCoinsGained switch
             {
-                0 => "No coins gained today.",
+                0 => "No coins gained while away.",
                 > 0 => $"While away you earned {AmountOfCoinsGained} ¥.",
                 _ => ""
             };

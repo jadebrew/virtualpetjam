@@ -79,5 +79,10 @@ namespace Notification
                 AmountOfCoinsGained = amountOfCoinsGained
             },0);
         }
+        
+        public void NotifyCoinReward()
+        {
+            _notificationQueue.Enqueue(new CoinRewardNotification(),1);
+        }
     }
 }

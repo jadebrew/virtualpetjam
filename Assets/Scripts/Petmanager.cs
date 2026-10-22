@@ -218,7 +218,7 @@ public class Petmanager : MonoBehaviour
             {
                 coin_xp = 0;
                 inventory[coin]++;
-                // Mimi is very happy! You got a coin!
+                NotificationManager.Instance.NotifyCoinReward();
             }
         }
         else
