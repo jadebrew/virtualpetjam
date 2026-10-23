@@ -14,6 +14,7 @@ using Needs;
 using Notification;
 using SimpleJSON;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Petmanager : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Petmanager : MonoBehaviour
     public GameObject bagParent;
     public TMP_Text bagTitle;
 
+    public GameObject homePanel;
     public GameObject mainMenuPanel;
     public GameObject radioMenuPanel;
     public GameObject bagMenuPanel;
@@ -84,6 +86,8 @@ public class Petmanager : MonoBehaviour
     public int currentPull;
 
     private NotificationManager _notif;
+
+    public GameObject _cursor;
     
     private UIManager _ui;
     
@@ -99,6 +103,7 @@ public class Petmanager : MonoBehaviour
         bagMenuPanel.SetActive(false);
         winPanel.SetActive(false);
         consumePanel.SetActive(false);
+        homePanel.SetActive(false);
         menuPanel.SetActive(true);
 
         CalculateAndSetNeedDelay();
@@ -122,9 +127,6 @@ public class Petmanager : MonoBehaviour
                 lootTable.Add(item);
             }
         }
-
-        FillPlaylist();
-
         lootTable.Shuffle();
         currentPull = 0;
         gachaWinDefaultPos = lastWon.transform.localPosition;
@@ -151,6 +153,18 @@ public class Petmanager : MonoBehaviour
         }
     }
 
+
+    private void FindSelectable()
+    {
+        var controllerMode = false;
+        Selectable first = FindFirstObjectByType<Selectable>();
+        if (controllerMode && first != null)
+        {
+            EventSystem.current.SetSelectedGameObject(first.gameObject);
+            Debug.Log("Selected " + first.gameObject);
+        }
+    }
+    
     private void CalculateAndSetNeedDelay()
     {
         float secondsInDay = 24*60*60;
@@ -216,6 +230,14 @@ public class Petmanager : MonoBehaviour
             currentPull = 0;
             lootTable.Shuffle();
         }
+
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            FindSelectable();
+            lastInput = 0;
+        }
+        //_cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
     }
 
     public void GameTick(bool catchup)
@@ -248,6 +270,8 @@ public class Petmanager : MonoBehaviour
         if (NotificationUIManager.Instance && !NotificationUIManager.Instance.notificationMessage.activeSelf && doscreensaver && lastInput > screenSaverWait)
         {
             SetPanel(9);
+        } else {
+            //screenSaver.SetActive(false);
         }
     }
 
@@ -344,10 +368,12 @@ public class Petmanager : MonoBehaviour
         creditPanel.SetActive(false);
         screenSaver.SetActive(false);
         doscreensaver = false;
+        homePanel.SetActive(false);
 
-        if (menuindex == -1)
+        if (menuindex <= 0)
         {
             mainMenuPanel.SetActive(true);
+            homePanel.SetActive(true);
             _audio.Play(Cancel);
             doscreensaver = true;
             lastInput = 0;
@@ -356,18 +382,23 @@ public class Petmanager : MonoBehaviour
         else if (menuindex == 3)
         {
             radioMenuPanel.SetActive(true);
+            homePanel.SetActive(false);
             ShowBag("cassette");
             _audio.Play(Select);
         }
         else if (menuindex == 4)
         {
             gachaMenuPanel.SetActive(true);
+            homePanel.SetActive(false);
             _audio.Play(Select);
         }
         else if (menuindex == 9)
         {
             screenSaver.SetActive(true);
+            homePanel.SetActive(true);
+            mainMenuPanel.SetActive(false);
         }
+        FindSelectable();
         Save();
     }
 
@@ -423,6 +454,8 @@ public class Petmanager : MonoBehaviour
             bagTitle.text = filter;
         }
         lastInput = 0;
+        homePanel.SetActive(false);
+        FindSelectable();
     }
 
     public void InitMenu(GameState state)
@@ -430,7 +463,10 @@ public class Petmanager : MonoBehaviour
         doscreensaver = false;
         lastInput = 0;
         var menu = menuPanel.GetComponent<MenuHelper>();
+        homePanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
         menu.SetGameState(state);
+        FindSelectable();
     }
 
     void Save() {
@@ -449,7 +485,7 @@ public class Petmanager : MonoBehaviour
         
         petJson.Add("playbackMode",AudioManager.PlaybackModeToString(Settings.PlaybackMode));
         
-        string path = Application.persistentDataPath + "/mimi_save.json";
+        string path = Application.persistentDataPath + "/"+ Settings.PetName + "_save.json";
         if(!File.Exists(path))
         {
             Debug.Log("Creating new savefile at: " + path);
@@ -461,8 +497,13 @@ public class Petmanager : MonoBehaviour
 
     void Load()
     {
-        string path = Application.persistentDataPath + "/mimi_save.json";
-        if(File.Exists(path))
+        
+        var folderPath = Application.persistentDataPath;
+        var searchPattern = "*_save.json";
+
+        var path = Directory.GetFiles(folderPath, searchPattern).FirstOrDefault();
+        
+        if(!string.IsNullOrEmpty(path))//savefile exists
         {
             string jsonString = File.ReadAllText(path);
 
@@ -471,9 +512,6 @@ public class Petmanager : MonoBehaviour
             Settings.PetName = petJson["name"];
 
             JSONObject invJson = (JSONObject)petJson["inventory"];
-            
-            //load playlist
-            
 
             Dictionary<Item,int> loadedInventory = new Dictionary<Item,int>();
 

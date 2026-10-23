@@ -25,6 +25,8 @@ public class CatchGame : MonoBehaviour
 
     private int score = 0;
 
+    private int randomCoin = 5;
+
     public void Init(SFXTag useSFX)
     {
         gameOver = false;

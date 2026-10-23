@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 4cf2e36a2e667f64d8f423cc8b4487d8
+timeCreated: 1495762645
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Scripts/DemoAlphaDither.cs
+  uploadId: 311921

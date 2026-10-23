@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a11162fdade74af43801b34b8f32a486
+timeCreated: 1495763911
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91488
+  packageName: PaletteFX - Ultimate Color Swapping!
+  packageVersion: 1.1
+  assetPath: Assets/PaletteFX/Demo/Materials/OctopusDither.mat
+  uploadId: 311921
