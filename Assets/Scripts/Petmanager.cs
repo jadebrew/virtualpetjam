@@ -9,6 +9,7 @@ using static SongTag;
 using Random = UnityEngine.Random;
 using System.IO;
 using System.Linq;
+using Audio;
 using Needs;
 using Notification;
 using SimpleJSON;
@@ -121,6 +122,9 @@ public class Petmanager : MonoBehaviour
                 lootTable.Add(item);
             }
         }
+
+        FillPlaylist();
+
         lootTable.Shuffle();
         currentPull = 0;
         gachaWinDefaultPos = lastWon.transform.localPosition;
@@ -134,7 +138,19 @@ public class Petmanager : MonoBehaviour
         
         Load();
     }
-    
+
+    //TODO move
+    private void FillPlaylist()
+    {
+        foreach (var (item, amount) in inventory)
+        {
+            if (item.itemType == "cassette" && amount > 0)
+            {
+                StereoManager.Instance.AddSongToPlaylist(item.assignedSongTitle);
+            }
+        }
+    }
+
     private void CalculateAndSetNeedDelay()
     {
         float secondsInDay = 24*60*60;
@@ -430,6 +446,9 @@ public class Petmanager : MonoBehaviour
         petJson.Add("inventory",invJson);
 
         petJson.Add("timestamp",TimeStamp());
+        
+        petJson.Add("playbackMode",AudioManager.PlaybackModeToString(Settings.PlaybackMode));
+        
         string path = Application.persistentDataPath + "/mimi_save.json";
         if(!File.Exists(path))
         {
@@ -452,6 +471,9 @@ public class Petmanager : MonoBehaviour
             Settings.PetName = petJson["name"];
 
             JSONObject invJson = (JSONObject)petJson["inventory"];
+            
+            //load playlist
+            
 
             Dictionary<Item,int> loadedInventory = new Dictionary<Item,int>();
 
@@ -466,11 +488,19 @@ public class Petmanager : MonoBehaviour
             {
                 inventory[ownedItem.Key] = ownedItem.Value;
             }
+            
             //catch up system
             if(petJson["timestamp"])
             {
                 CatchUp(petJson["timestamp"]);
             }
+            
+            if(petJson["playbackMode"])
+            {
+                Settings.PlaybackMode = AudioManager.PlaybackModeFromString(petJson["playbackMode"]);
+            }
+            
+            FillPlaylist();
 
         } else {
             Debug.Log("File not found: " + path);
