@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 using System.IO;
 using System.Linq;
 using Audio;
+using MiniGames;
 using Needs;
 using Notification;
 using SimpleJSON;
@@ -88,6 +89,15 @@ public class Petmanager : MonoBehaviour
     public GameObject _cursor;
     
     private UIManager _ui;
+    
+    //TODO this is horrible and should be done with enums instead,
+    //but I did it like this because it might be used by editor like this
+    //and I don't want to break stuff close to the deadline
+
+    private const int MainMenuPanelIndex = 0;
+    private const int RadioMenuPanelIndex = 3;
+    private const int GachaMenuPanelIndex = 4;
+    private const int ScreenSaverIndex = 9;
     
     void Awake()
     {
@@ -257,7 +267,7 @@ public class Petmanager : MonoBehaviour
         
         if (NotificationUIManager.Instance && !NotificationUIManager.Instance.notificationMessage.activeSelf && doscreensaver && lastInput > screenSaverWait)
         {
-            SetPanel(9);
+            SetPanel(ScreenSaverIndex);
         } else {
             //screenSaver.SetActive(false);
         }
@@ -276,7 +286,23 @@ public class Petmanager : MonoBehaviour
             _audio.Play(item.onUseSFX);
             assignedUseSFX = item.onUseSFX;
             lastConsumed.GetComponent<Image>().sprite = item.sprite;
-            catchGame.Init(assignedUseSFX);
+
+            switch (item.needModifier)
+            {
+                case NeedType.Hunger:
+                    catchGame.Init(assignedUseSFX);
+                    break;
+                case NeedType.Sleep:
+                    catchGame.Init(assignedUseSFX);//TODO change to memory game
+                    break;
+                case NeedType.Hygiene:
+                    catchGame.Init(assignedUseSFX);//TODO change to some yet undetermined mini game
+                    break;
+                default:
+                    break;
+            }
+
+            
         }
         else
         {
@@ -338,12 +364,12 @@ public class Petmanager : MonoBehaviour
         }
         else
         {
-            SetPanel(4);
+            SetPanel(GachaMenuPanelIndex);
         }
         lastInput = 0;
     }
 
-    public void SetPanel(int menuindex)
+    public void SetPanel(int menuIndex)
     {
         lastInput = 0;
         mainMenuPanel.SetActive(false);
@@ -357,34 +383,36 @@ public class Petmanager : MonoBehaviour
         screenSaver.SetActive(false);
         doscreensaver = false;
         homePanel.SetActive(false);
+        
+        //TODO this is horrible and should be done with enums instead,
+        //but I did it like this because it might be used by editor like this
+        //and I don't want to break stuff close to the deadline
 
-        if (menuindex <= 0)
+        switch (menuIndex)
         {
-            mainMenuPanel.SetActive(true);
-            homePanel.SetActive(true);
-            _audio.Play(Cancel);
-            doscreensaver = true;
-            lastInput = 0;
-
-        }
-        else if (menuindex == 3)
-        {
-            radioMenuPanel.SetActive(true);
-            homePanel.SetActive(false);
-            ShowBag("cassette");
-            _audio.Play(Select);
-        }
-        else if (menuindex == 4)
-        {
-            gachaMenuPanel.SetActive(true);
-            homePanel.SetActive(false);
-            _audio.Play(Select);
-        }
-        else if (menuindex == 9)
-        {
-            screenSaver.SetActive(true);
-            homePanel.SetActive(true);
-            mainMenuPanel.SetActive(false);
+            case <= MainMenuPanelIndex:// <= 0
+                mainMenuPanel.SetActive(true);
+                homePanel.SetActive(true);
+                _audio.Play(Cancel);
+                doscreensaver = true;
+                lastInput = 0;
+                break;
+            case RadioMenuPanelIndex:// = 3
+                radioMenuPanel.SetActive(true);
+                homePanel.SetActive(false);
+                ShowBag("cassette");
+                _audio.Play(Select);
+                break;
+            case GachaMenuPanelIndex:// = 4
+                gachaMenuPanel.SetActive(true);
+                homePanel.SetActive(false);
+                _audio.Play(Select);
+                break;
+            case ScreenSaverIndex:// = 9;
+                screenSaver.SetActive(true);
+                homePanel.SetActive(true);
+                mainMenuPanel.SetActive(false);
+                break;
         }
         FindSelectable();
         Save();
@@ -460,7 +488,7 @@ public class Petmanager : MonoBehaviour
     private void Save() {
         var petJson = new JSONObject();
         Debug.Log("Attempting to save.");
-        petJson.Add("Name",Settings.PetName);
+        petJson.Add("name",Settings.PetName);
         var invJson = new JSONObject();
         foreach(var pair in inventory)
         {
@@ -498,8 +526,11 @@ public class Petmanager : MonoBehaviour
             var jsonString = File.ReadAllText(path);
 
             var petJson = (JSONObject)JSON.Parse(jsonString);
-
-            Settings.PetName = petJson["name"];
+            
+            if(petJson["name"])
+            {
+                Settings.PetName = petJson["name"];
+            }
 
             var invJson = (JSONObject)petJson["inventory"];
 

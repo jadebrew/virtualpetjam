@@ -13,8 +13,8 @@ namespace Needs
         private const float NeedMax = 100;
 
         private Dictionary<NeedType, Need> _needs = new ();
-        
-        public float NeedDecay { get;  private set; }
+
+        private float NeedDecay { get; set; }
 
         public bool IsPetHappy { get; private set; } = true;
     
