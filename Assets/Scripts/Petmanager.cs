@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 using System.Collections.Generic;
-using static NeedType;
 using static SFXTag;
 using static SongTag;
 using Random = UnityEngine.Random;
@@ -167,22 +165,12 @@ public class Petmanager : MonoBehaviour
     
     private void CalculateAndSetNeedDelay()
     {
-        float secondsInDay = 24*60*60;
-        float ticksInAday = secondsInDay/gameTickRate;
+        const float secondsInDay = 24*60*60;
+        var ticksInAday = secondsInDay/gameTickRate;
 
-        // coin_xp
-        // expectedCoinsPerDay
         xpUntilNextCoin = 100;
 
         NeedsManager.Instance.SetNeedDecay(ticksInAday);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       // GameTick(true);
-
-
     }
 
     /*private void StressTest()
@@ -196,7 +184,7 @@ public class Petmanager : MonoBehaviour
         //NeedsManager.Instance.PrintStressTestResults(gameTickRate, SecondsInDay, ticksInAday, temporaryNeed);
     }*/
 
-    double TimeStamp()
+    private double TimeStamp()
     {
         var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
         var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
@@ -204,7 +192,7 @@ public class Petmanager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         patience += Time.deltaTime;
         lastInput +=  Time.deltaTime;
@@ -299,7 +287,7 @@ public class Petmanager : MonoBehaviour
         doscreensaver = false;
     }
 
-    public void currentUseSFX()
+    public void CurrentUseSfx()
     {
         _audio.Play(assignedUseSFX);
         lastInput = 0;
@@ -318,13 +306,13 @@ public class Petmanager : MonoBehaviour
     {
         if (inventory[coin]>0)
         {
-            int win_index = currentPull;
+            var winIndex = currentPull;
             currentPull++;
 
-            Item wonItem = lootTable[win_index];
-            inventory[lootTable[win_index]]++;
+            Item wonItem = lootTable[winIndex];
+            inventory[lootTable[winIndex]]++;
             lastWon.GetComponent<Image>().sprite = wonItem.rarity.sprite;
-            lastWonIndex = win_index;
+            lastWonIndex = winIndex;
             winDone = false;
 
             _audio.Play(NewItem);
@@ -469,11 +457,11 @@ public class Petmanager : MonoBehaviour
         FindSelectable();
     }
 
-    void Save() {
-        JSONObject petJson = new JSONObject();
+    private void Save() {
+        var petJson = new JSONObject();
         Debug.Log("Attempting to save.");
         petJson.Add("Name",Settings.PetName);
-        JSONObject invJson = new JSONObject();
+        var invJson = new JSONObject();
         foreach(var pair in inventory)
         {
             invJson.Add(pair.Key.title,pair.Value);
@@ -485,7 +473,7 @@ public class Petmanager : MonoBehaviour
         
         petJson.Add("playbackMode",AudioManager.PlaybackModeToString(Settings.PlaybackMode));
         
-        string path = Application.persistentDataPath + "/"+ Settings.PetName + "_save.json";
+        var path = Application.persistentDataPath + "/"+ Settings.PetName + "_save.json";
         if(!File.Exists(path))
         {
             Debug.Log("Creating new savefile at: " + path);
@@ -495,36 +483,38 @@ public class Petmanager : MonoBehaviour
 
     }
 
-    void Load()
+    private void Load()
     {
         
         var folderPath = Application.persistentDataPath;
-        var searchPattern = "*_save.json";
+        const string searchPattern = "*_save.json";
 
-        var path = Directory.GetFiles(folderPath, searchPattern).FirstOrDefault();
+        var path = Directory.GetFiles(folderPath, searchPattern)
+            .OrderByDescending(File.GetLastWriteTime)
+            .FirstOrDefault();
         
         if(!string.IsNullOrEmpty(path))//savefile exists
         {
-            string jsonString = File.ReadAllText(path);
+            var jsonString = File.ReadAllText(path);
 
-            JSONObject petJson = (JSONObject)JSON.Parse(jsonString);
+            var petJson = (JSONObject)JSON.Parse(jsonString);
 
             Settings.PetName = petJson["name"];
 
-            JSONObject invJson = (JSONObject)petJson["inventory"];
+            var invJson = (JSONObject)petJson["inventory"];
 
-            Dictionary<Item,int> loadedInventory = new Dictionary<Item,int>();
+            var loadedInventory = new Dictionary<Item,int>();
 
-            foreach(KeyValuePair<Item, int> ownedItem in inventory)
+            foreach(var (key, _) in inventory)
             {
-                if (invJson[ownedItem.Key.title])
+                if (invJson[key.title])
                 {
-                    loadedInventory.Add(ownedItem.Key,invJson[ownedItem.Key.title]);
+                    loadedInventory.Add(key,invJson[key.title]);
                 }
             }
-            foreach(KeyValuePair<Item, int> ownedItem in loadedInventory)
+            foreach(var (key, value) in loadedInventory)
             {
-                inventory[ownedItem.Key] = ownedItem.Value;
+                inventory[key] = value;
             }
             
             //catch up system
@@ -546,7 +536,7 @@ public class Petmanager : MonoBehaviour
         }
     }
 
-    void CatchUp(double seconds)
+    private void CatchUp(double seconds)
     {
 
             int rounds = 0;

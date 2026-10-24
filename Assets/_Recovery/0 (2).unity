@@ -3648,7 +3648,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1529103038}
         m_TargetAssemblyTypeName: Petmanager, Assembly-CSharp
-        m_MethodName: currentUseSFX
+        m_MethodName: CurrentUseSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
