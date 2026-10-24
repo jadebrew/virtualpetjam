@@ -65,7 +65,9 @@ public class Petmanager : MonoBehaviour
 
     public GameObject lastConsumed;
 
+    //mini games
     public CatchGame catchGame;
+    public MemoryGame memoryGame;
 
     public int coin_xp = 0;
     public int expectedCoinsPerDay = 25;
@@ -293,7 +295,7 @@ public class Petmanager : MonoBehaviour
                     catchGame.Init(assignedUseSFX);
                     break;
                 case NeedType.Sleep:
-                    catchGame.Init(assignedUseSFX);//TODO change to memory game
+                    memoryGame.Init();
                     break;
                 case NeedType.Hygiene:
                     catchGame.Init(assignedUseSFX);//TODO change to some yet undetermined mini game

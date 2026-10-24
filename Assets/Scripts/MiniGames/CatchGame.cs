@@ -29,6 +29,7 @@ namespace MiniGames
 
         private int randomCoin = 5;
 
+        //TODO once catchgame is only used for hunger you dont need to pass the sfx
         public void Init(SFXTag useSFX)
         {
             gameOver = false;
