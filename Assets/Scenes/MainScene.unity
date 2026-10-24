@@ -8281,7 +8281,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 32, y: 32}
+  m_CellSize: {x: 24, y: 24}
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 1
   m_ConstraintCount: 4
@@ -13165,6 +13165,8 @@ MonoBehaviour:
   statusText: {fileID: 755681015}
   cardSymbols: 
   delayBeforeFlippingBack: 0.8
+  delayAfterWin: 0.8
+  matchScoreBonus: 100
   CardGridContainer: {fileID: 1202917343}
   cardSprite: {fileID: 5189691121816951081, guid: 95b5fa6cace99764c91acab145039c95, type: 3}
   whiteTeddySprite: {fileID: -1089031186708902448, guid: 147f4f2d4d3f112cfaeba20c2e8de9b2, type: 3}
