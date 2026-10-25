@@ -13,7 +13,7 @@ namespace MiniGames
         BrownTeddy,
         WhiteTeddy,
         Pillow,
-        Fallback,//TODO
+        Heart,
     }
 
     public class MemoryGame : MonoBehaviour
@@ -28,7 +28,7 @@ namespace MiniGames
         [SerializeField] private List<CardType> cardSymbols;
         [SerializeField] private float delayBeforeFlippingBack = 0.8f;
         [SerializeField] private float delayAfterWin = 0.8f;
-        [SerializeField] private int matchScoreBonus = 100;
+        [SerializeField] private int matchScoreBonus = 10;
 
         //TODO should be moved to UIManager
         [SerializeField] public GameObject CardGridContainer;
@@ -38,7 +38,7 @@ namespace MiniGames
         [SerializeField] public Sprite whiteTeddySprite;
         [SerializeField] public Sprite brownTeddySprite;
         [SerializeField] public Sprite pillowSprite;
-        [SerializeField] public Sprite fallbackSprite;
+        [SerializeField] public Sprite heartSprite;
 
         private const string DefaultStatus = "Find a match!";
         private const string NoMatch = "No match";
@@ -88,12 +88,12 @@ namespace MiniGames
             cardSymbols.Add(CardType.BrownTeddy);
             cardSymbols.Add(CardType.WhiteTeddy);
             cardSymbols.Add(CardType.Pillow);
-            cardSymbols.Add(CardType.Fallback);
+            cardSymbols.Add(CardType.Heart);
             
             _cardSprites.Add(CardType.BrownTeddy, brownTeddySprite);
             _cardSprites.Add(CardType.WhiteTeddy, whiteTeddySprite);
             _cardSprites.Add(CardType.Pillow, pillowSprite);
-            _cardSprites.Add(CardType.Fallback, fallbackSprite);
+            _cardSprites.Add(CardType.Heart, heartSprite);
         }
 
         void Update()
