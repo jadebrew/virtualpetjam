@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cassette Camouflage
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -560670288350998969, guid: b493cf9581b5b5d82ad86d3c3001a9f4, type: 3}
-  icon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
+  icon: {fileID: -5608634159295399014, guid: 009abc44328611b46a36274b9b1ff77d, type: 3}
   title: Camouflage cassette
   type: 1
   needModifier: 0

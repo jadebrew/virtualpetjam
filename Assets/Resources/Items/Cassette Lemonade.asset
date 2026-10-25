@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cassette Lemonade
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: 6837698697630584929, guid: 40260288ec249d65da8665a98710b0dc, type: 3}
-  icon: {fileID: 4832452637634077225, guid: 7817d673eea63fe4b860f5fa987375f2, type: 3}
+  icon: {fileID: -5608634159295399014, guid: 009abc44328611b46a36274b9b1ff77d, type: 3}
   title: lemonade
   type: 1
   needModifier: 0
