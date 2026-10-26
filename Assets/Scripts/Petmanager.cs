@@ -504,7 +504,19 @@ public class Petmanager : MonoBehaviour
         
         petJson.Add("playbackMode",AudioManager.PlaybackModeToString(Settings.PlaybackMode));
         
-        var path = Application.persistentDataPath + "/"+ Settings.PetName + "_save.json";
+        var path = "";
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            path = Path.Combine("idbfs/","mimigreed");
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        #else
+            path = Application.persistentDataPath;
+        #endif
+        path = Path.Combine(path,Settings.PetName + "_save.json");
+
+
         if(!File.Exists(path))
         {
             Debug.Log("Creating new savefile at: " + path);
@@ -516,8 +528,20 @@ public class Petmanager : MonoBehaviour
 
     private void Load()
     {
-        
-        var folderPath = Application.persistentDataPath;
+        var folderPath = "";
+
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            folderPath = Path.Combine("idbfs/","mimigreed");;
+            if (!File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+        #else
+            folderPath = Application.persistentDataPath;
+        #endif
+
+        folderPath = folderPath +"/";
+
         const string searchPattern = "*_save.json";
 
         var path = Directory.GetFiles(folderPath, searchPattern)
