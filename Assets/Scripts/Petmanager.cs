@@ -504,12 +504,9 @@ public class Petmanager : MonoBehaviour
         
         petJson.Add("playbackMode",AudioManager.PlaybackModeToString(Settings.PlaybackMode));
         
-        var path = Application.persistentDataPath + "/"+ Settings.PetName + "_save.json";
-        if(!File.Exists(path))
-        {
-            Debug.Log("Creating new savefile at: " + path);
-        }
-        File.WriteAllText(path,petJson.ToString());
+        PlayerPrefs.SetString("PetSave", petJson.ToString());
+        PlayerPrefs.Save();
+        
         Debug.Log("Save complete.");
 
     }
@@ -517,17 +514,11 @@ public class Petmanager : MonoBehaviour
     private void Load()
     {
         
-        var folderPath = Application.persistentDataPath;
-        const string searchPattern = "*_save.json";
-
-        var path = Directory.GetFiles(folderPath, searchPattern)
-            .OrderByDescending(File.GetLastWriteTime)
-            .FirstOrDefault();
+        var saveKey = "PetSave";
         
-        if(!string.IsNullOrEmpty(path))//savefile exists
+        if(PlayerPrefs.HasKey(saveKey))//savedata exists
         {
-            var jsonString = File.ReadAllText(path);
-
+            var jsonString = PlayerPrefs.GetString(saveKey);
             var petJson = (JSONObject)JSON.Parse(jsonString);
             
             if(petJson["name"])
@@ -563,9 +554,10 @@ public class Petmanager : MonoBehaviour
             }
             
             FillPlaylist();
+            Debug.Log("Load complete for pet: " + Settings.PetName);
 
         } else {
-            Debug.Log("File not found: " + path);
+            Debug.Log("No save found for key: " + saveKey);
             Save();
         }
     }
