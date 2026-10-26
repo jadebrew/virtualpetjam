@@ -2976,8 +2976,8 @@ MonoBehaviour:
   sleepIcon: {fileID: 1233183887294880006, guid: 3f91c4d37ee43d189b64c745f44494ab, type: 3}
   hygieneIcon: {fileID: -7931375357936531804, guid: ca6acbdccc82aea8e9bc478df72aa66b, type: 3}
   hungerIcon: {fileID: -3306232620379074890, guid: 4fcc06622dda7a1bd9c0219cf151611d, type: 3}
-  welcomeBackIcon: {fileID: 3679080733298622648, guid: ab6c125c3d6e3ee4db227ed224aa7d28, type: 3}
-  coinRewardIcon: {fileID: 3679080733298622648, guid: ab6c125c3d6e3ee4db227ed224aa7d28, type: 3}
+  welcomeBackIcon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
+  coinRewardIcon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
 --- !u!4 &433799685
 Transform:
   m_ObjectHideFlags: 0

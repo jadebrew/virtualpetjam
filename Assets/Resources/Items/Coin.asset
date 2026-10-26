@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5fb875d108a5c6a76b88348775629, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  sprite: {fileID: -8625943733335433241, guid: 7f5953bc6aa994616a95df907ee86096, type: 3}
+  sprite: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
+  icon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
   title: Coin
   type: 2
   needModifier: 0
