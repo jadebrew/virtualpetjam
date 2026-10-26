@@ -18,8 +18,9 @@ MonoBehaviour:
   buttons:
   - {fileID: 11400000, guid: 08f01edfd7f0ad5719e47e4c70a328e4, type: 2}
   - {fileID: 11400000, guid: 867a08970f6eeaa0498f3e3aaa9160c1, type: 2}
-  - {fileID: 11400000, guid: 0a494c74ad219d3beac8510913cd68e5, type: 2}
   - {fileID: 11400000, guid: 34580cc1f221340a494724a60f4b21c0, type: 2}
   - {fileID: 11400000, guid: f5c8f81b5296a091c8dd953b6ea36982, type: 2}
   panels:
   - menu
+  isBag: 0
+  bagFilter: 
