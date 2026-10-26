@@ -43,7 +43,12 @@ namespace Audio
             {
                 _audioBg.volume = maxvolume;
             }
-            customStatus = "VOL: " + Mathf.Round(_audioBg.volume*100).ToString();
+            SetStatus("VOL: " + Mathf.Round(_audioBg.volume*100).ToString());
+        }
+
+        void SetStatus(string status)
+        {
+            customStatus = status;
             statusTimer = 0;
         }
     
@@ -183,6 +188,7 @@ namespace Audio
         public void StopMusic()
         {
             _audioBg.Stop();
+            SetStatus("Stop");
         }
 
         public void RestartSong()
@@ -221,23 +227,27 @@ namespace Audio
         public void PauseSong()
         {
             _audioBg.Pause();
+            SetStatus("Pause");
         }
         
         public void ResumeSong()
         {
             _audioBg.Play();
+            SetStatus("Resume");
         }
 
         public void TurnOnLoop()
         {
             StereoManager.Instance.PlaybackMode = PlaybackMode.Loop;
             _audioBg.loop = true;
+            SetStatus("Loop");
         }
         
         public void TurnOnShuffle()
         {
             StereoManager.Instance.PlaybackMode = PlaybackMode.Shuffle;
             _audioBg.loop = false;
+            SetStatus("Shuffle");
         }
     
         private SFX GetSound(SFXTag tag)
