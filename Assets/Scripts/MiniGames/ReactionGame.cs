@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,29 +25,31 @@ namespace MiniGames
 
         [Header("Sprites")]
         [SerializeField] private Sprite petSprite;
-        [SerializeField] private Sprite shampooSprite;
-        [SerializeField] private Sprite dirtSprite;
+        [SerializeField] private Sprite foodSprite;
+        [SerializeField] private Sprite inedibleSprite;
 
         [Header("Cat Reference")]
         [SerializeField] private RectTransform catRectTransform;
 
         private const float CatX = 5.0f;
         
-        private const string DefaultStatus = "Clean yourself!";
-        private const string HitDirt = "Eew!";
-        private const string HitShampoo = "Nice!";
+        private const string DefaultStatus = "Eat the food!";
+        private const string TriedToEatSomethingInedible = "Ew!";
+        private const string AteSomething = "Yummy!";
         
         private bool _gameOver = false;
         private int _score = 0;
         private int _currentLane = 0;
         private float _spawnTimer = 0f;
 
+        private int _hitCounter = 0;
+
         // Active obstacle/collectible items tracking
         private class ActiveItem
         {
             public RectTransform rectTransform;
             public int lane;
-            public bool isShampoo;
+            public bool isEdible;
         }
         private List<ActiveItem> _activeItems = new();
 
@@ -59,6 +62,8 @@ namespace MiniGames
             _score = 0;
             _currentLane = laneCount / 2; // Start in the middle lane
             _spawnTimer = 0f;
+            
+            _hitCounter = 0;
 
             // Clear old items if restarting
             foreach (var item in _activeItems)
@@ -110,6 +115,7 @@ namespace MiniGames
 
         void Update()
         {
+            
             if (_gameOver) return;
 
             HandleInput();
@@ -163,9 +169,9 @@ namespace MiniGames
         private void SpawnObject()
         {
             int randomLane = Random.Range(0, laneCount);
-            bool isShampoo = Random.value > 0.4f; // 60% chance shampoo, 40% chance dirt
+            bool isEdible = Random.value > 0.4f; // 60% chance edible, 40% chance inedible
 
-            GameObject objGO = new GameObject(isShampoo ? "Shampoo" : "Dirt", typeof(RectTransform), typeof(Image));
+            GameObject objGO = new GameObject(isEdible ? "edible" : "inedible", typeof(RectTransform), typeof(Image));
             objGO.transform.SetParent(gameAreaContainer, false);
 
             RectTransform rect = objGO.GetComponent<RectTransform>();
@@ -182,13 +188,13 @@ namespace MiniGames
             rect.anchoredPosition = new Vector2(spawnX, spawnY);
 
             var img = objGO.GetComponent<Image>();
-            img.sprite = isShampoo ? shampooSprite : dirtSprite;
+            img.sprite = isEdible ? foodSprite : inedibleSprite;
 
             _activeItems.Add(new ActiveItem
             {
                 rectTransform = rect,
                 lane = randomLane,
-                isShampoo = isShampoo
+                isEdible = isEdible
             });
         }
 
@@ -209,7 +215,8 @@ namespace MiniGames
                 item.rectTransform.anchoredPosition = pos;
 
                 // Remove if off-screen to the left
-                if (pos.x < -(gameAreaContainer.rect.width / 2f) - _laneHeight)
+                
+                if (pos.x < -20)
                 {
                     Destroy(item.rectTransform.gameObject);
                     _activeItems.RemoveAt(i);
@@ -236,22 +243,30 @@ namespace MiniGames
                 if (item.lane != _currentLane) continue;
                 
                 // Collision detected!
-                if (item.isShampoo)
+                if (item.isEdible)
                 {
+                    AudioManager.Instance.Play(SFXTag.Eat);
                     _score += shampooBonus;
-                    if (statusText) statusText.text = HitShampoo;
+                    if (statusText) statusText.text = AteSomething;
                 }
                 else
                 {
+                    AudioManager.Instance.Play(SFXTag.Annoyed);
                     _score -= dirtPenalty;
                     if (_score < 0) _score = 0;
-                    if (statusText) statusText.text = HitDirt;
+                    if (statusText) statusText.text = TriedToEatSomethingInedible;
                 }
 
                 if (scoreText) scoreText.text = $"Score: {_score}";
-
+                _hitCounter++;
                 Destroy(item.rectTransform.gameObject);
                 _activeItems.RemoveAt(i);
+                
+                if (_hitCounter >= 10)
+                {
+                    _gameOver = true;
+                    reactionGameScene.SetActive(false);
+                }
             }
         }
     }

@@ -19,7 +19,6 @@ namespace MiniGames
         private int caught = 0;
         public GameObject catchScene;
         private AudioManager _audio;
-        SFXTag soundEffect;
 
         private float patience = 0;
         private float maxPatience = 2;
@@ -30,12 +29,11 @@ namespace MiniGames
         private int randomCoin = 5;
 
         //TODO once catchgame is only used for hunger you dont need to pass the sfx
-        public void Init(SFXTag useSFX)
+        public void Init()
         {
             gameOver = false;
             caught = 0;
             catchScene.SetActive(true);
-            soundEffect = useSFX;
             _audio = AudioManager.Instance;
             verdictText.text = "Wait!";
             score = 0;
@@ -86,6 +84,7 @@ namespace MiniGames
                 if(pos.y<bottom_y)
                 {
                     caught++;
+                    AudioManager.Instance.Play(Wash);
                     if (pos.x == player.transform.localPosition.x)
                     {
                         if (cooldown < 0.5)
@@ -110,7 +109,7 @@ namespace MiniGames
                         }
                         verdictText.text = verdict;
 
-                        _audio.Play(Eat);
+                        _audio.Play(Wash);
                         if (caught >= 10)
                         {
                             gameOver = true;

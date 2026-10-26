@@ -295,13 +295,13 @@ public class Petmanager : MonoBehaviour
             switch (item.needModifier)
             {
                 case NeedType.Hunger:
-                    catchGame.Init(assignedUseSFX);
+                    reactionGame.Init();
                     break;
                 case NeedType.Sleep:
                     memoryGame.Init();
                     break;
                 case NeedType.Hygiene:
-                    reactionGame.Init();
+                    catchGame.Init();
                     break;
                 default:
                     break;

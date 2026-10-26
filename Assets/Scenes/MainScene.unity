@@ -2900,7 +2900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.2585602}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400410961
@@ -9961,8 +9961,8 @@ MonoBehaviour:
   shampooBonus: 10
   dirtPenalty: 15
   petSprite: {fileID: 6421296364171581922, guid: 2d995c58c77d6ddf990cd6f0c7b9512b, type: 3}
-  shampooSprite: {fileID: 4075432077849452776, guid: 1b8649dcbc203d84e83ac89223e6abad, type: 3}
-  dirtSprite: {fileID: -2591645842569314648, guid: f2c65ae5c7bb76319b2af2686d32bab5, type: 3}
+  foodSprite: {fileID: 7110028922801771029, guid: 4715797e71f982cf5a141da4c4f1a4ab, type: 3}
+  inedibleSprite: {fileID: -2591645842569314648, guid: f2c65ae5c7bb76319b2af2686d32bab5, type: 3}
   catRectTransform: {fileID: 1008283381}
 --- !u!1 &1383268595
 GameObject:
@@ -12170,7 +12170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3981018, y: -1.2585449}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727915341
@@ -15981,7 +15981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.39810944, y: -1.2585449}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9115587461914652411
