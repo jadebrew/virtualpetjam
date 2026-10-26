@@ -183,7 +183,7 @@ public class Petmanager : MonoBehaviour
         const float secondsInDay = 24*60*60;
         var ticksInAday = secondsInDay/gameTickRate;
 
-        xpUntilNextCoin = 100;
+        xpUntilNextCoin = 10;
 
         NeedsManager.Instance.SetNeedDecay(ticksInAday);
     }
@@ -276,6 +276,8 @@ public class Petmanager : MonoBehaviour
         } else {
             //screenSaver.SetActive(false);
         }
+
+        Debug.Log("coin xp: " + coin_xp);
     }
 
     public void Feed(GameObject consumable)
