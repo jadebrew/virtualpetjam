@@ -43,7 +43,7 @@ namespace Audio
             {
                 _audioBg.volume = maxvolume;
             }
-            SetStatus("VOL: " + Mathf.Round(_audioBg.volume*100).ToString());
+            SetStatus("VOL: " + (Mathf.Round(_audioBg.volume*10)*10).ToString());
         }
 
         void SetStatus(string status)

@@ -92,6 +92,8 @@ public class Petmanager : MonoBehaviour
     public GameObject _cursor;
     
     private UIManager _ui;
+
+    private bool warmup = true;
     
     //TODO this is horrible and should be done with enums instead,
     //but I did it like this because it might be used by editor like this
@@ -210,7 +212,7 @@ public class Petmanager : MonoBehaviour
         patience += Time.deltaTime;
         lastInput +=  Time.deltaTime;
 
-        if (patience > gameTickTime)
+        if (!warmup && patience > gameTickTime)
         {
           patience = 0;
           GameTick(false);
@@ -521,8 +523,15 @@ public class Petmanager : MonoBehaviour
         {
             Debug.Log("Creating new savefile at: " + path);
         }
-        File.WriteAllText(path,petJson.ToString());
-        Debug.Log("Save complete.");
+
+        if (!warmup)
+        {
+            File.WriteAllText(path,petJson.ToString());
+            Debug.Log("Save complete.");
+        } else {
+            Debug.Log("Still warming up.");
+        }
+
 
     }
 
@@ -579,6 +588,8 @@ public class Petmanager : MonoBehaviour
             if(petJson["timestamp"])
             {
                 CatchUp(petJson["timestamp"]);
+            } else {
+                Debug.Log("Timestamp not found, initializing");
             }
             
             if(petJson["playbackMode"])
@@ -588,8 +599,12 @@ public class Petmanager : MonoBehaviour
             
             FillPlaylist();
 
+            Debug.Log("Savefile loaded: " + path);
+            warmup = false;
+
         } else {
             Debug.Log("File not found: " + path);
+            warmup = false;
             Save();
         }
     }
