@@ -2978,6 +2978,7 @@ MonoBehaviour:
   hungerIcon: {fileID: -3306232620379074890, guid: 4fcc06622dda7a1bd9c0219cf151611d, type: 3}
   welcomeBackIcon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
   coinRewardIcon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
+  multiplierBonusIcon: {fileID: 3371197868769241785, guid: eff33540e7ec042d0b8cd7460209847e, type: 3}
 --- !u!4 &433799685
 Transform:
   m_ObjectHideFlags: 0
@@ -13731,7 +13732,6 @@ MonoBehaviour:
   cardSymbols: 
   delayBeforeFlippingBack: 0.8
   delayAfterWin: 0.8
-  matchScoreBonus: 10
   CardGridContainer: {fileID: 1202917343}
   cardSprite: {fileID: -1604593144077148297, guid: baca57ed98aad61beaaf6e295cfb3b11, type: 3}
   whiteTeddySprite: {fileID: -1089031186708902448, guid: 147f4f2d4d3f112cfaeba20c2e8de9b2, type: 3}

@@ -12,7 +12,7 @@ namespace Notification
         public NotificationView GetView()
         {
             var view = ScriptableObject.CreateInstance<NotificationView>();
-            view.sprite = NotificationUIManager.Instance.coinRewardIcon;
+            view.sprite = NotificationUIManager.Instance.multiplierBonusIcon;
             var bonusString = $"{Bonus:0.##}";// max. two decimal places
             view.text = $"Good job!\nYou get a {bonusString}x Coin Boost.";
         

@@ -19,6 +19,7 @@ namespace Notification
         
         [SerializeField] public Sprite welcomeBackIcon;
         [SerializeField] public Sprite coinRewardIcon;
+        [SerializeField] public Sprite multiplierBonusIcon;
     
         private const float ShowNotificationTimeLength = 10;
         private const float SlideSpeed = 20;
