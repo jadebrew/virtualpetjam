@@ -1,12 +1,15 @@
 using Audio;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static SFXTag;
 
 namespace MiniGames
 {
     public class CatchGame : MonoBehaviour
     {
+        public Petmanager PetManager;
+        
         public GameObject fallingItem;
         public GameObject player;
         public float[] positions;
@@ -25,8 +28,10 @@ namespace MiniGames
         private float cooldown = 0;
 
         private int score = 0;
+        private const int ScoreTarget = 300;
 
         private int randomCoin = 5;
+        
 
         //TODO once catchgame is only used for hunger you dont need to pass the sfx
         public void Init()
@@ -109,10 +114,10 @@ namespace MiniGames
                         }
                         verdictText.text = verdict;
 
-                        _audio.Play(Wash);
                         if (caught >= 10)
                         {
                             gameOver = true;
+                            PetManager.SetMultiplierBonus((float) score / ScoreTarget);
                             catchScene.SetActive(false);
                         }
                     } else {

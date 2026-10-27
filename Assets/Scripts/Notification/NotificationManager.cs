@@ -84,5 +84,13 @@ namespace Notification
         {
             _notificationQueue.Enqueue(new CoinRewardNotification(),1);
         }
+        
+        public void NotifyMultiplyBonus(float multiplyBonus)
+        {
+            _notificationQueue.Enqueue(new BonusNotification()
+            {
+                Bonus = multiplyBonus
+            },1);
+        }
     }
 }

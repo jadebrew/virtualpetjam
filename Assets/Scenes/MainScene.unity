@@ -6861,7 +6861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6421296364171581922, guid: 2d995c58c77d6ddf990cd6f0c7b9512b, type: 3}
+  m_Sprite: {fileID: -4982215763118976188, guid: 8f561f6589f16274085f8db5cb86462f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9952,6 +9952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniGames.ReactionGame
   reactionGameScene: {fileID: 400410959}
+  PetManager: {fileID: 1529103038}
   gameAreaContainer: {fileID: 1368603090}
   scoreText: {fileID: 992809128}
   statusText: {fileID: 729550172}
@@ -9960,7 +9961,7 @@ MonoBehaviour:
   spawnRate: 1.5
   shampooBonus: 10
   dirtPenalty: 15
-  petSprite: {fileID: 6421296364171581922, guid: 2d995c58c77d6ddf990cd6f0c7b9512b, type: 3}
+  petSprite: {fileID: -4982215763118976188, guid: 8f561f6589f16274085f8db5cb86462f, type: 3}
   foodSprite: {fileID: 7110028922801771029, guid: 4715797e71f982cf5a141da4c4f1a4ab, type: 3}
   inedibleSprite: {fileID: -2591645842569314648, guid: f2c65ae5c7bb76319b2af2686d32bab5, type: 3}
   catRectTransform: {fileID: 1008283381}
@@ -13707,6 +13708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniGames.MemoryGame
   memoryScene: {fileID: 1727915339}
+  PetManager: {fileID: 1529103038}
   cardButtons:
   - {fileID: 2107662162}
   - {fileID: 1873308476}
@@ -13729,7 +13731,7 @@ MonoBehaviour:
   cardSymbols: 
   delayBeforeFlippingBack: 0.8
   delayAfterWin: 0.8
-  matchScoreBonus: 100
+  matchScoreBonus: 10
   CardGridContainer: {fileID: 1202917343}
   cardSprite: {fileID: -1604593144077148297, guid: baca57ed98aad61beaaf6e295cfb3b11, type: 3}
   whiteTeddySprite: {fileID: -1089031186708902448, guid: 147f4f2d4d3f112cfaeba20c2e8de9b2, type: 3}
@@ -14424,6 +14426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8ab47c8c5e84a12b032b98263fb8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatchGame
+  PetManager: {fileID: 1529103038}
   fallingItem: {fileID: 1962019891893180993}
   player: {fileID: 8101426552415873141}
   positions:

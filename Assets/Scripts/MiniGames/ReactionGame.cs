@@ -10,8 +10,11 @@ namespace MiniGames
 {
     public class ReactionGame : MonoBehaviour
     {
+        
+        
         [Header("UI References")]
         public GameObject reactionGameScene;
+        public Petmanager PetManager;
         [SerializeField] private RectTransform gameAreaContainer; // The panel bounding the game field
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI statusText;
@@ -39,6 +42,7 @@ namespace MiniGames
         
         private bool _gameOver = false;
         private int _score = 0;
+        private const int ScoreTarget = 50;
         private int _currentLane = 0;
         private float _spawnTimer = 0f;
 
@@ -264,6 +268,7 @@ namespace MiniGames
                 
                 if (_hitCounter >= 10)
                 {
+                    PetManager.SetMultiplierBonus((float) _score / ScoreTarget);
                     _gameOver = true;
                     reactionGameScene.SetActive(false);
                 }

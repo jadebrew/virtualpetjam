@@ -18,8 +18,11 @@ namespace MiniGames
 
     public class MemoryGame : MonoBehaviour
     {
+        
+        
         [Header("UI References")]
         public GameObject memoryScene;
+        public Petmanager PetManager;
         [SerializeField] private List<Button> cardButtons;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI statusText;
@@ -28,7 +31,6 @@ namespace MiniGames
         [SerializeField] private List<CardType> cardSymbols;
         [SerializeField] private float delayBeforeFlippingBack = 0.8f;
         [SerializeField] private float delayAfterWin = 0.8f;
-        [SerializeField] private int matchScoreBonus = 10;
 
         //TODO should be moved to UIManager
         [SerializeField] public GameObject CardGridContainer;
@@ -48,6 +50,9 @@ namespace MiniGames
         
         private bool _gameOver = false;
         private int _score = 0;
+        private const int ScoreTarget = 40;
+        private const int MatchScoreBonus = 10;
+        private const int MatchScorePenalty = 5;
         private int _totalPairs = 0;
         private int _matchedPairs = 0;
 
@@ -177,7 +182,7 @@ namespace MiniGames
                 cardButtons[_secondSelectedIndex].interactable = false;
 
                 _matchedPairs++;
-                _score += matchScoreBonus;
+                _score += MatchScoreBonus;
                 if (scoreText) scoreText.text = $"Score: {_score}";
 
                 // check Win Condition
@@ -188,7 +193,7 @@ namespace MiniGames
                         statusText.text = WinMessage;
                     yield return new WaitForSeconds(delayAfterWin);
                     
-                    _gameOver = true;
+                    PetManager.SetMultiplierBonus((float) _score / ScoreTarget);
                     memoryScene.SetActive(false);
                 }
 
@@ -196,6 +201,9 @@ namespace MiniGames
             }
             else //mismatch
             {
+                _score = Mathf.Max(_score - MatchScorePenalty,0);
+                if (scoreText) scoreText.text = $"Score: {_score}";
+                
                 if (statusText)
                     statusText.text = NoMatch;
                 
