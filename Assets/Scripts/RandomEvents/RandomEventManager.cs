@@ -27,6 +27,10 @@ namespace RandomEvents
         public void RunRandomEvent()
         {
             GetRandomEvent().Happen();
+            if (Petmanager.Instance == null)
+            {
+                Debug.Log("Petmanager is null");
+            }
         }
 
         private IRandomEvent GetRandomEvent()

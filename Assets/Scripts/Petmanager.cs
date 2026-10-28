@@ -242,7 +242,7 @@ public class Petmanager : MonoBehaviour
     {
         if (comfortable && petStates.ContainsKey(statekey))
         {
-            petObject.transform.Find("Image").GetComponent<Image>().sprite = petStates[statekey];
+            SetPetImage(petStates[statekey]);
         }
     }
 
@@ -260,8 +260,15 @@ public class Petmanager : MonoBehaviour
             SetPetImage(sprite);
         }
     }
-
-    public void ForceNeed(Sprite sprite)
+    public void ForceNeed(string statekey)
+    {
+        if (petStates.ContainsKey(statekey))
+        {
+            SetPetImage(petStates[statekey]);
+        }
+        comfortable = false;
+    }
+    public void ForceSprite(Sprite sprite)
     {
         comfortable = false;
         SetPetImage(sprite);
@@ -342,7 +349,7 @@ public class Petmanager : MonoBehaviour
                 SetPetState("greedy");
             }
         }
-        if(!catchup)
+        if(!catchup && comfortable)
         {
             MovePetToChillSpot((int) Mathf.Round(Random.Range(0, ChillLocations.Length)));
         }
@@ -379,7 +386,7 @@ public class Petmanager : MonoBehaviour
 
         Debug.Log("coin xp: " + coin_xp);
         
-        if (RandomEventManager.Instance != null && _gameTicksCount % 2 == 0)//every 6 gameticks
+        if (RandomEventManager.Instance != null && _gameTicksCount % 6 == 0)//every 6 gameticks
         {
             Debug.Log("Random Event");
             RandomEventManager.Instance.RunRandomEvent();
@@ -429,7 +436,7 @@ public class Petmanager : MonoBehaviour
     public void MovePetToRadio()
     {
         MovePetToChillSpot(1);
-        SetPetState("sleepy");
+        ForceNeed("sleepy");
         comfortable = false;
         Debug.Log("Radio Event");
     }
@@ -437,7 +444,7 @@ public class Petmanager : MonoBehaviour
     public void MovePetToLitterBox()
     {
         MovePetToChillSpot(3);//TODO change to correct chillspot
-        SetPetState("potty");
+        ForceNeed("potty");
         comfortable = false;
         Debug.Log("Potty Event");
     }
@@ -761,10 +768,12 @@ public class Petmanager : MonoBehaviour
                 .OrderByDescending(File.GetLastWriteTime)
                 .FirstOrDefault();
         }
-        else // newfile
+#if !UNITY_WEBGL
+        else  // newfile
         {
             path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
         }
+#endif
 
 
         if(!string.IsNullOrEmpty(path))//savefile exists
@@ -794,7 +803,8 @@ public class Petmanager : MonoBehaviour
                 inventory[key] = value;
             }
             
-            if(!newGame && petJson["needs"]) {
+            //newGame = false;
+            if(!newGame) {
                 var needsJson = (JSONObject) petJson["needs"];
                 if(needsJson["hunger"])
                     NeedsManager.Instance.SetNeed(NeedType.Hunger, needsJson["hunger"]);
@@ -802,10 +812,12 @@ public class Petmanager : MonoBehaviour
                     NeedsManager.Instance.SetNeed(NeedType.Hygiene, needsJson["hygiene"]); 
                 if(needsJson["sleep"])
                     NeedsManager.Instance.SetNeed(NeedType.Sleep, needsJson["sleep"]);
+                Debug.Log("Needs Loaded");
             }
             else //new game
             {
                 NeedsManager.Instance.SetAllNeedsToMax();
+                Debug.Log("New Needs Initialized");
             }
 
             //catch up system

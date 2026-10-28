@@ -1,6 +1,7 @@
 using Audio;
 using Needs;
 using Notification;
+using UnityEngine;
 
 namespace RandomEvents
 {
@@ -12,6 +13,7 @@ namespace RandomEvents
             
             Petmanager.Instance.MovePetToLitterBox();
             NotificationManager.Instance.NotifyPetGoesToLitterBox();
+            Debug.Log("Litterbox Event called");
         }
     }
 }

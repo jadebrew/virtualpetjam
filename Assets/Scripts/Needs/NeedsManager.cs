@@ -72,7 +72,7 @@ namespace Needs
                 petManager.NoForce();
                 if (!(need.value < NeedMin)) continue;
                 need.value = NeedMin;
-                petManager.ForceNeed(need.badStateSprite);
+                petManager.ForceSprite(need.badStateSprite);
                 NotificationManager.Instance.NotifyPetStatus(need.type);
                 IsPetHappy = false;
             }
@@ -130,11 +130,13 @@ namespace Needs
 
         public bool IsPetSleepy()
         {
+            Debug.Log("Sleep: " + _needs[NeedType.Sleep].value);
             return _needs[NeedType.Sleep].value < (0.25f*_needs[NeedType.Sleep].max);
         }
         
         public bool IsPetDirty()
         {
+            Debug.Log("Dirty: " + _needs[NeedType.Sleep].value);
             return _needs[NeedType.Hygiene].value < (0.25f*_needs[NeedType.Hygiene].max);
         }
     }

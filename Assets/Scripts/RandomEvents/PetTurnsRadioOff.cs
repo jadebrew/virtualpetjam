@@ -1,6 +1,7 @@
 using Audio;
 using Needs;
 using Notification;
+using UnityEngine;
 
 namespace RandomEvents
 {
@@ -12,7 +13,8 @@ namespace RandomEvents
             
             Petmanager.Instance.MovePetToRadio();
             NotificationManager.Instance.NotifyPetTurnedOffRadio();
-            StereoManager.Instance.Pause();
+            StereoManager.Instance.Stop();
+            Debug.Log("radio Event called");
         }
     }
 }

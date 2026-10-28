@@ -38,6 +38,13 @@ namespace Audio
             PlaybackState = PlaybackState.Paused;
             AudioManager.Instance?.PauseSong();
         }
+
+        public void Stop()
+        {
+            PlaybackState = PlaybackState.Paused;
+            AudioManager.Instance?.StopMusic();
+        }
+
         
         public void Resume()
         {
