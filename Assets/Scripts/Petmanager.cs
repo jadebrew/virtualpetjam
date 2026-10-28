@@ -424,8 +424,6 @@ public class Petmanager : MonoBehaviour
                 flushTimer = 0;
             }
         }
-
-
     }
 
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item
   sprite: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
   icon: {fileID: -2327895723312646595, guid: 0664d1b77ddde6ecdac371a6b987c6cd, type: 3}
+  currency: 1
   title: Coin
   type: 2
   needModifier: 0

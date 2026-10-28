@@ -14,6 +14,7 @@ public class Item : ScriptableObject
 
     public Sprite sprite;
     public Sprite icon;
+    public bool currency;
     public string title;
     [SerializeField] public ItemType type;
     
@@ -31,12 +32,12 @@ public class Item : ScriptableObject
 
     public bool IsConsumable()
     {
-        return title == "coin";
+        return type == ItemType.Consumable;;
     }
 
     public bool IsCoin()
     {
-        return type == ItemType.Consumable;
+        return currency;
     }
     
     public bool IsCassette()
