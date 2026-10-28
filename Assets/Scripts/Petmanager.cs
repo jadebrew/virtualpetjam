@@ -327,7 +327,7 @@ public class Petmanager : MonoBehaviour
         _gameTicksCount++;
 
         NeedsManager.Instance?.DecayNeeds();
-        if(!catchup)
+        if(!catchup && comfortable)
         {
             SetPetState("idle");
         }
@@ -379,7 +379,7 @@ public class Petmanager : MonoBehaviour
 
         Debug.Log("coin xp: " + coin_xp);
         
-        if (RandomEventManager.Instance != null && _gameTicksCount % 6 == 0)//every 6 gameticks
+        if (RandomEventManager.Instance != null && _gameTicksCount % 2 == 0)//every 6 gameticks
         {
             Debug.Log("Random Event");
             RandomEventManager.Instance.RunRandomEvent();
@@ -428,12 +428,18 @@ public class Petmanager : MonoBehaviour
     
     public void MovePetToRadio()
     {
-        MovePetToChillSpot(2);
+        MovePetToChillSpot(1);
+        SetPetState("sleepy");
+        comfortable = false;
+        Debug.Log("Radio Event");
     }
     
     public void MovePetToLitterBox()
     {
-        MovePetToChillSpot(2);//TODO change to correct chillspot
+        MovePetToChillSpot(3);//TODO change to correct chillspot
+        SetPetState("potty");
+        comfortable = false;
+        Debug.Log("Potty Event");
     }
     
     private void MovePetToChillSpot(int i)
@@ -451,7 +457,10 @@ public class Petmanager : MonoBehaviour
     {
         _audio.Play(Annoyed);
         lastInput = 0;
-        SetPetState("sit");
+        if (comfortable)
+        {
+             SetPetState("sit");
+        }
         Save();
     }
 
