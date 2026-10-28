@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   title: Art
   shortname: Art
-  body: LeeEstes
+  body: Pixelart\nLeeEstes\n\nUniversal Icon Pack\nby SHMORGUS
   buttons:
   - {fileID: 11400000, guid: 8fbba026de44f41d991f7c99dea911ec, type: 2}
   panels:

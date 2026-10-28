@@ -14,7 +14,7 @@ namespace Needs
 
         private Dictionary<NeedType, Need> _needs = new ();
 
-        public GameObject petObject;
+        public Petmanager petManager;
 
         private float NeedDecay { get; set; }
 
@@ -69,12 +69,12 @@ namespace Needs
             {
                 need.value -= NeedDecay;
                 Debug.Log("Lost " + NeedDecay + " " + need.title);
+                petManager.NoForce();
                 if (need.value<need.max*0.5f)
                 {
-                    petObject.GetComponent<Petmanager>().SetPetImage(need.badStateSprite);
+                    petManager.ForceNeed(need.badStateSprite);
                 }
                 if (!(need.value < NeedMin)) continue;
-                
                 need.value = NeedMin;
                 NotificationManager.Instance.NotifyPetStatus(need.type);
                 IsPetHappy = false;

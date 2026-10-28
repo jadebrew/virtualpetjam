@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   title: Mimi's Greed
-  shortname: Exit to Title
+  shortname: Leave
   body: Welcome to Mimi's Greed!
   buttons:
   - {fileID: 11400000, guid: 1803fd4f5747e53e8b9426a7a05fa4e2, type: 2}

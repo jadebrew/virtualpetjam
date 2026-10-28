@@ -123,6 +123,8 @@ public class Petmanager : MonoBehaviour
     private const int RadioMenuPanelIndex = 3;
     private const int GachaMenuPanelIndex = 4;
     private const int ScreenSaverIndex = 9;
+
+    private bool comfortable = true;
     
     void Awake()
     {
@@ -218,7 +220,7 @@ public class Petmanager : MonoBehaviour
 
     public void SetPetState(string statekey)
     {
-        if (petStates.ContainsKey(statekey))
+        if (comfortable && petStates.ContainsKey(statekey))
         {
             petObject.transform.Find("Image").GetComponent<Image>().sprite = petStates[statekey];
         }
@@ -229,6 +231,25 @@ public class Petmanager : MonoBehaviour
 
         petObject.transform.Find("Image").GetComponent<Image>().sprite = sprite;
 
+    }
+
+    public void SetPetImageIfComfortable(Sprite sprite)
+    {
+        if (comfortable)
+        {
+            SetPetImage(sprite);
+        }
+    }
+
+    public void ForceNeed(Sprite sprite)
+    {
+        comfortable = false;
+        SetPetImage(sprite);
+    }
+
+    public void NoForce()
+    {
+        comfortable = true;
     }
 
     private double TimeStamp()
