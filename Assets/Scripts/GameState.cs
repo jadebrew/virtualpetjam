@@ -16,4 +16,7 @@ public class GameState : ScriptableObject
 
     public bool isBag;
     public string bagFilter;
+    public bool isNewGame;//TODO this is awful
+    public bool isStart;//TODO this is awful
+    public bool isGame;//TODO this is awful
 }

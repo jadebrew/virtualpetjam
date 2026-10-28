@@ -1,0 +1,29 @@
+{
+  "name":"Mimi",
+  "inventory": {
+    "Cheap Shampoo":3,
+    "Coin":5,
+    "Dango":3,
+    "Japan Inverted cassette":1,
+    "Cheap Teddy":3,
+    "Bamboo cassette":0,
+    "Beach":0,
+    "Clouds cassette":0,
+    "Deep Sea cassette":0,
+    "Energy Dash cassette":0,
+    "Japan cassette":0,
+    "Night cassette":0,
+    "Snow cassette":0,
+    "Sunset cassette":0,
+    "Zebra cassette":0,
+    "Milkshake":0,
+    "Camouflage cassette":0,
+    "lemonade":0,
+    "Sunrise":0,
+    "Yin Yang":0,
+    "Rice":0,
+    "Expensive Shampoo":0,
+    "Soft Teddy":0
+  },
+  "playbackMode":"Loop"
+}

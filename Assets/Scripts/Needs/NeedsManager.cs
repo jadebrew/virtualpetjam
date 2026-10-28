@@ -119,5 +119,13 @@ namespace Needs
         {
             _needs[type].value = value;
         }
+
+        public void SetAllNeedsToMax()
+        {
+            foreach (var need in _needs.Select(pair => pair.Value))
+            {
+                need.value = need.max;
+            }
+        }
     }
 }

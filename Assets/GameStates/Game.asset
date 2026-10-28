@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0258ac38fd3fd62b08723c91e0999fb5, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  title: Home
-  shortname: Home
+  title: Continue Game
+  shortname: Continue
   body: 
   buttons: []
   panels:
@@ -21,3 +21,6 @@ MonoBehaviour:
   - home
   isBag: 0
   bagFilter: 
+  isNewGame: 0
+  isStart: 0
+  isGame: 1

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Collections;
+using Needs;
 using TMPro;
 
 public class MenuHelper : MonoBehaviour
@@ -84,6 +85,9 @@ public class MenuHelper : MonoBehaviour
         }
         foreach(GameState state in self.buttons)
         {
+            if (state.isGame && Petmanager.Instance.IsNewGame())
+                continue;
+            
             var button = Instantiate(buttonTemplate, bodyParent.transform, true);
             button.transform.GetChild(0).GetComponent<TMP_Text>().text = state.shortname;
             Vector3 scale = new Vector3(1,1,1);
@@ -92,7 +96,16 @@ public class MenuHelper : MonoBehaviour
             buttonLogic.gameState = state;
             buttonLogic.menuHelper = this;
             buttonLogic.pet = pet;
-            button.GetComponent<Button>().onClick.AddListener(buttonLogic.SetState);
+            
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                //TODO this is Lovecraftian horror level bad. Lord please forgive me.
+                if (state.isNewGame)
+                {
+                    Petmanager.Instance.StartNewGame();
+                }
+                buttonLogic.SetState();
+            });
         }
     }
 }

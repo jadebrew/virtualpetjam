@@ -16,9 +16,12 @@ MonoBehaviour:
   shortname: Leave
   body: Welcome to Mimi's Greed!
   buttons:
+  - {fileID: 11400000, guid: caa0dd7b5a7031d4a88e84a8149a3b24, type: 2}
   - {fileID: 11400000, guid: 1803fd4f5747e53e8b9426a7a05fa4e2, type: 2}
   - {fileID: 11400000, guid: 8fbba026de44f41d991f7c99dea911ec, type: 2}
   panels:
   - menu
   isBag: 0
   bagFilter: 
+  isNewGame: 0
+  isStart: 1

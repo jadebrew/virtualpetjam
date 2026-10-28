@@ -14,10 +14,12 @@ using Notification;
 using SimpleJSON;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class Petmanager : MonoBehaviour
 {
+    public static Petmanager Instance { get; private set; }
 
     public GameObject petObject;
 
@@ -126,8 +128,21 @@ public class Petmanager : MonoBehaviour
 
     private bool comfortable = true;
     
+    //TODO move to SaveManager
+    private bool _isNewGame;
+    
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        
+        SetIsNewGame();
+        
         _audio = AudioManager.Instance;
         _notif = NotificationManager.Instance;
         
@@ -634,6 +649,8 @@ public class Petmanager : MonoBehaviour
 
     }
 
+    
+    //TODO move to SaveManager
     private void Save() {
         var petJson = new JSONObject();
         Debug.Log("Attempting to save.");
@@ -685,28 +702,37 @@ public class Petmanager : MonoBehaviour
 
     }
 
-    private void Load()
+    //TODO move to SaveManager
+    private void Load(bool newGame = false)
     {
-        var folderPath = "";
-
-        #if UNITY_WEBGL && !UNITY_EDITOR
+        var path = "";
+        if (!newGame)
+        {
+            var folderPath = "";
+#if UNITY_WEBGL && !UNITY_EDITOR
             folderPath = Path.Combine("idbfs/","mimigreed");;
             if (!File.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
-        #else
+#else
             folderPath = Application.persistentDataPath;
-        #endif
+#endif
 
-        folderPath = folderPath +"/";
+            folderPath = folderPath +"/";
 
-        const string searchPattern = "*_save.json";
+            const string searchPattern = "*_save.json";
 
-        var path = Directory.GetFiles(folderPath, searchPattern)
-            .OrderByDescending(File.GetLastWriteTime)
-            .FirstOrDefault();
-        
+            path = Directory.GetFiles(folderPath, searchPattern)
+                .OrderByDescending(File.GetLastWriteTime)
+                .FirstOrDefault();
+        }
+        else // newfile
+        {
+            path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
+        }
+
+
         if(!string.IsNullOrEmpty(path))//savefile exists
         {
             var jsonString = File.ReadAllText(path);
@@ -734,22 +760,24 @@ public class Petmanager : MonoBehaviour
                 inventory[key] = value;
             }
             
-            if(petJson["needs"]) {
+            if(!newGame && petJson["needs"]) {
                 var needsJson = (JSONObject) petJson["needs"];
                 if(needsJson["hunger"])
                     NeedsManager.Instance.SetNeed(NeedType.Hunger, needsJson["hunger"]);
-                    Debug.Log("Hunger is loaded: " + needsJson["hunger"]);
                 if(needsJson["hygiene"])
                     NeedsManager.Instance.SetNeed(NeedType.Hygiene, needsJson["hygiene"]); 
                 if(needsJson["sleep"])
                     NeedsManager.Instance.SetNeed(NeedType.Sleep, needsJson["sleep"]);
             }
+            else //new game
+            {
+                NeedsManager.Instance.SetAllNeedsToMax();
+            }
+
             //catch up system
-            if(petJson["timestamp"])
+            if(!newGame && petJson["timestamp"])
             {
                 CatchUp(petJson["timestamp"]);
-            } else {
-                Debug.Log("Timestamp not found, initializing");
             }
             
             if(petJson["playbackMode"])
@@ -767,6 +795,66 @@ public class Petmanager : MonoBehaviour
             warmup = false;
             Save();
         }
+    }
+    
+    //TODO move to SaveManager
+    public void StartNewGame()
+    {
+        DeleteAllSaves();
+        Load(true);
+        Save();
+        _isNewGame = false;
+    }
+    
+    //TODO move to SaveManager
+    private static void DeleteAllSaves()
+    {
+        var path = "";
+#if UNITY_WEBGL && !UNITY_EDITOR
+            path = Path.Combine("idbfs/","mimigreed");
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+#else
+        path = Application.persistentDataPath;
+#endif
+        
+        foreach (var filePath in Directory.GetFiles(path, "*_save.json"))
+        {
+            File.Delete(filePath);
+        }
+    }
+    
+    //TODO move to SaveManager
+    private void SetIsNewGame()
+    {
+        var folderPath = "";
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            folderPath = Path.Combine("idbfs/","mimigreed");;
+            if (!File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+#else
+        folderPath = Application.persistentDataPath;
+#endif
+
+        folderPath = folderPath +"/";
+
+        const string searchPattern = "*_save.json";
+        
+        var path = Directory.GetFiles(folderPath, searchPattern)
+            .OrderByDescending(File.GetLastWriteTime)
+            .FirstOrDefault();
+
+        _isNewGame = string.IsNullOrEmpty(path);
+    }
+
+    public bool IsNewGame()
+    {
+        return _isNewGame;
     }
 
     private void CatchUp(double seconds)
