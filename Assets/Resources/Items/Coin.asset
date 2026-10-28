@@ -18,7 +18,7 @@ MonoBehaviour:
   type: 2
   needModifier: 0
   needModValue: 0
-  rarity: {fileID: 11400000, guid: 214dc227705a56c1f9907d78e97a69a3, type: 2}
+  rarity: {fileID: 11400000, guid: 6ed65f0dbc1eb12f2ba7a8347e99f73d, type: 2}
   onUseSFX: 0
   assignedSongTitle: 0
   itemType: coin

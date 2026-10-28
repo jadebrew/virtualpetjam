@@ -30,6 +30,10 @@ public class ConsumableHelper : MonoBehaviour
                     button.onClick.AddListener(PlayAssignedSong);
                 }
             }
+            else if (item.IsCoin())
+            {
+                button.onClick.AddListener(pet.Win);
+            }
             else
             {
                 button.onClick.AddListener(Consume);

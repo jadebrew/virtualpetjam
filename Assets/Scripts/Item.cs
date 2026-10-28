@@ -31,6 +31,11 @@ public class Item : ScriptableObject
 
     public bool IsConsumable()
     {
+        return title == "coin";
+    }
+
+    public bool IsCoin()
+    {
         return type == ItemType.Consumable;
     }
     

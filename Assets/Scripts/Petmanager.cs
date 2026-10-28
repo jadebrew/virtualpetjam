@@ -33,6 +33,8 @@ public class Petmanager : MonoBehaviour
     public TMP_Text HygieneText;
     public TMP_Text SleepText;
 
+    public TMP_Text yen;
+
     public float gametimer = 0;
 
     public float gameTickRate = 60; //seconds that it takes to call a Tick
@@ -75,6 +77,8 @@ public class Petmanager : MonoBehaviour
     public MemoryGame memoryGame;
     public ReactionGame reactionGame;
 
+
+
     
     //xp coins
     private const int AmountOfGameTicksMultiplierTakesEffect = 5;
@@ -82,9 +86,13 @@ public class Petmanager : MonoBehaviour
     private float _multiplier = 1f;
     private int _multiplierAppliedCount = 0;
     public int expectedCoinsPerDay = 25;
+    public int maxCoins = 100;
 
     private bool greedy = false;
     private int xpUntilNextCoin = 100;
+    private bool coinflush = false;
+    private float flushTimer = 0;
+    private float flushDelay = 100;
 
 
     [SerializeField]
@@ -135,10 +143,9 @@ public class Petmanager : MonoBehaviour
         
         foreach (var item in Resources.LoadAll<Item>("Items"))
         {
-            if (item.type != ItemType.Coin)
-            {
-                banner.Add(item);
-            }
+
+            banner.Add(item);
+
         }
 
         foreach(var item in banner)
@@ -243,6 +250,8 @@ public class Petmanager : MonoBehaviour
           GameTick(false);
         }
 
+         UpdateFlush();
+
         if(winDone)
         {
             Vector3 newPos = lastWon.transform.localPosition;
@@ -259,12 +268,16 @@ public class Petmanager : MonoBehaviour
             lootTable.Shuffle();
         }
 
-
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             FindSelectable();
             lastInput = 0;
         }
+        if (inventory[coin]>maxCoins)
+        {
+            inventory[coin] = maxCoins;
+        }
+        yen.text = inventory[coin] + "00";
         //_cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
     }
 
@@ -379,8 +392,44 @@ public class Petmanager : MonoBehaviour
         Save();
     }
 
+    public void FlushCoins()
+    {
+        if (!coinflush)
+        {
+            coinflush = true;
+            flushDelay = 0;
+            Win();
+        }
 
-    public void Win(int value)
+    }
+
+    public void UpdateFlush()
+    {
+        if (coinflush)
+        {
+            flushTimer+= Time.deltaTime;
+            if (flushTimer > flushDelay)
+            {
+
+                if (winDone &&  (flushTimer > flushDelay))
+                {
+                    Win();
+                    Debug.Log("winflush");
+                }
+                else if(flushTimer > flushDelay)
+                {
+                    Reveal();
+                    Debug.Log("revealflush");
+                }
+                flushTimer = 0;
+            }
+        }
+
+
+    }
+
+
+    public void Win()
     {
         if (inventory[coin]>0)
         {
@@ -397,16 +446,17 @@ public class Petmanager : MonoBehaviour
             gachaMenuPanel.SetActive(false);
             winPanel.SetActive(true);
             inventory[coin]--;
+            Save();
         }
         else
         {
             _audio.Play(Cancel);
+            coinflush = false;
         }
-        Save();
         lastInput = 0;
     }
 
-    public void Reveal(int value)
+    public void Reveal()
     {
         if (!winDone)
         {
@@ -515,7 +565,11 @@ public class Petmanager : MonoBehaviour
         }
         if (filter == "all")
         {
-            bagTitle.text = "collection";
+            bagTitle.text = "museum";
+        }
+        else if (filter == "coin")
+        {
+            bagTitle.text = "purse";
         }
         else
         {
@@ -524,6 +578,11 @@ public class Petmanager : MonoBehaviour
         lastInput = 0;
         homePanel.SetActive(false);
         FindSelectable();
+    }
+
+    public void Spend()
+    {
+
     }
 
     public void InitMenu(GameState state)
