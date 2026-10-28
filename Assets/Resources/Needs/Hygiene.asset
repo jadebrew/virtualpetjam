@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Need
   title: Hygiene
   type: 1
-  value: 99.21871
-  max: 150
+  value: 74.11332
+  max: 50
   badStateSprite: {fileID: 1933815127846864413, guid: 802ff3335f545f1c4a5e838cf7a2fffd, type: 3}
