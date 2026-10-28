@@ -185,6 +185,8 @@ public class Petmanager : MonoBehaviour
                 StereoManager.Instance.AddSongToPlaylist(item.assignedSongTitle);
             }
         }
+        StereoManager.Instance.PlaybackMode = PlaybackMode.Shuffle;
+        StereoManager.Instance.PlayNext();
     }
 
 
@@ -736,6 +738,7 @@ public class Petmanager : MonoBehaviour
                 var needsJson = (JSONObject) petJson["needs"];
                 if(needsJson["hunger"])
                     NeedsManager.Instance.SetNeed(NeedType.Hunger, needsJson["hunger"]);
+                    Debug.Log("Hunger is loaded: " + needsJson["hunger"]);
                 if(needsJson["hygiene"])
                     NeedsManager.Instance.SetNeed(NeedType.Hygiene, needsJson["hygiene"]); 
                 if(needsJson["sleep"])
