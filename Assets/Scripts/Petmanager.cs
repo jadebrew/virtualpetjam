@@ -20,6 +20,10 @@ public class Petmanager : MonoBehaviour
 {
 
     public GameObject petObject;
+
+    [SerializeField]
+    public Dictionary<string,Sprite> petStates = new Dictionary<string,Sprite>();
+
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
@@ -205,6 +209,14 @@ public class Petmanager : MonoBehaviour
         //NeedsManager.Instance.PrintStressTestResults(gameTickRate, SecondsInDay, ticksInAday, temporaryNeed);
     }*/
 
+    public void SetPetState(string statekey)
+    {
+        if (petStates.ContainsKey(statekey))
+        {
+            petObject.transform.Find("Image").GetComponent<Image>().sprite = petStates[statekey];
+        }
+    }
+
     private double TimeStamp()
     {
         var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
@@ -262,6 +274,7 @@ public class Petmanager : MonoBehaviour
         if(!catchup)
         {
             petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
+            SetPetState("idle");
         }
 
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
@@ -341,9 +354,9 @@ public class Petmanager : MonoBehaviour
 
     public void Pet()
     {
-        patience += 1;
         _audio.Play(Annoyed);
         lastInput = 0;
+        SetPetState("sit");
         Save();
     }
 

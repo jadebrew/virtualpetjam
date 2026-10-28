@@ -10680,6 +10680,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   petObject: {fileID: 1060244276}
+  petStates:
+  - key: idle
+    value: {fileID: -4982215763118976188, guid: 8f561f6589f16274085f8db5cb86462f, type: 3}
+  - key: sit
+    value: {fileID: -8480462471613795850, guid: ab0989101a5c62e29b6eb09a9118936c, type: 3}
+  - key: sleeping
+    value: {fileID: 3124462294683911620, guid: a8848cae54410a16191792c7eded560b, type: 3}
+  - key: greedy
+    value: {fileID: 5374402422062984905, guid: 5eacbd4ffa410b54c800d0819c1786ae, type: 3}
+  - key: sad
+    value: {fileID: 8967970324098885685, guid: 696044c6ce4a6ba909c0cc7ee2f54ad4, type: 3}
+  - key: potty
+    value: {fileID: -5983908478961133695, guid: fcfb0b3a97dd743b881b88a6326ea36c, type: 3}
+  - key: sleepy
+    value: {fileID: 2044643850254660240, guid: 424c1e3043202fb1d951e3deaa07507e, type: 3}
+  - key: dirty
+    value: {fileID: -6485821172335552645, guid: a3c2c9311591d2875b4c5377e34bfb15, type: 3}
+  - key: hungry
+    value: {fileID: -8480462471613795850, guid: ab0989101a5c62e29b6eb09a9118936c, type: 3}
   ChillLocations:
   - {fileID: 1255912038}
   - {fileID: 1555435657}
