@@ -14,6 +14,8 @@ namespace Needs
 
         private Dictionary<NeedType, Need> _needs = new ();
 
+        public GameObject petObject;
+
         private float NeedDecay { get; set; }
 
         public bool IsPetHappy { get; private set; } = true;
@@ -36,7 +38,14 @@ namespace Needs
 
         void Update()
         {
-            
+            foreach (var need in _needs.Select(pair => pair.Value))
+            {
+                if (need.value > need.max)
+                {
+                    need.value = need.max;
+                }
+            }
+            NeedsUIManager.Instance?.UpdateScoresVisually(_needs);
         }
 
         public void UpdateNeedAfterItem(Item item)
@@ -44,9 +53,9 @@ namespace Needs
             var need = _needs[item.needModifier];
             
             need.value += item.needModValue;
-            if (need.value > NeedMax)
+            if (need.value > need.max)
             {
-                need.value = NeedMax;
+                need.value = need.max;
             }
 
             NeedsUIManager.Instance?.UpdateScoresVisually(_needs);
@@ -60,6 +69,10 @@ namespace Needs
             {
                 need.value -= NeedDecay;
                 Debug.Log("Lost " + NeedDecay + " " + need.title);
+                if (need.value<need.max*0.5f)
+                {
+                    petObject.GetComponent<Petmanager>().SetPetImage(need.badStateSprite);
+                }
                 if (!(need.value < NeedMin)) continue;
                 
                 need.value = NeedMin;

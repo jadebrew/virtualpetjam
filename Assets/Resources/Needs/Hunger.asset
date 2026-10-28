@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Need
   title: Hunger
   type: 3
-  value: 100
+  value: 99.21871
+  max: 50
+  badStateSprite: {fileID: 8967970324098885685, guid: 696044c6ce4a6ba909c0cc7ee2f54ad4, type: 3}

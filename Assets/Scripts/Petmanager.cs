@@ -77,12 +77,14 @@ public class Petmanager : MonoBehaviour
 
     
     //xp coins
-    private const int AmountOfGameTicksMultiplierTakesEffect = 100;
-    public int coin_xp = 0;
+    private const int AmountOfGameTicksMultiplierTakesEffect = 5;
+    public float coin_xp = 0;
     private float _multiplier = 1f;
     private int _multiplierAppliedCount = 0;
     public int expectedCoinsPerDay = 25;
-    public int xpUntilNextCoin;
+
+    private bool greedy = false;
+    private int xpUntilNextCoin = 100;
 
 
     [SerializeField]
@@ -193,8 +195,6 @@ public class Petmanager : MonoBehaviour
         const float secondsInDay = 24*60*60;
         var ticksInAday = secondsInDay/gameTickRate;
 
-        xpUntilNextCoin = 10;
-
         NeedsManager.Instance.SetNeedDecay(ticksInAday);
     }
 
@@ -215,6 +215,13 @@ public class Petmanager : MonoBehaviour
         {
             petObject.transform.Find("Image").GetComponent<Image>().sprite = petStates[statekey];
         }
+    }
+
+    public void SetPetImage(Sprite sprite)
+    {
+
+        petObject.transform.Find("Image").GetComponent<Image>().sprite = sprite;
+
     }
 
     private double TimeStamp()
@@ -264,26 +271,38 @@ public class Petmanager : MonoBehaviour
     public void GameTick(bool catchup)
     {
         NeedsManager.Instance?.DecayNeeds();
-        
+        if(!catchup)
+        {
+            SetPetState("idle");
+        }
+
         if (_multiplierAppliedCount > AmountOfGameTicksMultiplierTakesEffect)//multiplier has ran out
         {
             _multiplier = 1f;
             _multiplierAppliedCount = 0;
+        } else {
+            if(!catchup && greedy)
+            {
+                SetPetState("greedy");
+            }
         }
-            
         if(!catchup)
         {
             petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
-            SetPetState("idle");
-        }
 
+        }
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
         {
-            coin_xp++;
-            if(coin_xp>xpUntilNextCoin/_multiplier)
+            coin_xp += _multiplier;
+            if(coin_xp>xpUntilNextCoin)
             {
-                coin_xp = 0;
+                coin_xp -= xpUntilNextCoin;
+                if (coin_xp < xpUntilNextCoin)
+                {
+                    greedy = false;
+                }
                 inventory[coin]++;
+                _audio.Play(MajorVictory);
                 NotificationManager.Instance.NotifyCoinReward();
             }
             _multiplierAppliedCount++;
@@ -520,9 +539,14 @@ public class Petmanager : MonoBehaviour
 
     public void SetMultiplierBonus(float multiplier)
     {
-        _multiplier = Mathf.Max(multiplier,1.0f);
+        _multiplier = Mathf.Max(multiplier*xpUntilNextCoin,1.0f);
         if(_multiplier > 1.0f)
+        {
             _notif.NotifyMultiplyBonus(multiplier);
+            greedy = true;
+            SetPetState("greedy");
+        }
+
     }
 
     private void Save() {

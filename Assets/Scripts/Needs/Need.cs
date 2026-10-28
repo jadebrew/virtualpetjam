@@ -16,4 +16,7 @@ public class Need : ScriptableObject
     public string title;
     public NeedType type;
     public float value;
+    public float max;
+    public Sprite badStateSprite;
+
 }

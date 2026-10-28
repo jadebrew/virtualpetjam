@@ -27,27 +27,27 @@ namespace Needs
 
         public void UpdateScoresVisually(Dictionary<NeedType, Need> needs)
         {
-            foreach (var (needType, need) in needs)
-            {
-                var visualValue = (int) Math.Round(need.value, 0);
-                
-                switch (needType)
-                {
-                    case NeedType.Sleep:
-                        sleepScoreText.text = $"{visualValue}";
-                        break;
-                    case NeedType.Hygiene:
-						if(hygieneScoreText != null)
-                            hygieneScoreText.text = $"{visualValue}";
-                        break;
-                    case NeedType.Hunger:
-                        hungerScoreText.text = $"{visualValue}";
-                        break;
-                    default:
-                        Debug.LogWarning("NeedType not found");
-                        break;
-                }
-            }
+            //foreach (var (needType, need) in needs)
+            //{
+            //    var visualValue = (int) Math.Round(need.value, 0);
+            //
+            //    switch (needType)
+           //     {
+            //        case NeedType.Sleep:
+             //           sleepScoreText.text = $"{visualValue}";
+            //            break;
+             //       case NeedType.Hygiene:
+			//		if(hygieneScoreText != null)
+              //              hygieneScoreText.text = $"{visualValue}";
+                      //  break;
+              //      case NeedType.Hunger:
+                       // hungerScoreText.text = $"{visualValue}";
+              //          break;
+              //      default:
+               //         Debug.LogWarning("NeedType not found");
+               //         break;
+               // }
+           // }
         }
     }
 }

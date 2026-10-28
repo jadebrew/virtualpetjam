@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Need
   title: Sleep
   type: 2
-  value: 98.281265
+  value: 97.49998
+  max: 100
+  badStateSprite: {fileID: 2044643850254660240, guid: 424c1e3043202fb1d951e3deaa07507e, type: 3}
