@@ -114,5 +114,10 @@ namespace Needs
         {
             return _needs.TryGetValue(type, out var need) ? need : null;
         }
+        
+        public void SetNeed(NeedType type,float value)
+        {
+            _needs[type].value = value;
+        }
     }
 }

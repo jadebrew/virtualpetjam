@@ -636,6 +636,12 @@ public class Petmanager : MonoBehaviour
         {
             invJson.Add(pair.Key.title,pair.Value);
         }
+        
+        var needsJson = new JSONObject();
+        needsJson.Add("hunger",NeedsManager.Instance.GetNeed(NeedType.Hunger).value);
+        needsJson.Add("hygiene",NeedsManager.Instance.GetNeed(NeedType.Hygiene).value);
+        needsJson.Add("sleep",NeedsManager.Instance.GetNeed(NeedType.Sleep).value);
+        petJson.Add("needs",needsJson);
 
         petJson.Add("inventory",invJson);
 
@@ -664,7 +670,7 @@ public class Petmanager : MonoBehaviour
         if (!warmup)
         {
             File.WriteAllText(path,petJson.ToString());
-            Debug.Log("Save complete.");
+            Debug.Log("Save completed at: "+ path);
         } else {
             Debug.Log("Still warming up.");
         }
@@ -721,6 +727,15 @@ public class Petmanager : MonoBehaviour
                 inventory[key] = value;
             }
             
+            if(petJson["needs"]) {
+                var needsJson = (JSONObject) petJson["needs"];
+                if(needsJson["hunger"])
+                    NeedsManager.Instance.SetNeed(NeedType.Hunger, needsJson["hunger"]);
+                if(needsJson["hygiene"])
+                    NeedsManager.Instance.SetNeed(NeedType.Hygiene, needsJson["hygiene"]); 
+                if(needsJson["sleep"])
+                    NeedsManager.Instance.SetNeed(NeedType.Sleep, needsJson["sleep"]);
+            }
             //catch up system
             if(petJson["timestamp"])
             {
