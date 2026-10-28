@@ -127,5 +127,15 @@ namespace Needs
                 need.value = need.max;
             }
         }
+
+        public bool IsPetSleepy()
+        {
+            return _needs[NeedType.Sleep].value < (0.25f*_needs[NeedType.Sleep].max);
+        }
+        
+        public bool IsPetDirty()
+        {
+            return _needs[NeedType.Hygiene].value < (0.25f*_needs[NeedType.Hygiene].max);
+        }
     }
 }

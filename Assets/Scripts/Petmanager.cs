@@ -11,6 +11,7 @@ using Audio;
 using MiniGames;
 using Needs;
 using Notification;
+using RandomEvents;
 using SimpleJSON;
 using TMPro;
 using UnityEngine.EventSystems;
@@ -130,6 +131,8 @@ public class Petmanager : MonoBehaviour
     
     //TODO move to SaveManager
     private bool _isNewGame;
+
+    private int _gameTicksCount = 0;
     
     void Awake()
     {
@@ -321,6 +324,8 @@ public class Petmanager : MonoBehaviour
 
     public void GameTick(bool catchup)
     {
+        _gameTicksCount++;
+
         NeedsManager.Instance?.DecayNeeds();
         if(!catchup)
         {
@@ -339,8 +344,7 @@ public class Petmanager : MonoBehaviour
         }
         if(!catchup)
         {
-            petObject.transform.position = ChillLocations[(int)Mathf.Round(Random.Range(0,ChillLocations.Length))].transform.position;
-
+            MovePetToChillSpot((int) Mathf.Round(Random.Range(0, ChillLocations.Length)));
         }
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
         {
@@ -374,6 +378,11 @@ public class Petmanager : MonoBehaviour
         }
 
         Debug.Log("coin xp: " + coin_xp);
+        
+        if (RandomEventManager.Instance != null && _gameTicksCount % 6 == 0)//every 6 gameticks
+        {
+            RandomEventManager.Instance.RunRandomEvent();
+        }
     }
 
     public void Feed(GameObject consumable)
@@ -414,6 +423,21 @@ public class Petmanager : MonoBehaviour
         Save();
         lastInput = 0;
         doscreensaver = false;
+    }
+    
+    public void MovePetToRadio()
+    {
+        MovePetToChillSpot(2);
+    }
+    
+    public void MovePetToLitterBox()
+    {
+        MovePetToChillSpot(2);//TODO change to correct chillspot
+    }
+    
+    private void MovePetToChillSpot(int i)
+    {
+        petObject.transform.position = ChillLocations[i].transform.position;
     }
 
     public void CurrentUseSfx()
@@ -873,22 +897,4 @@ public class Petmanager : MonoBehaviour
             
             NotificationManager.Instance.NotifyWelcomeBack(inventory[coin] - coinsBefore);
         }
-}
-
-
-
-public static class IListExtensions {
-    /// <summary>
-    /// Shuffles the element order of the specified list.
-    /// </summary>
-    public static void Shuffle<T>(this IList<T> ts) {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i) {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
-        }
-    }
 }

@@ -6,6 +6,7 @@ namespace Notification
         PetNeedStatus,
         WelcomeBack,
         CoinReward,
+        RandomEvent
     }
 
     public interface INotification

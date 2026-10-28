@@ -61,7 +61,7 @@ namespace Notification
             _notificationQueue.Enqueue(new SongNotification()
             {
                 Song = song
-            },2);
+            },3);
         }
     
         public void NotifyPetStatus(NeedType needType)
@@ -92,5 +92,17 @@ namespace Notification
                 Bonus = multiplyBonus
             },1);
         }
+        
+        public void NotifyPetTurnedOffRadio()
+        {
+            _notificationQueue.Enqueue(new PetTurnsRadioOffNotification(), 2);
+        }
+        
+        public void NotifyPetGoesToLitterBox()
+        {
+            _notificationQueue.Enqueue(new PetGoesToLitterBoxNotification(), 2);
+        }
+        
+        
     }
 }
