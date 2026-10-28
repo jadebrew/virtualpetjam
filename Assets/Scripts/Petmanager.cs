@@ -381,6 +381,7 @@ public class Petmanager : MonoBehaviour
         
         if (RandomEventManager.Instance != null && _gameTicksCount % 6 == 0)//every 6 gameticks
         {
+            Debug.Log("Random Event");
             RandomEventManager.Instance.RunRandomEvent();
         }
     }
