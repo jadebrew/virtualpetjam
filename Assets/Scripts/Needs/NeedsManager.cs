@@ -70,12 +70,9 @@ namespace Needs
                 need.value -= NeedDecay;
                 Debug.Log("Lost " + NeedDecay + " " + need.title);
                 petManager.NoForce();
-                if (need.value<need.max*0.5f)
-                {
-                    petManager.ForceNeed(need.badStateSprite);
-                }
                 if (!(need.value < NeedMin)) continue;
                 need.value = NeedMin;
+                petManager.ForceNeed(need.badStateSprite);
                 NotificationManager.Instance.NotifyPetStatus(need.type);
                 IsPetHappy = false;
             }
