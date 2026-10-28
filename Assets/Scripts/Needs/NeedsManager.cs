@@ -109,5 +109,10 @@ namespace Needs
             }
             return needTypes;
         }
+
+        public Need GetNeed(NeedType type)
+        {
+            return _needs.TryGetValue(type, out var need) ? need : null;
+        }
     }
 }
