@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Game
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   title: Home
-  shortname: Play
+  shortname: Home
   body: 
   buttons: []
   panels:

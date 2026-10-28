@@ -447,6 +447,11 @@ public class Petmanager : MonoBehaviour
         }
     }
 
+    public void NeedCheck()
+    {
+        Debug.Log(NeedsManager.Instance.GetNeed(NeedType.Hunger).value);
+    }
+
 
     public void Win()
     {
