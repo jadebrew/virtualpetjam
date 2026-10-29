@@ -30,7 +30,7 @@ public class Petmanager : MonoBehaviour
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
-    public float screenSaverWait = 3600;
+    private float screenSaverWait = 3600;
     
     public TMP_Text HungerText;
     public TMP_Text HygieneText;
@@ -128,6 +128,8 @@ public class Petmanager : MonoBehaviour
     private const int ScreenSaverIndex = 9;
 
     private bool comfortable = true;
+    private bool sleeping = false;
+    private bool gross = true;
     
     //TODO move to SaveManager
     private bool _isNewGame;
@@ -239,7 +241,7 @@ public class Petmanager : MonoBehaviour
 
     public void SetPetState(string statekey)
     {
-        if (!greedy && comfortable && petStates.ContainsKey(statekey))
+        if (!greedy && !sleeping && comfortable && petStates.ContainsKey(statekey))
         {
             SetPetImage(petStates[statekey]);
         }
@@ -254,14 +256,14 @@ public class Petmanager : MonoBehaviour
 
     public void SetPetImageIfComfortable(Sprite sprite)
     {
-        if (!greedy && comfortable)
+        if (!greedy && !sleeping  && comfortable)
         {
             SetPetImage(sprite);
         }
     }
     public void ForceNeed(string statekey)
     {
-        if (!greedy && petStates.ContainsKey(statekey))
+        if (!greedy && !sleeping  && petStates.ContainsKey(statekey))
         {
             SetPetImage(petStates[statekey]);
         }
@@ -276,6 +278,7 @@ public class Petmanager : MonoBehaviour
     public void NoForce()
     {
         comfortable = true;
+        gross = false;
     }
 
     private double TimeStamp()
@@ -335,7 +338,14 @@ public class Petmanager : MonoBehaviour
         NeedsManager.Instance?.DecayNeeds();
         if(!catchup && comfortable && !greedy)
         {
-            SetPetState("idle");
+            if (!gross)
+            {
+                SetPetState("idle");
+            }
+            else
+            {
+                SetPetState("gross");
+            }
         }
 
         if (_gameTicksCount % 3 == 0)
@@ -350,11 +360,28 @@ public class Petmanager : MonoBehaviour
             } else if (d6 == 2)
             {
                 //go sit
-                SetPetState("sleeping");
+                if (!sleeping)
+                {
+                    SetPetState("sleeping");
+                    MoveToBed();
+                    sleeping = true;
+                } else {
+                    sleeping = false;
+                    SetPetState("sleepy");
+                }
+
             } else
             {
                 // go sleep
-                SetPetState("sit");
+                if (!gross)
+                {
+                    SetPetState("sit");
+                }
+                else
+                {
+                    SetPetState("gross_sit");
+                }
+
             }
 
 
@@ -371,7 +398,7 @@ public class Petmanager : MonoBehaviour
                 SetPetState("greedy");
             }
         }
-        if(!catchup && comfortable)
+        if(!catchup && comfortable && !sleeping)
         {
             MovePetToChillSpot((int) Mathf.Round(Random.Range(0, ChillLocations.Length)));
         }
@@ -439,6 +466,7 @@ public class Petmanager : MonoBehaviour
                     break;
                 case NeedType.Hygiene:
                     catchGame.Init();
+                    gross = false;
                     break;
                 default:
                     break;
@@ -465,10 +493,16 @@ public class Petmanager : MonoBehaviour
     
     public void MovePetToLitterBox()
     {
-        MovePetToChillSpot(3);//TODO change to correct chillspot
+        MovePetToChillSpot(3);
         ForceNeed("potty");
         comfortable = false;
         Debug.Log("Potty Event");
+        gross = true;
+    }
+
+    public void MoveToBed()
+    {
+         MovePetToChillSpot(5);
     }
     
     private void MovePetToChillSpot(int i)
@@ -484,13 +518,23 @@ public class Petmanager : MonoBehaviour
 
     public void Pet()
     {
-        _audio.Play(Annoyed);
         lastInput = 0;
+        if (sleeping)
+        {
+            sleeping = false;
+            SetPetState("sleepy");
+            _audio.Play(Annoyed);
+        }
         if (comfortable)
         {
-             SetPetState("sit");
+            SetPetState("comfortable");
+            _audio.Play(Annoyed);
         }
-        Save();
+        if (!comfortable)
+        {
+            ForceNeed("angry");
+            _audio.Play(Annoyed);
+        }
     }
 
     public void FlushCoins()
@@ -529,7 +573,7 @@ public class Petmanager : MonoBehaviour
 
     public void NeedCheck()
     {
-        Debug.Log(NeedsManager.Instance.GetNeed(NeedType.Hunger).value);
+        //Debug.Log(NeedsManager.Instance.GetNeed(NeedType.Hunger).value);
     }
 
 

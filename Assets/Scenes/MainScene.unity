@@ -759,7 +759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.9, y: -9.6}
+  m_AnchoredPosition: {x: -6, y: -9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &113171017
@@ -946,7 +946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59, y: -36.7}
+  m_AnchoredPosition: {x: -3, y: -22}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &130281500
@@ -5864,7 +5864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59, y: 9.9}
+  m_AnchoredPosition: {x: 59, y: 9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &914471527
@@ -8469,7 +8469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65.8, y: -26.4}
+  m_AnchoredPosition: {x: -65, y: -26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1292429880
@@ -10251,6 +10251,12 @@ MonoBehaviour:
     value: {fileID: -6485821172335552645, guid: a3c2c9311591d2875b4c5377e34bfb15, type: 3}
   - key: hungry
     value: {fileID: -8480462471613795850, guid: ab0989101a5c62e29b6eb09a9118936c, type: 3}
+  - key: comfortable
+    value: {fileID: 2044643850254660240, guid: 424c1e3043202fb1d951e3deaa07507e, type: 3}
+  - key: gross
+    value: {fileID: 1933815127846864413, guid: 802ff3335f545f1c4a5e838cf7a2fffd, type: 3}
+  - key: gross_sit
+    value: {fileID: -6485821172335552645, guid: a3c2c9311591d2875b4c5377e34bfb15, type: 3}
   ChillLocations:
   - {fileID: 1255912038}
   - {fileID: 1555435657}
@@ -10258,7 +10264,6 @@ MonoBehaviour:
   - {fileID: 97114248}
   - {fileID: 1551135509}
   - {fileID: 128499008}
-  screenSaverWait: 10
   HungerText: {fileID: 0}
   HygieneText: {fileID: 0}
   SleepText: {fileID: 0}
@@ -10545,7 +10550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.4, y: -32.4}
+  m_AnchoredPosition: {x: -31, y: -26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1555435657
@@ -10580,7 +10585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55.1, y: -29.2}
+  m_AnchoredPosition: {x: 55, y: -29}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1559711769
