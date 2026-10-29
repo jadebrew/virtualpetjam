@@ -62,6 +62,7 @@ public class Petmanager : MonoBehaviour
     public GameObject consumePanel;
     public GameObject creditPanel;
     public GameObject screenSaver;
+    public GameObject needPanel;
 
     private bool doscreensaver = false;
     
@@ -660,6 +661,7 @@ public class Petmanager : MonoBehaviour
         creditPanel.SetActive(false);
         screenSaver.SetActive(false);
         doscreensaver = false;
+        needPanel.SetActive(false);
         homePanel.SetActive(false);
         
         //TODO this is horrible and should be done with enums instead,
@@ -997,6 +999,11 @@ public class Petmanager : MonoBehaviour
     public bool IsNewGame()
     {
         return _isNewGame;
+    }
+
+    public void ToggleGameObject(GameObject gameObject)
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     private void CatchUp(double seconds)
