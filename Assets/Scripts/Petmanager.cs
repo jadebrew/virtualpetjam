@@ -27,6 +27,9 @@ public class Petmanager : MonoBehaviour
     [SerializeField]
     public Dictionary<string,Sprite> petStates = new Dictionary<string,Sprite>();
 
+    [SerializeField]
+    public Dictionary<string,Sprite> petParticles = new Dictionary<string,Sprite>();
+
     public GameObject[] ChillLocations;
     private float gameTickTime = 5;
     private float patience = 0;
@@ -254,6 +257,16 @@ public class Petmanager : MonoBehaviour
 
     }
 
+    public void SetIcon(string iconkey)
+    {
+        if (petParticles.ContainsKey(iconkey))
+        {
+            petObject.transform.Find("Icon").gameObject.SetActive(true);
+            petObject.transform.Find("Icon").GetComponent<Image>().sprite = petParticles[iconkey];
+            //TODO animation or something (move up?)
+        }
+    }
+
     public void SetPetImageIfComfortable(Sprite sprite)
     {
         if (!greedy && !sleeping  && comfortable)
@@ -334,6 +347,7 @@ public class Petmanager : MonoBehaviour
     public void GameTick(bool catchup)
     {
         _gameTicksCount++;
+        petObject.transform.Find("Icon").gameObject.SetActive(false);
 
         NeedsManager.Instance?.DecayNeeds();
         if(!catchup && comfortable && !greedy)
@@ -345,6 +359,7 @@ public class Petmanager : MonoBehaviour
             else
             {
                 SetPetState("gross");
+                SetIcon("stinky");
             }
         }
 
@@ -363,11 +378,13 @@ public class Petmanager : MonoBehaviour
                 if (!sleeping)
                 {
                     SetPetState("sleeping");
+                    SetIcon("zzz");
                     MoveToBed();
                     sleeping = true;
                 } else {
                     sleeping = false;
                     SetPetState("sleepy");
+                    SetIcon("tear");
                 }
 
             } else if (d6 == 3)
@@ -381,6 +398,7 @@ public class Petmanager : MonoBehaviour
                 else
                 {
                     SetPetState("gross_sit");
+                    SetIcon("stinky");
                 }
             }
             else
@@ -403,7 +421,9 @@ public class Petmanager : MonoBehaviour
         } else {
             if(!catchup && greedy)
             {
+                NoForce();
                 SetPetState("greedy");
+                SetIcon("yen");
             }
         }
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
@@ -523,10 +543,13 @@ public class Petmanager : MonoBehaviour
     public void Pet()
     {
         lastInput = 0;
+        NoForce();
+        SetIcon("tear");
         if (sleeping)
         {
             sleeping = false;
             SetPetState("sleepy");
+            SetIcon("tear");
             _audio.Play(Annoyed);
         }
         if (comfortable)
@@ -537,6 +560,7 @@ public class Petmanager : MonoBehaviour
         if (!comfortable)
         {
             ForceNeed("angry");
+            SetIcon("angry");
             _audio.Play(Annoyed);
         }
     }
