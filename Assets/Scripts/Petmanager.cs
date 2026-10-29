@@ -203,8 +203,7 @@ public class Petmanager : MonoBehaviour
                 StereoManager.Instance.AddSongToPlaylist(item.assignedSongTitle);
             }
         }
-        StereoManager.Instance.PlaybackMode = PlaybackMode.Shuffle;
-        StereoManager.Instance.PlayNext();
+
     }
 
 
@@ -240,7 +239,7 @@ public class Petmanager : MonoBehaviour
 
     public void SetPetState(string statekey)
     {
-        if (comfortable && petStates.ContainsKey(statekey))
+        if (!greedy && comfortable && petStates.ContainsKey(statekey))
         {
             SetPetImage(petStates[statekey]);
         }
@@ -255,14 +254,14 @@ public class Petmanager : MonoBehaviour
 
     public void SetPetImageIfComfortable(Sprite sprite)
     {
-        if (comfortable)
+        if (!greedy && comfortable)
         {
             SetPetImage(sprite);
         }
     }
     public void ForceNeed(string statekey)
     {
-        if (petStates.ContainsKey(statekey))
+        if (!greedy && petStates.ContainsKey(statekey))
         {
             SetPetImage(petStates[statekey]);
         }
@@ -334,9 +333,32 @@ public class Petmanager : MonoBehaviour
         _gameTicksCount++;
 
         NeedsManager.Instance?.DecayNeeds();
-        if(!catchup && comfortable)
+        if(!catchup && comfortable && !greedy)
         {
             SetPetState("idle");
+        }
+
+        if (_gameTicksCount % 3 == 0)
+        {
+            //random spice of life things
+            var d6 = Mathf.Round(Random.Range(1,6));
+            if (d6 == 1)
+            {
+                //flip orientation
+                var currentX = petObject.transform.localScale.x;
+                petObject.transform.localScale = new Vector3 (currentX*-1,1,1);
+            } else if (d6 == 2)
+            {
+                //go sit
+                SetPetState("sleeping");
+            } else
+            {
+                // go sleep
+                SetPetState("sit");
+            }
+
+
+
         }
 
         if (_multiplierAppliedCount > AmountOfGameTicksMultiplierTakesEffect)//multiplier has ran out
@@ -832,6 +854,8 @@ public class Petmanager : MonoBehaviour
             }
             
             FillPlaylist();
+            StereoManager.Instance.PlaybackMode = PlaybackMode.Shuffle;
+            StereoManager.Instance.PlayNext();
 
             Debug.Log("Savefile loaded: " + path);
             warmup = false;

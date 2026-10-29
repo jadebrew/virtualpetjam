@@ -10,7 +10,6 @@ namespace RandomEvents
         public void Happen()
         {
             if (!NeedsManager.Instance.IsPetDirty()) return;
-            
             Petmanager.Instance.MovePetToLitterBox();
             NotificationManager.Instance.NotifyPetGoesToLitterBox();
             Debug.Log("Litterbox Event called");

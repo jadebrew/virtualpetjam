@@ -25,3 +25,4 @@ MonoBehaviour:
   bagFilter: 
   isNewGame: 0
   isStart: 1
+  isGame: 0

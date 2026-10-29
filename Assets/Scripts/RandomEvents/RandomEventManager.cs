@@ -22,15 +22,13 @@ namespace RandomEvents
             
             _eventPool.Add(new PetGoesToLitterBox());
             _eventPool.Add(new PetTurnsRadioOff());
+            _eventPool.Add(new PetGoesAngry());
+            _eventPool.Add(new PetGoesSad());
         }
 
         public void RunRandomEvent()
         {
             GetRandomEvent().Happen();
-            if (Petmanager.Instance == null)
-            {
-                Debug.Log("Petmanager is null");
-            }
         }
 
         private IRandomEvent GetRandomEvent()
