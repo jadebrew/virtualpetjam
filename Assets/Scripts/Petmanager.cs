@@ -348,7 +348,7 @@ public class Petmanager : MonoBehaviour
             }
         }
 
-        if (_gameTicksCount % 3 == 0)
+        if (!catchup && _gameTicksCount % 3 == 0)
         {
             //random spice of life things
             var d6 = Mathf.Round(Random.Range(1,6));
@@ -370,8 +370,9 @@ public class Petmanager : MonoBehaviour
                     SetPetState("sleepy");
                 }
 
-            } else
+            } else if (d6 == 3)
             {
+
                 // go sleep
                 if (!gross)
                 {
@@ -380,6 +381,13 @@ public class Petmanager : MonoBehaviour
                 else
                 {
                     SetPetState("gross_sit");
+                }
+            }
+            else
+            {
+                if(!catchup && comfortable && !sleeping)
+                {
+                    MovePetToChillSpot((int) Mathf.Round(Random.Range(0, ChillLocations.Length)));
                 }
 
             }
@@ -397,10 +405,6 @@ public class Petmanager : MonoBehaviour
             {
                 SetPetState("greedy");
             }
-        }
-        if(!catchup && comfortable && !sleeping)
-        {
-            MovePetToChillSpot((int) Mathf.Round(Random.Range(0, ChillLocations.Length)));
         }
         if (NeedsManager.Instance && NeedsManager.Instance.IsPetHappy)
         {
