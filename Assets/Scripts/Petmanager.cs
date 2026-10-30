@@ -120,6 +120,8 @@ public class Petmanager : MonoBehaviour
     
     private UIManager _ui;
 
+    private Dictionary<Item,int> newInventoryTemp = new Dictionary<Item,int>();
+
     private bool warmup = true;
     
     //TODO this is horrible and should be done with enums instead,
@@ -164,6 +166,8 @@ public class Petmanager : MonoBehaviour
         consumePanel.SetActive(false);
         homePanel.SetActive(false);
         menuPanel.SetActive(true);
+
+        newInventoryTemp = inventory;
 
         CalculateAndSetNeedDelay();
         
@@ -948,8 +952,9 @@ public class Petmanager : MonoBehaviour
     {
         DeleteAllSaves();
         Load(true);
-        Save();
         _isNewGame = false;
+        inventory = newInventoryTemp;
+        Save();
     }
     
     //TODO move to SaveManager
