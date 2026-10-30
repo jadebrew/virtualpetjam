@@ -266,6 +266,10 @@ public class Petmanager : MonoBehaviour
             petObject.transform.Find("Icon").GetComponent<Image>().sprite = petParticles[iconkey];
             //TODO animation or something (move up?)
         }
+        else
+        {
+            petObject.transform.Find("Icon").gameObject.SetActive(false);
+        }
     }
 
     public void SetPetImageIfComfortable(Sprite sprite)
