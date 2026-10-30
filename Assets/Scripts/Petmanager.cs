@@ -864,12 +864,10 @@ public class Petmanager : MonoBehaviour
                 .OrderByDescending(File.GetLastWriteTime)
                 .FirstOrDefault();
         }
-#if !UNITY_WEBGL
         else  // newfile
         {
             path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
         }
-#endif
 
 
         if(!string.IsNullOrEmpty(path))//savefile exists
