@@ -870,7 +870,7 @@ public class Petmanager : MonoBehaviour
         }
         else  // newfile
         {
-            path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
+            //path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
         }
 
 
