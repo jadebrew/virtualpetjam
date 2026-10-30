@@ -549,7 +549,7 @@ public class Petmanager : MonoBehaviour
     {
         lastInput = 0;
         NoForce();
-        SetIcon("tear");
+        SetIcon("pet");
         if (sleeping)
         {
             sleeping = false;
@@ -559,7 +559,7 @@ public class Petmanager : MonoBehaviour
         }
         if (comfortable)
         {
-            SetPetState("comfortable");
+            SetPetState("pet");
             _audio.Play(Annoyed);
         }
         if (!comfortable)
@@ -870,7 +870,7 @@ public class Petmanager : MonoBehaviour
         }
         else  // newfile
         {
-            path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
+            //path = Path.Combine(Application.dataPath, "Resources/json/new_game.json");
         }
 
 

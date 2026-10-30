@@ -153,6 +153,24 @@ namespace MiniGames
             }
         }
 
+        public void MoveUp()
+        {
+            if (_currentLane < laneCount - 1)
+            {
+                _currentLane++;
+                UpdateCatPosition();
+            }
+        }
+
+        public void MoveDown()
+        {
+            if (_currentLane > 0)
+            {
+                _currentLane--;
+                UpdateCatPosition();
+            }
+        }
+
         private void UpdateCatPosition()
         {
             if (catRectTransform == null) return;
